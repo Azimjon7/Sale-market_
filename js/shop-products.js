@@ -106,14 +106,9 @@
 
   /* ── Render ──────────────────────────────────────────────── */
   function render(items) {
-    // Update counts
+    // Count element kept empty — count text is hidden per UI requirements
     const countEl = document.getElementById('shop-count');
-    if (countEl) {
-      const q = getSearchQuery();
-      countEl.textContent = q
-        ? `"${q}" bo'yicha ${items.length} ta mahsulot`
-        : `${items.length} ta / ${allProducts.length} ta mahsulot ko'rsatilmoqda`;
-    }
+    if (countEl) countEl.textContent = '';
 
     if (!items.length) {
       const q = MBSearch.normalizeText(getSearchQuery());
@@ -195,7 +190,14 @@
       filtered.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
     } else if (sort === 'most_reviewed') {
       filtered.sort((a, b) => (reviewCounts[String(b.id)] || 0) - (reviewCounts[String(a.id)] || 0));
+    } else if (sort === 'oldest') {
+      filtered.sort((a, b) => {
+        const ta = new Date(a.createdAt || 0).getTime() || 0;
+        const tb = new Date(b.createdAt || 0).getTime() || 0;
+        return ta - tb;
+      });
     } else {
+      // newest (default)
       filtered.sort((a, b) => {
         const ta = new Date(a.createdAt || 0).getTime() || 0;
         const tb = new Date(b.createdAt || 0).getTime() || 0;

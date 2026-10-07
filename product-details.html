@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8" />
@@ -139,211 +139,17 @@
       }
     }
 
+    /* Mobile overrides handled by css/live-upgrade-fixes.css */
     @media (max-width: 767px) {
-      .product-detail-wrap {
-        padding: 24px 0;
-      }
-
-      .pd-page-top {
-        margin-bottom: 10px;
-      }
-
-      .pd-back-btn {
-        padding: 8px 12px;
-        font-size: 13px;
-      }
-
-      .pd-image-box {
-        border-radius: 14px;
-      }
-
-      .pd-image-box img {
-        height: 300px;
-      }
-
-      .pd-image-nav {
-        width: 34px;
-        height: 34px;
-        font-size: 18px;
-      }
-
-      .pd-image-nav.prev {
-        left: 8px;
-      }
-
-      .pd-image-nav.next {
-        right: 8px;
-      }
-
-      .pd-thumbs {
-        gap: 8px;
-        margin-top: 10px;
-      }
-
-      .pd-thumb {
-        width: 64px;
-        height: 64px;
-      }
-
-      .pd-info-box {
-        padding: 16px;
-        border-radius: 14px;
-      }
-
-      .pd-badge {
-        font-size: 11px;
-        margin-bottom: 10px;
-      }
-
-      .pd-title {
-        font-size: 24px;
-        line-height: 1.2;
-        margin-bottom: 8px;
-        overflow-wrap: anywhere;
-      }
-
-      .pd-rating-row {
-        font-size: 12px;
-        margin-bottom: 12px;
-      }
-
-      .pd-price-wrap {
-        gap: 10px;
-        margin-bottom: 14px;
-      }
-
-      .pd-price {
-        font-size: 28px;
-      }
-
-      .pd-old-price {
-        font-size: 16px;
-      }
-
-      .pd-options {
-        margin-bottom: 16px;
-      }
-
-      .pd-meta-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-bottom: 16px;
-        order: 5;
-      }
-
-      .pd-control-panel {
-        order: 3;
-      }
-
-      .pd-actions {
-        order: 4;
-        margin-top: 0;
-      }
-
-      #pdMessage {
-        order: 6;
-      }
-
-      .pd-label {
-        font-size: 14px;
-        margin-bottom: 8px;
-      }
-
-      .pd-chip {
-        padding: 8px 12px;
-        font-size: 12px;
-        min-width: 52px;
-      }
-
-      .pd-qty-wrap {
-        gap: 10px;
-        margin-bottom: 16px;
-      }
-
-      .pd-qty-input {
-        width: 84px;
-        height: 40px;
-        font-size: 14px;
-        border-radius: 10px;
-      }
-
-      .pd-meta {
-        margin-bottom: 16px;
-        padding-top: 8px;
-      }
-
-      .pd-meta div {
-        font-size: 13px;
-        margin-bottom: 6px;
-      }
-
-      .pd-meta strong {
-        min-width: 72px;
-      }
-
-      .pd-actions {
-        gap: 10px;
-      }
-
-      .pd-btn {
-        width: 100%;
-        padding: 11px 14px;
-        font-size: 14px;
-        border-radius: 10px;
-      }
-
-      .pd-message {
-        font-size: 13px;
-        margin-top: 12px;
-      }
-
-      .pd-section,
-      .pd-section-title {
-        padding: 16px;
-        border-radius: 14px;
-      }
-
-      .pd-section-title {
-        font-size: 18px;
-      }
-
-      .pd-about-card {
-        padding: 13px;
-      }
-
-      .pd-feature-list {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .pd-feature-list li,
-      .pd-about-text {
-        font-size: 13px;
-        line-height: 1.6;
-      }
+      .product-detail-wrap { padding: 16px 0 24px; }
+      .pd-image-box img { height: 240px; }
+      .pd-meta-grid { order: 5; }
+      .pd-control-panel { order: 3; }
+      .pd-actions { order: 4; margin-top: 0; }
+      #pdMessage { order: 6; }
     }
-
     @media (max-width: 479px) {
-      .pd-image-box img {
-        height: 250px;
-      }
-
-      .pd-thumb {
-        width: 56px;
-        height: 56px;
-      }
-
-      .pd-title {
-        font-size: 22px;
-      }
-
-      .pd-price {
-        font-size: 24px;
-      }
-
-      .pd-old-price {
-        font-size: 14px;
-      }
+      .pd-image-box img { height: 190px; }
     }
   </style>
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
@@ -981,3 +787,4 @@ function createChipList(items, group) {
 </script>
 </body>
 </html>
+

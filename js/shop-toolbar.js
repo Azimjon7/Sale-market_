@@ -90,6 +90,7 @@
 
   var sortLabels = {
     newest:        'Saralash',
+    oldest:        'Eski ↑',
     price_asc:     'Narx ↑',
     price_desc:    'Narx ↓',
     most_reviewed: 'Mashhur',

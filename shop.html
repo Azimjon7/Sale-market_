@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uz"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,6 +100,7 @@
       <input type="text"   id="shop-search"      placeholder="Qidirish..." autocomplete="off">
       <select              id="shop-sort">
         <option value="newest">Eng yangi</option>
+        <option value="oldest">Eng eski</option>
         <option value="price_asc">Narxi: arzon → qimmat</option>
         <option value="price_desc">Narxi: qimmat → arzon</option>
         <option value="most_reviewed">Ko'p sharhlangan</option>
@@ -119,7 +120,7 @@
     -->
     <div class="sct-bar" id="sct-bar">
 
-      <!-- Left: product count -->
+      <!-- Left: product count (hidden on mobile via CSS) -->
       <span class="sct-count" id="sct-count-text"></span>
 
       <!-- Right: action buttons -->
@@ -128,12 +129,6 @@
         <button class="sct-btn" id="sct-sort-btn" type="button" aria-label="Saralash">
           <i class="fa fa-sort" aria-hidden="true"></i>
           <span>Saralash</span>
-        </button>
-
-        <button class="sct-btn" id="sct-filter-btn" type="button" aria-label="Filtr">
-          <i class="fa fa-sliders" aria-hidden="true"></i>
-          <span>Filtr</span>
-          <em class="sct-badge" id="sct-filter-badge" aria-hidden="true"></em>
         </button>
 
         <button class="sct-btn sct-btn--cat" id="sct-cat-btn" type="button" aria-label="Kategoriya">
@@ -198,10 +193,10 @@
         </button>
       </div>
       <ul class="sct-sort-list" role="listbox">
-        <li class="sct-sort-opt sct-sort-opt--active" data-value="newest"        role="option" tabindex="0"><i class="fa fa-clock-o"></i>Eng yangi</li>
-        <li class="sct-sort-opt"                      data-value="most_reviewed" role="option" tabindex="0"><i class="fa fa-fire"></i>Mashhur</li>
-        <li class="sct-sort-opt"                      data-value="price_asc"     role="option" tabindex="0"><i class="fa fa-sort-amount-asc"></i>Narx: arzondan qimmatga</li>
-        <li class="sct-sort-opt"                      data-value="price_desc"    role="option" tabindex="0"><i class="fa fa-sort-amount-desc"></i>Narx: qimmatdan arzonga</li>
+        <li class="sct-sort-opt sct-sort-opt--active" data-value="newest"        role="option" tabindex="0"><i class="fa fa-clock-o"></i>Yangidan eskiga</li>
+        <li class="sct-sort-opt"                      data-value="oldest"        role="option" tabindex="0"><i class="fa fa-history"></i>Eskidan yangiga</li>
+        <li class="sct-sort-opt"                      data-value="price_asc"     role="option" tabindex="0"><i class="fa fa-sort-amount-asc"></i>Arzondan qimmatga</li>
+        <li class="sct-sort-opt"                      data-value="price_desc"    role="option" tabindex="0"><i class="fa fa-sort-amount-desc"></i>Qimmatdan arzonga</li>
       </ul>
     </div>
   </div>
