@@ -139,17 +139,19 @@
       }
     }
 
-    /* Mobile overrides handled by css/live-upgrade-fixes.css */
+    /* Mobile layout handled by css/live-upgrade-fixes.css */
     @media (max-width: 767px) {
-      .product-detail-wrap { padding: 16px 0 24px; }
-      .pd-image-box img { height: 240px; }
-      .pd-meta-grid { order: 5; }
-      .pd-control-panel { order: 3; }
-      .pd-actions { order: 4; margin-top: 0; }
-      #pdMessage { order: 6; }
+      .product-detail-wrap { padding: 0 0 104px; }
+      .pd-actions--desktop { display: none !important; }
+      #pdMessage { display: none !important; }
     }
-    @media (max-width: 479px) {
-      .pd-image-box img { height: 190px; }
+    @media (min-width: 768px) {
+      .pd-sticky-bar      { display: none !important; }
+      .pd-about-toggle    { display: none !important; }
+      .pd-about-collapsed { max-height: none !important; overflow: visible !important; }
+      .pd-img-badges      { display: none !important; }
+      .pd-cat-chip        { display: none !important; }
+      .pd-meta-rows       { display: none !important; }
     }
   </style>
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
@@ -525,56 +527,60 @@ function createChipList(items, group) {
         ? product.images
         : (product.image ? [product.image] : ["img/product/product-1.jpg"]);
 
+      const discountPct = product.oldPrice && Number(product.oldPrice) > Number(product.price)
+        ? Math.round((1 - Number(product.price) / Number(product.oldPrice)) * 100)
+        : 0;
+
       const html = `
-        <div class="row">
-          <div class="col-lg-6 mb-4">
+        <div class="row pd-row">
+          <div class="col-lg-6 mb-4 pd-col-gallery">
             <div class="pd-image-box">
               <button type="button" class="pd-image-nav prev" id="pdPrevImage" aria-label="Oldingi rasm">&lt;</button>
-              <img id="pdMainImage" src="${productImages[0]}" alt="${product.name || "Mahsulot"}">
+              <img id="pdMainImage" src="${productImages[0]}" alt="${escapeHtml(product.name || 'Mahsulot')}">
               <button type="button" class="pd-image-nav next" id="pdNextImage" aria-label="Keyingi rasm">&gt;</button>
+              <div class="pd-img-badges">
+                ${discountPct > 0 ? `<span class="pd-img-badge pd-img-badge--discount">-${discountPct}%</span>` : ''}
+                <span class="pd-img-badge pd-img-badge--stock"><i class="fa fa-check-circle"></i> Sotuvda bor</span>
+              </div>
             </div>
             <div class="pd-thumbs">
-              ${productImages.map((img, index) => `<img src="${img}" alt="${escapeHtml(product.name || 'Mahsulot')} rasmi" loading="lazy" class="pd-thumb ${index === 0 ? "active" : ""}" data-image="${img}" data-index="${index}" tabindex="0">`).join("")}
+              ${productImages.map((img, index) => `<img src="${img}" alt="${escapeHtml(product.name || 'Mahsulot')} rasmi" loading="lazy" class="pd-thumb ${index === 0 ? 'active' : ''}" data-image="${img}" data-index="${index}" tabindex="0">`).join('')}
             </div>
           </div>
 
-          <div class="col-lg-6 mb-4">
+          <div class="col-lg-6 mb-4 pd-col-info">
             <div class="pd-info-box">
-              <div class="pd-badge">${escapeHtml(label)}</div>
-              <div style="margin-bottom:14px;">
-                <span class="badge badge-success">Sotuvda bor</span>
+
+              <div class="pd-title-section">
+                <div class="pd-cat-chip">${escapeHtml(product.category || label)}</div>
+                <h1 class="pd-title">${escapeHtml(product.name || '')}</h1>
+                <div class="pd-price-wrap">
+                  <div class="pd-price">${formatPrice(product.price)}</div>
+                  ${product.oldPrice ? `<div class="pd-old-price">${formatPrice(product.oldPrice)}</div>` : ''}
+                </div>
               </div>
 
-              <h1 class="pd-title">${escapeHtml(product.name || "")}</h1>
-
-              <div id="pdRatingRow" class="pd-rating-row" hidden></div>
-
-              <div class="pd-price-wrap">
-                <div class="pd-price">${formatPrice(product.price)}</div>
-                ${product.oldPrice ? `<div class="pd-old-price">${formatPrice(product.oldPrice)}</div>` : ""}
-              </div>
+              <div class="pd-divider"></div>
 
               <div class="pd-control-panel">
                 <div class="pd-options">
                   <div class="pd-label">O'lcham</div>
                   ${createChipList(sizes, "size")}
                 </div>
-
                 <div class="pd-options">
                   <div class="pd-label">Rang</div>
                   ${createChipList(colors, "color")}
                 </div>
-
                 <div class="pd-qty-wrap">
                   <div class="pd-label" style="margin:0;">Soni</div>
-                  <input id="qtyInput" class="pd-qty-input" type="number" min="1" ${inStock ? `max="${stock}"` : ""} value="1">
+                  <input id="qtyInput" class="pd-qty-input" type="number" min="1" ${inStock ? `max="${stock}"` : ''} value="1">
                 </div>
               </div>
 
               <div class="pd-meta-grid">
                 <div class="pd-info-card">
                   <span>Kategoriya</span>
-                  <strong>${escapeHtml(product.category || "-")}</strong>
+                  <strong>${escapeHtml(product.category || '-')}</strong>
                 </div>
                 <div class="pd-info-card">
                   <span>Omborda</span>
@@ -590,26 +596,78 @@ function createChipList(items, group) {
                 </div>
               </div>
 
-              <div class="pd-actions">
+              <div class="pd-meta-rows">
+                <div class="pd-meta-row"><i class="fa fa-truck"></i><span>Yetkazish</span><strong>7+ kun ichida</strong></div>
+                <div class="pd-meta-row"><i class="fa fa-credit-card"></i><span>To'lov</span><strong>Buyurtma asosida</strong></div>
+              </div>
+
+              <div class="pd-actions pd-actions--desktop">
                 <button class="pd-btn pd-btn-primary" id="addToCartBtn">Savatga qo'shish</button>
                 <button class="pd-btn pd-btn-dark" id="buyNowBtn">Hozir olish</button>
               </div>
-
               <div id="pdMessage" class="pd-message"></div>
+
             </div>
           </div>
         </div>
 
         <section class="pd-section pd-about-section">
-          <h2 class="pd-section-title">Mahsulot haqida</h2>
-          <div class="pd-about-card">
-            ${renderDescriptionContent(description)}
+          <div class="pd-about-header">
+            <h2 class="pd-section-title">Mahsulot haqida</h2>
+            <button type="button" class="pd-about-toggle" id="pdAboutToggle" aria-expanded="false">Batafsil <i class="fa fa-angle-down"></i></button>
+          </div>
+          <div class="pd-about-body pd-about-collapsed" id="pdAboutBody">
+            <div class="pd-about-card">
+              ${renderDescriptionContent(description)}
+            </div>
           </div>
         </section>
+
+        <div class="pd-sticky-bar" id="pdStickyBar" aria-label="Mahsulot harakatlari">
+          <div class="pd-sticky-inner">
+            <div class="pd-sticky-price">${formatPrice(product.price)}</div>
+            <div class="pd-sticky-btns">
+              <button class="pd-sticky-btn pd-sticky-btn--cart" id="stickyAddToCartBtn">
+                <i class="fa fa-shopping-bag"></i> Savatga
+              </button>
+              <button class="pd-sticky-btn pd-sticky-btn--buy" id="stickyBuyNowBtn">
+                Hozir olish
+              </button>
+            </div>
+          </div>
+        </div>
       `;
 
       document.getElementById("productDetailApp").innerHTML = html;
       attachChipEvents();
+
+      // Sticky bar buttons (mobile)
+      const stickyCart = document.getElementById('stickyAddToCartBtn');
+      const stickyBuy  = document.getElementById('stickyBuyNowBtn');
+      if (stickyCart) stickyCart.addEventListener('click', function() { addToCart(product); });
+      if (stickyBuy)  stickyBuy.addEventListener('click',  function() { buyNow(product); });
+
+      // "Batafsil" expand/collapse for description on mobile
+      const aboutToggle = document.getElementById('pdAboutToggle');
+      const aboutBody   = document.getElementById('pdAboutBody');
+      if (aboutToggle && aboutBody) {
+        aboutToggle.addEventListener('click', function() {
+          const isNowCollapsed = aboutBody.classList.toggle('pd-about-collapsed');
+          aboutToggle.setAttribute('aria-expanded', String(!isNowCollapsed));
+          aboutToggle.innerHTML = isNowCollapsed
+            ? 'Batafsil <i class="fa fa-angle-down"></i>'
+            : 'Yopish <i class="fa fa-angle-up"></i>';
+        });
+      }
+
+      // Show sticky bar only on mobile
+      function updateStickyBar() {
+        const bar = document.getElementById('pdStickyBar');
+        if (!bar) return;
+        bar.classList.toggle('pd-sticky-bar--visible', window.innerWidth <= 768);
+      }
+      updateStickyBar();
+      window.addEventListener('resize', updateStickyBar);
 
       const mainImage = document.getElementById("pdMainImage");
       const thumbs = Array.from(document.querySelectorAll(".pd-thumb"));
@@ -787,4 +845,7 @@ function createChipList(items, group) {
 </script>
 </body>
 </html>
+
+
+
 

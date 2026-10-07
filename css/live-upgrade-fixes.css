@@ -1,4 +1,4 @@
-/* Sale Market live-upgrade compatibility + mobile polish (2026-10-07)
+﻿/* Sale Market live-upgrade compatibility + mobile polish (2026-10-07)
    Keeps the deployed visual language, only fixes responsive sizing and galleries. */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 html, body { max-width: 100%; overflow-x: hidden; }
@@ -682,325 +682,311 @@ body.shop-page .link-btn:hover {
     min-height: 50px;
   }
 }
+
 /* ==========================================================
-   MOBILE UI IMPROVEMENTS  (2026-10)
-   Targets: max-width 768px / 576px / 480px
-   Covers: catalog toolbar, product-details page
+   PRODUCT DETAILS — MOBILE MARKETPLACE LAYOUT  (2026-10)
+   Scoped to max-width 768px. Desktop unchanged.
    ========================================================== */
 
-/* ── CATALOG: hide count text everywhere, fix toolbar layout ── */
-.sct-count { display: none !important; }
-
-/* On mobile the toolbar is just 2 buttons side-by-side, full-width */
+/* ── Image gallery ── */
 @media (max-width: 768px) {
-  /* Remove border/bg from bar — just let buttons breathe */
-  body.shop-page .sct-bar {
-    padding: 10px 0 8px !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+  .product-detail-wrap { padding: 0 0 104px; }
+  .pd-page-top { padding: 10px 0 0; margin-bottom: 8px; }
+  .pd-back-btn { padding: 7px 12px !important; font-size: 12px !important; }
+
+  .pd-image-box {
     border-radius: 0 !important;
-    justify-content: flex-end !important;
-    gap: 8px !important;
-    flex-wrap: nowrap !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
   }
-
-  /* Both buttons grow equally to fill available space */
-  body.shop-page .sct-actions {
-    display: flex !important;
-    width: 100% !important;
-    gap: 8px !important;
-  }
-
-  body.shop-page .sct-btn {
-    flex: 1 1 0 !important;
-    height: 42px !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    padding: 0 12px !important;
-    border-radius: 12px !important;
-    justify-content: center !important;
-    white-space: nowrap !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-  }
-
-  /* Show caret on the category button */
-  body.shop-page .sct-btn__caret { display: inline-block !important; }
-
-  /* Keep badge visible */
-  .sct-badge { display: none !important; } /* filter badge gone with filter button */
-}
-
-@media (max-width: 480px) {
-  body.shop-page .sct-btn {
-    height: 40px !important;
-    font-size: 12px !important;
-    border-radius: 11px !important;
-  }
-}
-
-/* ── PRODUCT DETAILS: mobile compact layout ── */
-
-@media (max-width: 768px) {
-
-  /* Outer section less padding */
-  .product-detail-wrap {
-    padding: 16px 0 24px !important;
-  }
-
-  /* Back button smaller */
-  .pd-back-btn {
-    padding: 7px 12px !important;
-    font-size: 12px !important;
-    margin-bottom: 10px !important;
-  }
-
-  /* Main image: shorter on mobile */
   .pd-image-box img,
   #pdMainImage {
-    height: 240px !important;
+    height: 380px !important;
     object-fit: contain !important;
   }
+  .pd-image-nav { width: 32px !important; height: 32px !important; font-size: 15px !important; }
+  .pd-image-nav.prev { left: 8px !important; }
+  .pd-image-nav.next { right: 8px !important; }
 
-  /* Nav arrows smaller */
-  .pd-image-nav {
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 16px !important;
+  /* Badges overlaid on image bottom-left */
+  .pd-img-badges {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 6px;
+    z-index: 3;
+    pointer-events: none;
   }
-  .pd-image-nav.prev { left: 7px !important; }
-  .pd-image-nav.next { right: 7px !important; }
+  .pd-img-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .pd-img-badge--discount { background: #f2b84b; color: #2a1a00; }
+  .pd-img-badge--stock    { background: #e9f6ef; color: #197148; border: 1px solid #c9ead8; }
 
-  /* Thumbnails: compact row */
+  /* Thumbnails: compact scrollable strip */
   .pd-thumbs {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     gap: 7px !important;
     margin-top: 8px !important;
-    padding-bottom: 4px !important;
-    -webkit-overflow-scrolling: touch;
+    padding: 0 12px 4px !important;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .pd-thumbs::-webkit-scrollbar { display: none; }
   .pd-thumb {
     flex: 0 0 auto !important;
-    width: 54px !important;
-    height: 54px !important;
+    width: 52px !important;
+    height: 52px !important;
     border-radius: 8px !important;
-    border-width: 2px !important;
   }
 
-  /* Info box */
+  /* ── Info box ── */
   .pd-info-box {
-    padding: 14px !important;
-    border-radius: 14px !important;
-    margin-top: 12px !important;
+    padding: 12px 12px 10px !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
   }
 
-  /* Badge and stock label */
-  .pd-badge {
-    font-size: 10px !important;
-    padding: 5px 10px !important;
-    margin-bottom: 8px !important;
-  }
-  .badge-success {
-    font-size: 10px !important;
-    padding: 4px 8px !important;
-    margin-bottom: 8px !important;
+  /* Category chip */
+  .pd-cat-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    background: #edf5f0;
+    color: #246b50;
+    border: 1px solid #cfe1d7;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    margin-bottom: 6px;
   }
 
   /* Title */
   .pd-title {
-    font-size: 19px !important;
-    line-height: 1.25 !important;
-    margin-bottom: 8px !important;
-    overflow-wrap: anywhere !important;
+    font-size: 17px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 7px !important;
+    font-weight: 800 !important;
   }
 
-  /* Price row */
+  /* Price */
   .pd-price-wrap {
     gap: 8px !important;
-    margin-bottom: 12px !important;
-    padding-bottom: 12px !important;
-  }
-  .pd-price { font-size: 22px !important; }
-  .pd-old-price { font-size: 14px !important; }
-
-  /* Section labels */
-  .pd-label {
-    font-size: 12px !important;
-    margin-bottom: 6px !important;
-  }
-
-  /* Size/color chips */
-  .pd-options { margin-bottom: 10px !important; }
-  .pd-option-list { gap: 6px !important; }
-  .pd-chip {
-    padding: 6px 11px !important;
-    font-size: 11px !important;
-    min-width: 44px !important;
-    border-radius: 999px !important;
-  }
-
-  /* Quantity */
-  .pd-qty-wrap {
-    gap: 8px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
     flex-wrap: nowrap !important;
-    align-items: center !important;
+    align-items: baseline !important;
   }
-  .pd-qty-input {
-    width: 80px !important;
-    height: 38px !important;
-    font-size: 14px !important;
-    border-radius: 10px !important;
-    padding: 0 10px !important;
+  .pd-price  { font-size: 22px !important; }
+  .pd-old-price { font-size: 13px !important; }
+
+  .pd-divider {
+    height: 1px;
+    background: #e8eeea;
+    margin: 10px 0;
   }
 
-  /* Info cards grid — 2 columns, compact */
-  .pd-meta-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 7px !important;
-    margin-bottom: 12px !important;
-  }
-  .pd-info-card {
-    min-height: 0 !important;
-    padding: 9px 10px !important;
-    border-radius: 10px !important;
-  }
-  .pd-info-card span {
-    font-size: 9px !important;
-    margin-bottom: 3px !important;
-  }
-  .pd-info-card strong {
-    font-size: 12px !important;
-    line-height: 1.3 !important;
+  /* Chips */
+  .pd-options { margin-bottom: 10px !important; }
+  .pd-label { font-size: 11px !important; font-weight: 700 !important; margin-bottom: 5px !important; color: #5a6860 !important; }
+  .pd-option-list { gap: 6px !important; flex-wrap: wrap !important; }
+  .pd-chip {
+    padding: 5px 11px !important;
+    font-size: 11px !important;
+    min-width: 36px !important;
+    border-radius: 999px !important;
+    font-weight: 700 !important;
   }
 
-  /* Action buttons — side by side */
-  .pd-actions {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-    margin-top: 4px !important;
-  }
-  .pd-btn {
-    padding: 11px 8px !important;
-    font-size: 13px !important;
-    border-radius: 11px !important;
-    flex: unset !important;
-    min-height: 44px !important;
-  }
+  /* Qty */
+  .pd-qty-wrap { gap: 8px !important; margin-bottom: 10px !important; }
+  .pd-qty-input { width: 76px !important; height: 36px !important; font-size: 14px !important; border-radius: 10px !important; }
 
-  /* Feedback message */
-  .pd-message {
-    font-size: 12px !important;
-    margin-top: 8px !important;
+  /* Meta rows (delivery/payment compact rows) */
+  .pd-meta-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 6px 0 8px;
+    border: 1px solid #e8eeea;
+    border-radius: 10px;
+    overflow: hidden;
   }
+  .pd-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    background: #fbfdfc;
+    border-bottom: 1px solid #f0f5f2;
+    font-size: 12px;
+  }
+  .pd-meta-row:last-child { border-bottom: none; }
+  .pd-meta-row i { width: 22px; text-align: center; color: #246b50; font-size: 13px; flex-shrink: 0; }
+  .pd-meta-row span { color: #7a8882; flex: 1; }
+  .pd-meta-row strong { color: #17241d; font-weight: 700; }
 
-  /* "Mahsulot haqida" section — compact */
+  /* Hide old 2x2 info cards */
+  .pd-meta-grid { display: none !important; }
+
+  /* Hide old badge/stock row that was inside info-box */
+  .pd-info-box > .pd-badge,
+  .pd-info-box > div > .badge-success { display: none !important; }
+
+  /* ── "Mahsulot haqida" collapse ── */
   .pd-about-section {
-    margin-top: 16px !important;
-    padding: 14px !important;
-    border-radius: 12px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 12px 12px 10px !important;
+  }
+  .pd-about-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
   }
   .pd-section-title {
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 800 !important;
-    margin-bottom: 10px !important;
-    padding: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .pd-about-toggle {
+    background: none;
+    border: 1px solid #cfe1d7;
+    border-radius: 999px;
+    color: #246b50;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .pd-about-collapsed {
+    max-height: 58px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
   }
   .pd-about-card {
     padding: 0 !important;
     border: none !important;
     background: transparent !important;
   }
-  .pd-about-text {
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-  }
-  .pd-feature-list {
-    grid-template-columns: 1fr !important;
-    gap: 6px !important;
-  }
-  .pd-feature-list li {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    padding-left: 14px !important;
-  }
+  .pd-about-text { font-size: 12px !important; line-height: 1.6 !important; color: #5a6860 !important; }
+  .pd-feature-list { grid-template-columns: 1fr !important; gap: 5px !important; }
+  .pd-feature-list li { font-size: 12px !important; line-height: 1.5 !important; padding-left: 14px !important; }
 
-  /* Related products section */
+  /* ── Related products ── */
   #relatedProducts {
-    margin-top: 16px !important;
-    padding: 14px !important;
-    border-radius: 12px !important;
+    margin-top: 0 !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 14px 12px !important;
   }
-  #relatedProducts .pd-section-title { font-size: 15px !important; }
+  #relatedProducts .pd-section-title { font-size: 14px !important; margin-bottom: 10px !important; }
   #relatedProducts .related-grid-inner {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
+    gap: 9px !important;
   }
-  #relatedProducts .product-card img {
-    height: 110px !important;
+  #relatedProducts .product-card img { height: 100px !important; }
+
+  /* ── Sticky action bar ── */
+  .pd-sticky-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+    background: #fff;
+    border-top: 1px solid #e3ebe6;
+    box-shadow: 0 -4px 20px rgba(30, 60, 45, 0.10);
+    padding: 8px 12px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
   }
-}
-
-@media (max-width: 576px) {
-  .pd-image-box img,
-  #pdMainImage { height: 210px !important; }
-
-  .pd-thumb {
-    width: 48px !important;
-    height: 48px !important;
+  .pd-sticky-bar--visible { display: block !important; }
+  .pd-sticky-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
+  .pd-sticky-price {
+    font-size: 17px;
+    font-weight: 900;
+    color: #246b50;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .pd-sticky-btns {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+  }
+  .pd-sticky-btn {
+    flex: 1;
+    height: 44px;
+    border: none;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background 0.14s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pd-sticky-btn--cart { background: #edf5f0; color: #246b50; border: 1.5px solid #cfe1d7; }
+  .pd-sticky-btn--cart:active { background: #d5eadf; }
+  .pd-sticky-btn--buy  { background: #246b50; color: #fff; box-shadow: 0 4px 14px rgba(36,107,80,.22); }
+  .pd-sticky-btn--buy:active { background: #1b5440; }
 
-  .pd-title { font-size: 17px !important; }
-  .pd-price { font-size: 20px !important; }
-  .pd-old-price { font-size: 13px !important; }
-
-  .pd-btn { font-size: 12px !important; padding: 10px 6px !important; }
-
-  .pd-info-card strong { font-size: 11px !important; }
+  /* Remove column gutters on mobile so image goes edge-to-edge */
+  .pd-row > [class*="col-"] { padding-left: 0 !important; padding-right: 0 !important; margin-bottom: 0 !important; }
+  .pd-col-gallery, .pd-col-info { margin-bottom: 0 !important; }
 }
 
 @media (max-width: 480px) {
-  .product-detail-wrap { padding: 10px 0 18px !important; }
-
   .pd-image-box img,
-  #pdMainImage { height: 190px !important; }
+  #pdMainImage { height: 300px !important; }
+  .pd-title    { font-size: 15px !important; }
+  .pd-price    { font-size: 19px !important; }
+  .pd-thumb    { width: 44px !important; height: 44px !important; }
+  .pd-sticky-btn { font-size: 12px !important; height: 42px !important; }
+}
 
-  .pd-thumb {
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 7px !important;
-  }
-
-  .pd-info-box { padding: 12px !important; }
-
-  .pd-title { font-size: 16px !important; }
-  .pd-price { font-size: 19px !important; }
-
-  .pd-chip {
-    padding: 5px 9px !important;
-    font-size: 10px !important;
-    min-width: 38px !important;
-  }
-
-  .pd-qty-input { width: 70px !important; height: 36px !important; }
-
-  .pd-actions {
-    gap: 7px !important;
-  }
-  .pd-btn {
-    font-size: 11px !important;
-    min-height: 40px !important;
-    padding: 9px 6px !important;
-    border-radius: 10px !important;
-  }
-
-  .pd-about-section { padding: 12px !important; }
-  .pd-about-text { font-size: 11px !important; }
-  .pd-feature-list li { font-size: 11px !important; }
+/* Desktop: hide mobile-only elements */
+@media (min-width: 769px) {
+  .pd-sticky-bar    { display: none !important; }
+  .pd-about-toggle  { display: none !important; }
+  .pd-about-collapsed { max-height: none !important; overflow: visible !important; -webkit-mask-image: none !important; mask-image: none !important; }
+  .pd-img-badges    { display: none !important; }
+  .pd-cat-chip      { display: none !important; }
+  .pd-meta-rows     { display: none !important; }
+  .pd-divider       { display: none !important; }
+  .pd-about-header  { display: block !important; }
+  .pd-about-header .pd-about-toggle { display: none !important; }
 }
