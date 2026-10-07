@@ -1,0 +1,20 @@
+[
+  {
+    "id": "promo_1",
+    "code": "WELCOME10",
+    "discount": 10,
+    "discountPercent": 10,
+    "usageCount": 3,
+    "active": true,
+    "createdAt": "2025-01-10T09:00:00.000Z"
+  },
+  {
+    "id": "promo_2",
+    "code": "SALE20",
+    "discount": 20,
+    "discountPercent": 20,
+    "usageCount": 7,
+    "active": true,
+    "createdAt": "2025-01-12T10:00:00.000Z"
+  }
+]

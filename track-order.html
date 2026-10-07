@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sale Market | Buyurtmani kuzatish</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/marketplace-upgrade.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile-premium.css" type="text/css" />
+  <link rel="stylesheet" href="css/shared-header.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css" />
+  <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+</head>
+<body class="market-body track-page">
+
+  <header class="market-header" id="main-header">
+    <div class="market-topbar"><div class="container"><div class="market-topbar__inner">
+      <span><i class="fa fa-map-marker"></i> O'zbekiston bo'ylab tez yetkazib berish</span>
+      <span>Har kuni chegirmalar &bull; Xavfsiz buyurtma &bull; Sifat kafolati</span>
+    </div></div></div>
+    <div class="market-mainbar"><div class="container-fluid"><div class="market-row">
+      <a class="market-logo" href="index.html" aria-label="Sale Market - Bosh sahifa">
+        <span class="market-logo__mark">SM</span>
+        <span>Sale Market</span>
+      </a>
+      <a class="market-catalog-btn" href="shop.html"><i class="fa fa-th-large"></i> Katalog</a>
+      <form class="market-search js-market-search" role="search">
+        <input type="search" placeholder="Mahsulot, kategoriya yoki brend qidirish..." aria-label="Qidirish"/>
+        <button type="submit" aria-label="Qidirish"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="market-actions">
+        <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
+          <i class="fa fa-truck"></i><span>Kuzatish</span>
+        </a>
+        <a class="market-action" href="shop-cart.html" aria-label="Savat">
+          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+          <em class="market-cart-tip js-cart-count">0</em>
+        </a>
+        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
+          <i class="fa fa-user-o"></i><span>Admin</span>
+        </a>
+      </div>
+      <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
+        <span></span><span></span><span></span>
+      </button>
+    </div></div></div>
+    <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
+      <li><a href="index.html">Bosh sahifa</a></li>
+      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="contact.html">Bog'lanish</a></li>
+    </ul></div></nav>
+  </header>
+  <!-- Mobile nav drawer -->
+  <div class="mh-mobile-nav" id="mh-mobile-nav" aria-hidden="true">
+    <div class="mh-mobile-nav__inner">
+      <div class="mh-mobile-nav__title">Sale Market</div>
+      <ul>
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="checkout.html">Buyurtma</a></li>
+        <li><a href="contact.html">Bog'lanish</a></li>
+        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="breadcrumb-custom market-page-hero">
+    <div class="container">
+      <h2>Buyurtmani kuzatish</h2>
+      <p>Buyurtma ID va telefon orqali holatni real market formatida ko'ring.</p>
+    </div>
+  </section>
+
+  <section class="track-section spad">
+    <div class="container">
+      <div class="track-card">
+        <div class="track-form">
+          <div>
+            <label for="orderId">Buyurtma ID</label>
+            <input id="orderId" type="text" placeholder="ord_..." />
+          </div>
+          <div>
+            <label for="phone">Telefon raqami</label>
+            <input id="phone" type="text" placeholder="+998 90 123 45 67" />
+          </div>
+          <button class="site-btn" type="button" onclick="trackOrder()">Buyurtmani tekshirish</button>
+        </div>
+        <div id="trackMessage" class="form-message"></div>
+        <div id="trackResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sm-footer">
+    <div class="sm-footer__grid">
+      <div class="sm-footer__brand">
+        <a class="market-logo" href="index.html" aria-label="Sale Market">
+          <span class="market-logo__mark">SM</span>
+          <span style="color:#fff">Sale Market</span>
+        </a>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+      </div>
+      <div>
+        <h6>Bo'limlar</h6>
+        <a href="shop.html">Katalog</a>
+        <a href="shop-cart.html">Savat</a>
+        <a href="checkout.html">Buyurtma</a>
+      </div>
+      <div>
+        <h6>Yordam</h6>
+        <a href="track-order.html">Buyurtmani kuzatish</a>
+        <a href="contact.html">Bog'lanish</a>
+      </div>
+      <div>
+        <h6>Aloqa</h6>
+        <a href="https://t.me/salemarket_uz1" target="_blank" rel="noopener"><i class="fa fa-telegram" aria-hidden="true"></i> @salemarket_uz1</a>
+      </div>
+    </div>
+    <div class="sm-footer__bottom">© 2026 Sale Market</div>
+  </footer>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/panel-manager.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+  <script src="js/shared-header-init.js"></script>
+  <script>
+    const STATUS_LABELS = {
+      new: "Qabul qilindi",
+      confirmed: "Tayyorlanmoqda",
+      shipped: "Yetkazilmoqda",
+      delivered: "Yetkazildi",
+      cancelled: "Bekor qilindi",
+    };
+
+    const STATUS_ALIASES = {
+      yangi: "new",
+      "qabul qilindi": "new",
+      new: "new",
+      tasdiqlandi: "confirmed",
+      tayyorlanmoqda: "confirmed",
+      confirmed: "confirmed",
+      "yo'lda": "shipped",
+      "yo`lda": "shipped",
+      "yo‘lda": "shipped",
+      "yo’lda": "shipped",
+      yolda: "shipped",
+      yuborildi: "shipped",
+      yetkazilmoqda: "shipped",
+      shipped: "shipped",
+      yetkazildi: "delivered",
+      delivered: "delivered",
+      "bekor qilindi": "cancelled",
+      cancelled: "cancelled",
+    };
+
+    const STATUS_STEPS = [
+      { status: "new", label: "Qabul qilindi" },
+      { status: "confirmed", label: "Tayyorlanmoqda" },
+      { status: "shipped", label: "Yetkazilmoqda" },
+      { status: "delivered", label: "Yetkazildi" },
+    ];
+
+    function formatMoney(value) {
+      return Number(value || 0).toLocaleString("uz-UZ") + " so'm";
+    }
+
+    function formatDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "-";
+      return new Intl.DateTimeFormat("uz-UZ", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(date);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function normalizeStatus(status) {
+      const value = String(status || "").trim();
+      return STATUS_ALIASES[value.toLowerCase()] || "new";
+    }
+
+    function statusLabel(status) {
+      return STATUS_LABELS[normalizeStatus(status)] || STATUS_LABELS.new;
+    }
+
+    function statusClass(status) {
+      return "track-badge--" + normalizeStatus(status);
+    }
+
+    function renderTimeline(status) {
+      const normalized = normalizeStatus(status);
+      const activeIndex = normalized === "cancelled" ? -1 : STATUS_STEPS.findIndex((step) => step.status === normalized);
+      if (normalized === "cancelled") {
+        return '<div class="track-cancelled">Buyurtma bekor qilingan</div>';
+      }
+      return '<div class="track-timeline">' + STATUS_STEPS.map((step, index) => `
+        <div class="track-step ${index <= activeIndex ? "is-done" : ""}">
+          <span>&#10003;</span>
+          <strong>${step.label}</strong>
+        </div>
+      `).join("") + "</div>";
+    }
+
+    function renderOrder(order) {
+      const items = (Array.isArray(order.items) ? order.items : []).map((item) => `
+        <li>
+          <strong>${escapeHtml(item.name || "Mahsulot")}</strong>
+          <span>${Number(item.qty || 1)} ta &middot; ${formatMoney(item.lineTotal || Number(item.price || 0) * Number(item.qty || 1))}</span>
+        </li>
+      `).join("");
+
+      document.getElementById("trackResult").innerHTML = `
+        <div class="track-result">
+          <div class="track-status"><span>Holati</span><strong class="track-badge ${statusClass(order.status)}">${escapeHtml(statusLabel(order.status))}</strong></div>
+          ${renderTimeline(order.status || "new")}
+          <div class="track-grid">
+            <div class="track-field"><span>Buyurtma vaqti</span><strong>${formatDate(order.createdAt)}</strong></div>
+            <div class="track-field"><span>Summa</span><strong>${formatMoney(order.total)}</strong></div>
+            <div class="track-field"><span>To'lov turi</span><strong>${order.paymentType === "karta" ? "Karta" : "Naqd"}</strong></div>
+          </div>
+          <h4>Mahsulotlar</h4>
+          <ul class="track-items">${items || "<li>Mahsulotlar ko'rsatilmagan</li>"}</ul>
+        </div>
+      `;
+    }
+
+    async function trackOrder() {
+      const orderId = document.getElementById("orderId").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const msg = document.getElementById("trackMessage");
+      msg.innerHTML = "";
+      document.getElementById("trackResult").innerHTML = "";
+
+      if (!orderId || !phone) {
+        msg.innerHTML = '<span class="checkout-msg checkout-msg--error">Buyurtma ID va telefon raqamini kiriting.</span>';
+        return;
+      }
+
+      try {
+        const params = new URLSearchParams({ orderId, phone });
+        const res = await fetch("/api/orders/track?" + params.toString(), { cache: "no-store" });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.message || "Buyurtma topilmadi");
+        renderOrder(data.order || data);
+      } catch (error) {
+        const localOrder = window.MBStore && typeof window.MBStore.findLocalOrder === "function"
+          ? window.MBStore.findLocalOrder(orderId, phone)
+          : null;
+        if (localOrder) {
+          renderOrder(localOrder);
+          return;
+        }
+        msg.innerHTML = '<span class="checkout-msg checkout-msg--error">' + (error.message || "Buyurtma topilmadi") + "</span>";
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("orderId")) document.getElementById("orderId").value = params.get("orderId");
+    if (params.get("phone")) document.getElementById("phone").value = params.get("phone");
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+SALE MARKET - LIVE VERSION UPGRADE
+Date: 2026-10-07
+
+BASE
+- The customer-facing structure is based on the current deployed Sale Market version:
+  https://sale-market.onrender.com/index.html
+- Its upgraded cart flow is preserved (quantity controls, promo, delivery calculation,
+  checkout summary, mobile sticky checkout bar).
+
+CATALOG
+- 79 products total.
+- 26 categories.
+- All products have descriptions.
+- All 79 current products are kept available with stock: 999 (treated as an unlimited sentinel by order handling).
+- Expanded BUYO categories/products are merged into the live-style project.
+
+PRODUCT IMAGES
+- Existing Sale Market local images remain local in uploads/.
+- BUYO products have sourceUrl/source image references.
+- During npm install (including a normal Render Node build), the postinstall script:
+  1) opens each BUYO source product page,
+  2) discovers product-specific media.buyo.uz images,
+  3) downloads up to 3 unique images per product into uploads/buyo/,
+  4) rewrites product.image and product.images to local uploads/buyo/... paths.
+- If the source page contains fewer than 3 usable images, the available image count is kept.
+- Local cached slots are never overwritten just because the BUYO URL later changes.
+- Manual command: npm run cache:images
+
+CART / CHECKOUT
+- The live-version cart UX is preserved.
+- Checkout no longer blocks products as unavailable; current catalog products remain purchasable.
+
+PRODUCT PAGE
+- Multi-image thumbnail gallery is enabled.
+- Mobile swipe between images is enabled.
+- Full product image uses contain instead of aggressive crop.
+- Description, old/current price, variant/color, quantity and full description remain.
+
+ADMIN CATEGORY FIX
+- Newly added categories are mirrored locally and merged with server categories.
+- A new category immediately appears in the product category select.
+- It no longer disappears simply because the user switches Admin sections.
+
+MOBILE
+- Additional 320-480px / iOS / Android responsive fixes are in css/live-upgrade-fixes.css.
+- Product gallery, cart cards, sticky checkout bar, inputs and detail cards are constrained for small screens.

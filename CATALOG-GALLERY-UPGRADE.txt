@@ -1,0 +1,10 @@
+SALE MARKET - CATALOG + GALLERY UPGRADE
+
+- 40 recently imported BUYO products now have 3 unique gallery image URLs each.
+- Product detail gallery uses these images as main + thumbnails.
+- The backend image cache prefers these verified URLs and saves them under uploads/buyo when network access is available.
+- Catalog page uses a green/sage/gold palette instead of the old red default styling.
+- NEW/YANGI and discount labels are compact badges and never stretch across the card.
+- Wide desktop: up to 5 product cards per row.
+- Mobile: 2 compact cards per row with smaller type, buttons and badges.
+- Existing cart, checkout, categories and admin behavior are preserved.

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="uz"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sale Market — Katalog va mahsulotlar">
+  <link rel="stylesheet" href="css/design-system.css" type="text/css">
+  <link rel="stylesheet" href="css/components.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/marketplace-upgrade.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-premium.css" type="text/css">
+  <link rel="stylesheet" href="css/shared-header.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-catalog-filter.css" type="text/css">
+  <link rel="stylesheet" href="css/shop-toolbar.css" type="text/css">
+<title>Sale Market | Katalog</title>  <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+</head>
+<body class="market-body shop-page">
+  <header class="market-header" id="main-header">
+    <div class="market-topbar"><div class="container"><div class="market-topbar__inner">
+      <span><i class="fa fa-map-marker"></i> O'zbekiston bo'ylab tez yetkazib berish</span>
+      <span>Har kuni chegirmalar &bull; Xavfsiz buyurtma &bull; Sifat kafolati</span>
+    </div></div></div>
+    <div class="market-mainbar"><div class="container-fluid"><div class="market-row">
+      <a class="market-logo" href="index.html" aria-label="Sale Market - Bosh sahifa">
+        <span class="market-logo__mark">SM</span>
+        <span>Sale Market</span>
+      </a>
+      <a class="market-catalog-btn" href="shop.html"><i class="fa fa-th-large"></i> Katalog</a>
+      <div class="market-search-row">
+        <button class="mh-catalog-open-btn" id="mh-catalog-open-btn" type="button" aria-label="Katalogni ochish" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-th" aria-hidden="true"></i>
+        </button>
+        <form class="market-search js-market-search" role="search">
+          <input type="search" placeholder="Mahsulot, kategoriya yoki brend qidirish..." aria-label="Qidirish"/>
+          <button type="submit" aria-label="Qidirish"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <div class="market-actions">
+        <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
+          <i class="fa fa-truck"></i><span>Kuzatish</span>
+        </a>
+        <a class="market-action" href="shop-cart.html" aria-label="Savat">
+          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+          <em class="market-cart-tip js-cart-count">0</em>
+        </a>
+        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
+          <i class="fa fa-user-o"></i><span>Admin</span>
+        </a>
+      </div>
+      <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
+        <span></span><span></span><span></span>
+      </button>
+    </div></div></div>
+    <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
+      <li><a href="index.html">Bosh sahifa</a></li>
+      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="contact.html">Bog'lanish</a></li>
+    </ul></div></nav>
+  </header>
+  <!-- Mobile nav drawer -->
+  <div class="mh-mobile-nav" id="mh-mobile-nav" aria-hidden="true">
+    <div class="mh-mobile-nav__inner">
+      <div class="mh-mobile-nav__title">Sale Market</div>
+      <ul>
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="checkout.html">Buyurtma</a></li>
+        <li><a href="contact.html">Bog'lanish</a></li>
+        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+  <section class="market-section sm-catalog-section"><div class="container-fluid">
+
+    <div class="sm-catalog-intro">
+      <div>
+        <span class="sm-catalog-kicker">SALE MARKET KATALOGI</span>
+        <h1>Barcha mahsulotlar</h1>
+        <p>Kategoriyani tanlang, saralang yoki kerakli mahsulotni qidiring.</p>
+      </div>
+    </div>
+
+    <!--
+      ═══════════════════════════════════════════════════════
+      HIDDEN REAL INPUTS
+      All filter IDs that shop-products.js reads from.
+      These are never displayed — all UI goes through the
+      compact toolbar and bottom-sheet panels below.
+      ═══════════════════════════════════════════════════════
+    -->
+    <div class="sm-real-inputs" aria-hidden="true" style="display:none !important; position:absolute; visibility:hidden; pointer-events:none;">
+      <div class="shop-toolbar__filters"><button class="filter-btn active" data-category="">Barchasi</button></div>
+      <input type="text"   id="shop-search"      placeholder="Qidirish..." autocomplete="off">
+      <select              id="shop-sort">
+        <option value="newest">Eng yangi</option>
+        <option value="price_asc">Narxi: arzon → qimmat</option>
+        <option value="price_desc">Narxi: qimmat → arzon</option>
+        <option value="most_reviewed">Ko'p sharhlangan</option>
+      </select>
+      <input type="number" id="shop-price-min" min="0" placeholder="0">
+      <input type="number" id="shop-price-max" min="0" placeholder="∞">
+      <button type="button" id="shop-clear-filters">Tozalash</button>
+      <p id="shop-count"></p>
+    </div>
+
+    <!--
+      ═══════════════════════════════════════════════════════
+      COMPACT CATALOG TOOLBAR
+      Visible on both desktop and mobile.
+      Desktop: thin row aligned right.  Mobile: full-width compact bar.
+      ═══════════════════════════════════════════════════════
+    -->
+    <div class="sct-bar" id="sct-bar">
+
+      <!-- Left: product count -->
+      <span class="sct-count" id="sct-count-text"></span>
+
+      <!-- Right: action buttons -->
+      <div class="sct-actions">
+
+        <button class="sct-btn" id="sct-sort-btn" type="button" aria-label="Saralash">
+          <i class="fa fa-sort" aria-hidden="true"></i>
+          <span>Saralash</span>
+        </button>
+
+        <button class="sct-btn" id="sct-filter-btn" type="button" aria-label="Filtr">
+          <i class="fa fa-sliders" aria-hidden="true"></i>
+          <span>Filtr</span>
+          <em class="sct-badge" id="sct-filter-badge" aria-hidden="true"></em>
+        </button>
+
+        <button class="sct-btn sct-btn--cat" id="sct-cat-btn" type="button" aria-label="Kategoriya">
+          <i class="fa fa-th-large" aria-hidden="true"></i>
+          <span id="sct-cat-label">Barchasi</span>
+          <i class="fa fa-angle-down sct-btn__caret" aria-hidden="true"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile compact bar (same HTML reused on ≤768px via CSS) -->
+    <div class="mcf-wrap" id="mcf-wrap" style="display:none"></div>
+
+    <!-- Product grid -->
+    <div class="row" id="shop-grid"></div>
+
+  </div></section>
+
+  </main>
+
+  <!--
+    ═══════════════════════════════════════════════════════════
+    DESKTOP CATALOG DROPDOWN
+    Opens when user clicks the header "Katalog" button or
+    the "Barchasi" / "Kategoriya" button in the compact toolbar.
+    ═══════════════════════════════════════════════════════════
+  -->
+  <div class="sct-cat-backdrop" id="sct-cat-backdrop" aria-hidden="true"></div>
+  <div class="sct-cat-dropdown" id="sct-cat-dropdown" role="dialog" aria-modal="true" aria-label="Kategoriyalar">
+    <div class="sct-cat-inner">
+      <div class="sct-cat-head">
+        <span class="sct-cat-head__title">Kategoriyalar</span>
+        <button class="sct-cat-close" id="sct-cat-close" type="button" aria-label="Yopish">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="sct-cat-list" id="sct-cat-list" role="list">
+        <button class="sct-cat-row sct-cat-row--all sct-cat-row--active" data-category="" type="button" role="listitem">
+          <span class="sct-cat-row__icon"><i class="fa fa-th" aria-hidden="true"></i></span>
+          <span class="sct-cat-row__label">Barchasi</span>
+          <i class="fa fa-check sct-cat-row__check" aria-hidden="true"></i>
+        </button>
+        <!-- Rows injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!--
+    ═══════════════════════════════════════════════════════════
+    SORT PANEL  (bottom sheet on mobile, dropdown on desktop)
+    ═══════════════════════════════════════════════════════════
+  -->
+  <div class="sct-sort-overlay" id="sct-sort-overlay" aria-hidden="true"></div>
+  <div class="sct-sort-panel" id="sct-sort-panel" role="dialog" aria-modal="true" aria-label="Saralash">
+    <div class="sct-sort-inner">
+      <div class="sct-panel-handle" aria-hidden="true"></div>
+      <div class="sct-panel-head">
+        <h3>Saralash</h3>
+        <button class="sct-panel-close" id="sct-sort-close" type="button" aria-label="Yopish">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <ul class="sct-sort-list" role="listbox">
+        <li class="sct-sort-opt sct-sort-opt--active" data-value="newest"        role="option" tabindex="0"><i class="fa fa-clock-o"></i>Eng yangi</li>
+        <li class="sct-sort-opt"                      data-value="most_reviewed" role="option" tabindex="0"><i class="fa fa-fire"></i>Mashhur</li>
+        <li class="sct-sort-opt"                      data-value="price_asc"     role="option" tabindex="0"><i class="fa fa-sort-amount-asc"></i>Narx: arzondan qimmatga</li>
+        <li class="sct-sort-opt"                      data-value="price_desc"    role="option" tabindex="0"><i class="fa fa-sort-amount-desc"></i>Narx: qimmatdan arzonga</li>
+      </ul>
+    </div>
+  </div>
+
+  <!--
+    ═══════════════════════════════════════════════════════════
+    FILTER PANEL  (bottom sheet on mobile, modal on desktop)
+    ═══════════════════════════════════════════════════════════
+  -->
+  <div class="sct-filter-overlay" id="sct-filter-overlay" aria-hidden="true"></div>
+  <div class="sct-filter-panel" id="sct-filter-panel" role="dialog" aria-modal="true" aria-label="Filtrlar">
+    <div class="sct-filter-inner">
+      <div class="sct-panel-handle" aria-hidden="true"></div>
+      <div class="sct-panel-head">
+        <h3>Filtrlar</h3>
+        <button class="sct-panel-close" id="sct-filter-close" type="button" aria-label="Yopish">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="sct-filter-body">
+        <div class="sct-field">
+          <label class="sct-label" for="sct-search">Qidiruv</label>
+          <input class="sct-input" id="sct-search" type="search" placeholder="Mahsulot nomi, rang, razmer..." autocomplete="off">
+        </div>
+        <div class="sct-field">
+          <span class="sct-label">Narx oralig'i (so'm)</span>
+          <div class="sct-price-row">
+            <input class="sct-input" id="sct-price-min" type="number" min="0" placeholder="Min narx">
+            <input class="sct-input" id="sct-price-max" type="number" min="0" placeholder="Max narx">
+          </div>
+        </div>
+      </div>
+      <div class="sct-filter-foot">
+        <button class="sct-reset-btn" id="sct-reset-btn" type="button">
+          <i class="fa fa-refresh" aria-hidden="true"></i> Tozalash
+        </button>
+        <button class="sct-apply-btn" id="sct-apply-btn" type="button">
+          <i class="fa fa-check" aria-hidden="true"></i> Natijalarni ko'rsatish
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    ═══════════════════════════════════════════════════════════
+    MOBILE CATALOG DRAWER  (slides from left, mobile only)
+    ═══════════════════════════════════════════════════════════
+  -->
+  <div class="mhc-overlay" id="mhc-overlay" aria-hidden="true"></div>
+  <div class="mhc-drawer" id="mhc-drawer" role="dialog" aria-modal="true" aria-label="Katalog">
+    <div class="mhc-inner">
+      <div class="mhc-head">
+        <button class="mhc-back-btn" id="mhc-back-btn" type="button" aria-label="Yopish">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="mhc-title">Katalog</h2>
+        <button class="mhc-close-btn" id="mhc-close-btn" type="button" aria-label="Yopish">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="mhc-search-wrap">
+        <div class="mhc-search">
+          <i class="fa fa-search mhc-search__icon" aria-hidden="true"></i>
+          <input class="mhc-search__input" id="mhc-search-input" type="search" placeholder="Kategoriya qidirish..." autocomplete="off">
+        </div>
+      </div>
+      <div class="mhc-list" id="mhc-list" role="list">
+        <button class="mhc-row mhc-row--all" data-category="" role="listitem" type="button">
+          <span class="mhc-row__icon"><i class="fa fa-th" aria-hidden="true"></i></span>
+          <span class="mhc-row__label">Barchasi</span>
+          <i class="fa fa-angle-right mhc-row__arrow" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="sm-footer">
+    <div class="sm-footer__grid">
+      <div class="sm-footer__brand">
+        <a class="sm-logo" href="index.html" aria-label="Sale Market">
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+          <span>Sale Market</span>
+        </a>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+      </div>
+      <div>
+        <h6>Bo'limlar</h6>
+        <a href="shop.html">Katalog</a>
+        <a href="shop-cart.html">Savat</a>
+        <a href="checkout.html">Buyurtma</a>
+      </div>
+      <div>
+        <h6>Yordam</h6>
+        <a href="track-order.html">Buyurtmani kuzatish</a>
+        <a href="contact.html">Bog'lanish</a>
+      </div>
+      <div>
+        <h6>Aloqa</h6>
+        <a href="https://t.me/salemarket_uz1" target="_blank" rel="noopener"><i class="fa fa-telegram" aria-hidden="true"></i> @salemarket_uz1</a>
+      </div>
+    </div>
+    <div class="sm-footer__bottom">© 2026 Sale Market</div>
+  </footer>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="js/search-engine.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+
+  <script src="js/shared-header-init.js"></script>
+  <script src="js/shop-products.js"></script>
+  <script src="js/shop-toolbar.js"></script>
+</body></html>

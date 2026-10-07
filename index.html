@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sale Market — O'zbekistonda qulay va ishonchli online xarid">
+  <link rel="stylesheet" href="css/design-system.css" type="text/css">
+  <link rel="stylesheet" href="css/components.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/marketplace-upgrade.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-premium.css" type="text/css">
+  <link rel="stylesheet" href="css/homepage-polish.css" type="text/css">
+  <link rel="stylesheet" href="css/shared-header.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-homepage.css" type="text/css">
+<title>Sale Market | Online do'kon</title>  <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+</head>
+<body class="market-body">
+  <header class="market-header" id="main-header">
+    <div class="market-topbar"><div class="container"><div class="market-topbar__inner">
+      <span><i class="fa fa-map-marker"></i> O'zbekiston bo'ylab tez yetkazib berish</span>
+      <span>Har kuni chegirmalar &bull; Xavfsiz buyurtma &bull; Sifat kafolati</span>
+    </div></div></div>
+    <div class="market-mainbar"><div class="container-fluid"><div class="market-row">
+      <a class="market-logo" href="index.html" aria-label="Sale Market - Bosh sahifa">
+        <span class="market-logo__mark">SM</span>
+        <span>Sale Market</span>
+      </a>
+      <a class="market-catalog-btn" href="shop.html"><i class="fa fa-th-large"></i> Katalog</a>
+      <form class="market-search js-market-search" role="search">
+        <input type="search" placeholder="Mahsulot, kategoriya yoki brend qidirish..." aria-label="Qidirish"/>
+        <button type="submit" aria-label="Qidirish"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="market-actions">
+        <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
+          <i class="fa fa-truck"></i><span>Kuzatish</span>
+        </a>
+        <a class="market-action" href="shop-cart.html" aria-label="Savat">
+          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+          <em class="market-cart-tip js-cart-count">0</em>
+        </a>
+        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
+          <i class="fa fa-user-o"></i><span>Admin</span>
+        </a>
+      </div>
+      <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
+        <span></span><span></span><span></span>
+      </button>
+    </div></div></div>
+    <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
+      <li><a href="index.html">Bosh sahifa</a></li>
+      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="contact.html">Bog'lanish</a></li>
+    </ul></div></nav>
+  </header>
+  <!-- Mobile nav drawer -->
+  <div class="mh-mobile-nav" id="mh-mobile-nav" aria-hidden="true">
+    <div class="mh-mobile-nav__inner">
+      <div class="mh-mobile-nav__title">Sale Market</div>
+      <ul>
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="checkout.html">Buyurtma</a></li>
+        <li><a href="contact.html">Bog'lanish</a></li>
+        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+  <section class="sm-hero-section">
+    <div class="sm-hero-inner">
+      <div class="sm-hero-card-grid">
+        <!-- Left: text content -->
+        <div class="sm-hero-text">
+          <div class="sm-hero-kicker"><i class="fa fa-bolt"></i> Mega chegirmalar va tez yetkazish</div>
+          <h1 class="sm-hero-title"><span class="sm-hero-brand">Sale Market</span> online do'kon</h1>
+          <p class="sm-hero-subtitle">Kiyim, oyoq kiyim, aksessuar va boshqa mahsulotlar — tez yetkazish, qulay to'lov va kafolat bilan.</p>
+          <div class="sm-hero-actions">
+            <a href="shop.html" class="sm-hero-btn sm-hero-btn--primary"><i class="fa fa-shopping-bag"></i> Xaridni boshlash</a>
+            <a href="shop.html" class="sm-hero-btn sm-hero-btn--outline"><i class="fa fa-fire"></i> Chegirmalar</a>
+          </div>
+        </div>
+        <!-- Right: live product preview -->
+        <div class="sm-hero-preview">
+          <div class="hero-preview-wrap" id="hero-preview-wrap">
+            <div class="hsc" id="hero-single-card">
+              <!-- Skeleton shown while products load -->
+              <div class="hsc__link hsc__skeleton">
+                <div class="hsc__img-wrap"><div class="hsc__skel-img"></div></div>
+                <div class="hsc__body">
+                  <div class="hsc__skel-line"></div>
+                  <div class="hsc__skel-price"></div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-preview-dots" id="hero-preview-dots" aria-label="Mahsulotlar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="market-section"><div class="container-fluid">
+    <div class="market-section-title"><div><h2>Kategoriyalar</h2><p>Kerakli mahsulotni tezda toping.</p></div><a class="market-btn market-btn--ghost" href="shop.html" id="see-all-categories-btn">Barchasini ko'rish</a></div>
+    <div class="market-category-grid" id="category-grid">
+      <a class="market-category" href="shop.html?category=Ustki%20kiyimlar"><img src="uploads/prd_1784614920754_24770.jpg" alt="Ustki kiyimlar"><h5>Ustki kiyimlar</h5><p>Ko'ylak va mavsumiy kiyimlar</p></a>
+      <a class="market-category" href="shop.html?category=Oyoq%20kiyimlar"><img src="uploads/prd_1784614069120_38853.jpg" alt="Oyoq kiyim"><h5>Oyoq kiyim</h5><p>Uy va kundalik variantlar</p></a>
+      <a class="market-category" href="shop.html?category=Aksesuarlar"><img src="uploads/prd_1784613960250_695950.jpg" alt="Aksessuar"><h5>Aksessuar</h5><p>Soat, ko'zoynak va boshqa aksessuarlar</p></a>
+      <a class="market-category" href="shop.html?category=Shimlar"><img src="uploads/prd_1784614834797_25047.jpg" alt="Shimlar"><h5>Shimlar</h5><p>Kundalik va mavsumiy modellar</p></a>
+      <a class="market-category" href="shop.html?category=Jihozlar"><img src="uploads/prd_1784613288219_316504.jpg" alt="Uy jihozlari"><h5>Jihozlar</h5><p>Uy uchun foydali mahsulotlar</p></a>
+      <a class="market-category" href="shop.html?category=Sumkalar"><img src="uploads/prd_1783676009189_581338.jpg" alt="Sumkalar"><h5>Sumkalar</h5><p>Kundalik sumka va aksessuarlar</p></a>
+    </div>
+  </div></section>
+
+  <section id="flash-sale" class="market-section pt-0"><div class="container-fluid"><div class="market-strip"><div class="market-strip__inner"><div><h3>Bugungi chegirmalar</h3><p>Chegirmali mahsulotlar tugashidan oldin xarid qiling.</p></div><div class="market-timer" data-market-timer></div><a class="market-btn market-btn--white" href="shop.html">Chegirmalarni ko'rish</a></div></div></div></section>
+
+  <section class="market-section market-products-bg" id="catalog-section"><div class="container-fluid">
+    <div class="market-section-title"><div><h2>Ommabop mahsulotlar</h2><p>Eng ko'p sotib olingan mahsulotlar.</p></div><a class="market-btn market-btn--ghost" href="shop.html">Katalogga o'tish</a></div>
+    <div class="row" id="new-products"></div>
+  </div></section>
+
+  <section class="market-section"><div class="container-fluid"><div class="market-features">
+    <div class="market-feature"><i class="fa fa-truck"></i><div><h6>Tez yetkazish</h6><p>O'zbekiston bo'ylab tez va ishonchli yetkazib berish.</p></div></div>
+    <div class="market-feature"><i class="fa fa-lock"></i><div><h6>Xavfsiz to'lov</h6><p>Naqd, karta va promokod orqali xavfsiz to'lov.</p></div></div>
+    <div class="market-feature"><i class="fa fa-check-circle"></i><div><h6>Sifat kafolati</h6><p>Har bir mahsulot sifati tekshirilgan va kafolatlangan.</p></div></div>
+    <div class="market-feature"><i class="fa fa-refresh"></i><div><h6>Qulay qaytarish</h6><p>Mahsulotni qulay shartlar bilan qaytarish imkoniyati.</p></div></div>
+  </div></div></section>
+
+  </main>
+
+  <footer class="sm-footer">
+    <div class="sm-footer__grid">
+      <div class="sm-footer__brand">
+        <a href="index.html" class="market-logo" aria-label="Sale Market" style="text-decoration:none;">
+          <span class="market-logo__mark">SM</span>
+          <span style="color:#fff">Sale Market</span>
+        </a>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+      </div>
+      <div>
+        <h6>Bo'limlar</h6>
+        <a href="shop.html">Katalog</a>
+        <a href="shop-cart.html">Savat</a>
+        <a href="checkout.html">Buyurtma</a>
+      </div>
+      <div>
+        <h6>Yordam</h6>
+        <a href="track-order.html">Buyurtmani kuzatish</a>
+        <a href="contact.html">Bog'lanish</a>
+      </div>
+      <div>
+        <h6>Aloqa</h6>
+        <a href="https://t.me/salemarket_uz1" target="_blank" rel="noopener"><i class="fa fa-telegram" aria-hidden="true"></i> @salemarket_uz1</a>
+      </div>
+    </div>
+    <div class="sm-footer__bottom">© 2026 Sale Market</div>
+  </footer>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="js/search-engine.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+
+  <script src="js/shared-header-init.js"></script>
+  <script src="js/index-products.js"></script>
+
+
+</body></html>

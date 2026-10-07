@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sale Market | Buyurtma</title>
+  <link rel="stylesheet" href="css/design-system.css" type="text/css">
+  <link rel="stylesheet" href="css/components.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/marketplace-upgrade.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile-premium.css" type="text/css" />
+  <link rel="stylesheet" href="css/shared-header.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css" />
+  <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+</head>
+<body class="market-body checkout-clean">
+  <header class="market-header" id="main-header">
+    <div class="market-topbar"><div class="container"><div class="market-topbar__inner">
+      <span><i class="fa fa-map-marker"></i> O'zbekiston bo'ylab tez yetkazib berish</span>
+      <span>Har kuni chegirmalar &bull; Xavfsiz buyurtma &bull; Sifat kafolati</span>
+    </div></div></div>
+    <div class="market-mainbar"><div class="container-fluid"><div class="market-row">
+      <a class="market-logo" href="index.html" aria-label="Sale Market - Bosh sahifa">
+        <span class="market-logo__mark">SM</span>
+        <span>Sale Market</span>
+      </a>
+      <a class="market-catalog-btn" href="shop.html"><i class="fa fa-th-large"></i> Katalog</a>
+      <form class="market-search js-market-search" role="search">
+        <input type="search" placeholder="Mahsulot, kategoriya yoki brend qidirish..." aria-label="Qidirish"/>
+        <button type="submit" aria-label="Qidirish"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="market-actions">
+        <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
+          <i class="fa fa-truck"></i><span>Kuzatish</span>
+        </a>
+        <a class="market-action" href="shop-cart.html" aria-label="Savat">
+          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+          <em class="market-cart-tip js-cart-count">0</em>
+        </a>
+        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
+          <i class="fa fa-user-o"></i><span>Admin</span>
+        </a>
+      </div>
+      <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
+        <span></span><span></span><span></span>
+      </button>
+    </div></div></div>
+    <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
+      <li><a href="index.html">Bosh sahifa</a></li>
+      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="contact.html">Bog'lanish</a></li>
+    </ul></div></nav>
+  </header>
+  <!-- Mobile nav drawer -->
+  <div class="mh-mobile-nav" id="mh-mobile-nav" aria-hidden="true">
+    <div class="mh-mobile-nav__inner">
+      <div class="mh-mobile-nav__title">Sale Market</div>
+      <ul>
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="checkout.html">Buyurtma</a></li>
+        <li><a href="contact.html">Bog'lanish</a></li>
+        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+  <section class="breadcrumb-custom market-page-hero">
+    <div class="container">
+      <h2>Buyurtma rasmiylashtirish</h2>
+      <p>Yetkazish manzili, to'lov turi va buyurtma xulosasi bir joyda.</p>
+    </div>
+  </section>
+
+  <section class="checkout spad">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="checkout__form--custom">
+            <h5>Buyurtma ma'lumotlari</h5>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label class="checkout-label" for="name">Ism familiya <span>*</span></label>
+                <input id="name" class="form-input" type="text" placeholder="Masalan: Azizjon G'ulomov" />
+                <div class="form-error" id="err-name" hidden></div>
+              </div>
+              <div class="col-md-6">
+                <label class="checkout-label" for="phone">Telefon raqam <span>*</span></label>
+                <input id="phone" class="form-input" type="tel" placeholder="+998 90 123 45 67" />
+                <div class="form-error" id="err-phone" hidden></div>
+              </div>
+            </div>
+
+            <div class="checkout-field-group">
+              <label class="checkout-label" for="address">Yetkazib berish manzili <span>*</span></label>
+              <input id="address" class="form-input" type="text" placeholder="Shahar, tuman, ko'cha, uy" />
+              <div class="form-error" id="err-address" hidden></div>
+            </div>
+
+            <div class="checkout-field-group">
+              <label class="checkout-label" for="note">Qo'shimcha izoh</label>
+              <textarea id="note" class="form-input" placeholder="Masalan: qo'ng'iroq qilmasdan yetkazib bering"></textarea>
+            </div>
+
+            <div class="checkout-payment">
+              <h6>To'lov turi</h6>
+              <div class="checkout-radio-group">
+                <label class="checkout-radio">
+                  <input type="radio" name="paymentType" value="naqd" checked />
+                  <span>Naqd</span>
+                </label>
+                <label class="checkout-radio">
+                  <input type="radio" name="paymentType" value="karta" />
+                  <span>Karta</span>
+                </label>
+              </div>
+            </div>
+
+            <div id="paymentScreenshotWrap" class="checkout-upload" style="display:none;">
+              <label class="checkout-label" for="paymentScreenshot">To'lov skrinshoti <span>*</span></label>
+              <input id="paymentScreenshot" type="file" accept="image/*" />
+              <p class="checkout-help">Karta tanlansa, skrinshot yuklash majburiy.</p>
+            </div>
+
+            <div class="checkout-promo">
+              <label class="checkout-label" for="promoCode">Promokod</label>
+              <div class="checkout-promo-row">
+                <input id="promoCode" class="form-input" type="text" placeholder="Masalan: SALE10" />
+                <button class="site-btn site-btn--ghost" type="button" onclick="applyPromoCode()">Qo'llash</button>
+              </div>
+              <div id="promoMessage" class="form-message"></div>
+            </div>
+
+            <div class="checkout-actions">
+              <button class="site-btn" type="button" onclick="submitOrder()">Buyurtma berish</button>
+              <a class="site-btn site-btn--ghost" href="shop-cart.html">Savatga qaytish</a>
+            </div>
+            <div id="checkoutMessage" class="form-message"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="checkout__order--custom">
+            <h5>Buyurtma xulosasi</h5>
+            <div id="checkoutSummary"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="sm-footer">
+    <div class="sm-footer__grid">
+      <div class="sm-footer__brand">
+        <a class="sm-logo" href="index.html" aria-label="Sale Market">
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+          <span>Sale Market</span>
+        </a>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+      </div>
+      <div>
+        <h6>Bo'limlar</h6>
+        <a href="shop.html">Katalog</a>
+        <a href="shop-cart.html">Savat</a>
+        <a href="checkout.html">Buyurtma</a>
+      </div>
+      <div>
+        <h6>Yordam</h6>
+        <a href="track-order.html">Buyurtmani kuzatish</a>
+        <a href="contact.html">Bog'lanish</a>
+      </div>
+      <div>
+        <h6>Aloqa</h6>
+        <a href="https://t.me/salemarket_uz1" target="_blank" rel="noopener"><i class="fa fa-telegram" aria-hidden="true"></i> @salemarket_uz1</a>
+      </div>
+    </div>
+    <div class="sm-footer__bottom">© 2026 Sale Market</div>
+  </footer>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+  <script src="js/shared-header-init.js"></script>
+  <script>
+    let checkoutItems = [];
+    let checkoutSubtotal = 0;
+    let checkoutTotal = 0;
+    let appliedPromo = null;
+
+    function formatMoney(value) {
+      return Number(value || 0).toLocaleString("uz-UZ") + " so'm";
+    }
+
+    function setCheckoutMessage(text, type) {
+      const msg = document.getElementById("checkoutMessage");
+      msg.innerHTML = '<span class="checkout-msg checkout-msg--' + type + '">' + text + "</span>";
+    }
+
+    function setFieldError(id, text) {
+      const el = document.getElementById("err-" + id);
+      if (!el) return;
+      el.textContent = text;
+      el.hidden = false;
+    }
+
+    function clearFieldErrors() {
+      ["name", "phone", "address"].forEach(function (id) {
+        const el = document.getElementById("err-" + id);
+        if (el) {
+          el.textContent = "";
+          el.hidden = true;
+        }
+      });
+    }
+
+    function getSelectedPaymentType() {
+      const picked = document.querySelector('input[name="paymentType"]:checked');
+      return picked ? picked.value : "naqd";
+    }
+
+    function syncPaymentUI() {
+      const wrap = document.getElementById("paymentScreenshotWrap");
+      if (getSelectedPaymentType() === "karta") {
+        wrap.style.display = "block";
+      } else {
+        wrap.style.display = "none";
+        document.getElementById("paymentScreenshot").value = "";
+      }
+    }
+
+    function buildItemMeta(item) {
+      const parts = [];
+      if (item.size) parts.push("O'lcham: " + item.size);
+      if (item.color) parts.push("Rang: " + item.color);
+      if (!parts.length) return "";
+      return '<small class="checkout-item-meta">' + parts.join(" | ") + "</small>";
+    }
+
+    function renderCheckoutSummary() {
+      const summary = document.getElementById("checkoutSummary");
+      const qtyTotal = checkoutItems.reduce((sum, item) => sum + item.qty, 0);
+      const itemsHtml = checkoutItems
+        .map(
+          (item, index) =>
+            '<div class="checkout-summary-row">' +
+            '<div>' +
+            '<p>' +
+            (index + 1) +
+            ". " +
+            item.name +
+            " x " +
+            item.qty +
+            "</p>" +
+            buildItemMeta(item) +
+            "</div>" +
+            "<strong>" +
+            formatMoney(item.lineTotal) +
+            "</strong>" +
+            "</div>"
+        )
+        .join("");
+
+      const discountHtml = appliedPromo
+        ? '<div class="checkout-total-row"><span>Chegirma (' + appliedPromo.code + ')</span><strong>-' + formatMoney(appliedPromo.discountAmount) + "</strong></div>"
+        : "";
+
+      summary.innerHTML =
+        '<div class="checkout-summary-head"><span>Mahsulot</span><span>Narx</span></div>' +
+        '<div class="checkout-summary-list">' +
+        itemsHtml +
+        "</div>" +
+        '<div class="checkout-total-row"><span>Jami mahsulot</span><strong>' +
+        qtyTotal +
+        " ta</strong></div>" +
+        '<div class="checkout-total-row"><span>Oraliq summa</span><strong>' +
+        formatMoney(checkoutSubtotal) +
+        "</strong></div>" +
+        discountHtml +
+        '<div class="checkout-total-row checkout-grand-total"><span>Umumiy summa</span><strong>' +
+        formatMoney(checkoutTotal) +
+        "</strong></div>";
+    }
+
+    async function initCheckout() {
+      const summary = document.getElementById("checkoutSummary");
+      const cart = MBStore.getCart();
+
+      if (!cart.length) {
+        summary.innerHTML = '<p class="checkout-empty">Savatingiz bo\'sh. <a class="checkout-empty__link" href="shop.html">Do\'konga o\'tish</a></p>';
+        return;
+      }
+
+      const products =
+        window.MBHelpers && typeof window.MBHelpers.loadProducts === "function"
+          ? await window.MBHelpers.loadProducts({ forceRefresh: true })
+          : await fetch("data/products.json", { cache: "no-store" }).then((r) => r.json());
+      checkoutItems = cart.map((item) => {
+        const product = products.find((p) => String(p.id) === String(item.productId)) || item.product || {};
+        const price = Number(product.price || 0);
+        const qty = Math.max(1, Number(item.qty || 1));
+        const safeQty = qty;
+        return {
+          productId: item.productId,
+          name: product.name || "Mahsulot",
+          size: item.size || "",
+          color: item.color || "",
+          qty: safeQty,
+          price,
+          lineTotal: price * safeQty,
+        };
+      }).filter((item) => item.qty > 0);
+
+      if (!checkoutItems.length) {
+        summary.innerHTML = '<p class="checkout-empty">Savatingiz bo\'sh. <a class="checkout-empty__link" href="shop.html">Do\'konga o\'tish</a></p>';
+        return;
+      }
+
+      checkoutSubtotal = checkoutItems.reduce((sum, item) => sum + item.lineTotal, 0);
+      checkoutTotal = checkoutSubtotal;
+      renderCheckoutSummary();
+    }
+
+    function createLocalOrder(payload) {
+      const order = {
+        ...payload,
+        id: "ord_" + Date.now(),
+        status: "new",
+        items: checkoutItems,
+        discountAmount: appliedPromo ? appliedPromo.discountAmount : 0,
+        createdAt: new Date().toISOString(),
+      };
+
+      if (window.MBStore && typeof window.MBStore.saveLocalOrder === "function") {
+        return window.MBStore.saveLocalOrder(order);
+      }
+
+      const key = "mujskoy_orders";
+      const orders = JSON.parse(localStorage.getItem(key) || "[]");
+      orders.unshift(order);
+      localStorage.setItem(key, JSON.stringify(orders));
+      return order;
+    }
+
+    function completeOrder(order, phone) {
+      MBStore.clearCart();
+      setCheckoutMessage("Buyurtmangiz qabul qilindi.", "success");
+      const oid = order.orderId || order.id || "";
+      window.location.href =
+        "success.html?orderId=" + encodeURIComponent(oid) +
+        "&phone=" + encodeURIComponent(phone || order.phone || "") +
+        "&date=" + encodeURIComponent(order.createdAt || new Date().toISOString()) +
+        "&total=" + encodeURIComponent(order.total || checkoutTotal);
+    }
+
+    async function applyPromoCode() {
+      const code = document.getElementById("promoCode").value.trim();
+      const message = document.getElementById("promoMessage");
+      const applyBtn = document.querySelector('.checkout-promo .site-btn');
+      if (!code) {
+        message.innerHTML = '<span class="checkout-msg checkout-msg--error">Promokod kiriting.</span>';
+        return;
+      }
+      applyBtn.disabled = true; applyBtn.classList.add('is-loading'); applyBtn.textContent = 'Tekshirilmoqda...';
+
+      try {
+        const res = await fetch("/api/promocodes/apply", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, subtotal: checkoutSubtotal }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.message || "Promokod ishlamadi");
+        appliedPromo = data;
+        checkoutTotal = data.total;
+        message.innerHTML = '<span class="checkout-msg checkout-msg--success">Promokod qo\'llandi.</span>';
+        renderCheckoutSummary();
+      } catch (error) {
+        try {
+          const list = await fetch("data/promocodes.json", { cache: "no-store" }).then((res) => res.json());
+          const promo = (Array.isArray(list) ? list : []).find((item) => String(item.code || "").toUpperCase() === code.toUpperCase());
+          if (!promo) throw new Error("Promokod topilmadi");
+          const discountPercent = Math.max(1, Math.min(90, Number(promo.discountPercent || 0)));
+          const discountAmount = Math.floor((checkoutSubtotal * discountPercent) / 100);
+          appliedPromo = {
+            code: String(promo.code || code).toUpperCase(),
+            discountPercent,
+            discountAmount,
+            total: Math.max(0, checkoutSubtotal - discountAmount),
+          };
+          checkoutTotal = appliedPromo.total;
+          message.innerHTML = '<span class="checkout-msg checkout-msg--success">Promokod qo\'llandi.</span>';
+        } catch {
+          appliedPromo = null;
+          checkoutTotal = checkoutSubtotal;
+          message.innerHTML = '<span class="checkout-msg checkout-msg--error">' + (error.message || "Promokod ishlamadi") + "</span>";
+        }
+        renderCheckoutSummary();
+      } finally {
+        applyBtn.disabled = false; applyBtn.classList.remove('is-loading'); applyBtn.textContent = 'Qo\'llash';
+      }
+    }
+
+    async function submitOrder() {
+      if (!checkoutItems.length) {
+        setCheckoutMessage("Savatingiz bo'sh.", "error");
+        return;
+      }
+
+      const paymentType = getSelectedPaymentType();
+      const screenshotFile = document.getElementById("paymentScreenshot").files[0];
+
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        note: document.getElementById("note").value.trim(),
+        total: checkoutTotal,
+        subtotal: checkoutSubtotal,
+        promoCode: appliedPromo ? appliedPromo.code : "",
+        items: checkoutItems,
+        paymentType,
+      };
+
+      clearFieldErrors();
+      let hasError = false;
+
+      if (!payload.name) {
+        setFieldError("name", "Ism familiya majburiy");
+        hasError = true;
+      }
+
+      if (!/^\+998\d{9}$/.test(payload.phone.replace(/\s/g, ""))) {
+        setFieldError("phone", "To'g'ri telefon raqam kiriting (+998XXXXXXXXX)");
+        hasError = true;
+      }
+
+      if (payload.address.length < 10) {
+        setFieldError("address", "Manzil kamida 10 ta belgidan iborat bo'lsin");
+        hasError = true;
+      }
+
+      if (hasError) {
+        return;
+      }
+
+      if (paymentType === "karta" && !screenshotFile) {
+        setCheckoutMessage("Karta to'lovi uchun skrinshot yuklang.", "error");
+        return;
+      }
+
+      const requestOptions = { method: "POST" };
+
+      if (paymentType === "karta") {
+        const formData = new FormData();
+        formData.append("name", payload.name);
+        formData.append("phone", payload.phone);
+        formData.append("address", payload.address);
+        formData.append("note", payload.note);
+        formData.append("total", String(payload.total));
+        formData.append("subtotal", String(payload.subtotal));
+        formData.append("promoCode", payload.promoCode);
+        formData.append("paymentType", paymentType);
+        formData.append("items", JSON.stringify(checkoutItems));
+        formData.append("itemsJson", JSON.stringify(checkoutItems));
+        checkoutItems.forEach((item, index) => {
+          Object.keys(item).forEach((key) => {
+            formData.append("items[" + index + "][" + key + "]", String(item[key] ?? ""));
+          });
+        });
+        if (screenshotFile) {
+          formData.append("paymentScreenshot", screenshotFile);
+        }
+        requestOptions.body = formData;
+      } else {
+        requestOptions.headers = { "Content-Type": "application/json" };
+        requestOptions.body = JSON.stringify({
+          ...payload,
+          paymentType: "naqd",
+          items: checkoutItems,
+        });
+      }
+
+      const submitBtn = document.querySelector('.checkout-actions .site-btn');
+      submitBtn.disabled = true; submitBtn.classList.add('is-loading'); const prevText = submitBtn.textContent; submitBtn.textContent = 'Yuborilmoqda...';
+      fetch("/api/orders", requestOptions)
+        .then(async (res) => {
+          const data = await res.json().catch(() => ({}));
+          return { ok: res.ok, status: res.status, data };
+        })
+        .then(({ ok, status, data }) => {
+          if (ok && (data.success || data.orderId || data.order)) {
+            completeOrder(data.order || { orderId: data.orderId }, payload.phone);
+          } else {
+            if (status === 404 || status === 405 || !data.message) {
+              completeOrder(createLocalOrder(payload), payload.phone);
+              return;
+            }
+            const msg = data.message || "Buyurtma yuborilmadi.";
+            setCheckoutMessage(msg, "error");
+            submitBtn.disabled = false; submitBtn.classList.remove('is-loading'); submitBtn.textContent = prevText;
+          }
+        })
+        .catch(() => {
+          completeOrder(createLocalOrder(payload), payload.phone);
+        });
+    }
+
+    document.querySelectorAll('input[name="paymentType"]').forEach((el) => {
+      el.addEventListener("change", syncPaymentUI);
+    });
+
+    syncPaymentUI();
+    initCheckout();
+
+    ["name","phone","address"].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.addEventListener("input", function(){ var e=document.getElementById("err-"+id); if(e) e.hidden=true; });
+    });
+  </script>
+</body>
+</html>

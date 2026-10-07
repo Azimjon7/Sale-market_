@@ -1,0 +1,277 @@
+[
+  {
+    "id": "ord_1781525138942",
+    "name": "Azimjon Gulomov",
+    "phone": "+998902008747",
+    "address": "Andijan city 2-Mikrarion, apartment 49,",
+    "note": "aaa",
+    "subtotal": 1059000,
+    "discountAmount": 0,
+    "promoCode": "",
+    "total": 1059000,
+    "items": [
+      {
+        "productId": "prd_1775681573066",
+        "name": "🔥 Premium slim-fit erkaklar ko‘ylagi",
+        "size": "M-4XL",
+        "color": "yashil",
+        "qty": 1,
+        "price": 199000,
+        "lineTotal": 199000
+      },
+      {
+        "productId": "prd_1775681243067",
+        "name": "👟 Yoz uchun TOP тапочка 🔥",
+        "size": "36",
+        "color": "oq",
+        "qty": 1,
+        "price": 205000,
+        "lineTotal": 205000
+      },
+      {
+        "productId": "prd_1775681127600",
+        "name": "👟 Adidas style тапочка",
+        "size": "36",
+        "color": "oq/purpule",
+        "qty": 1,
+        "price": 210000,
+        "lineTotal": 210000
+      },
+      {
+        "productId": "prd_1775681008960",
+        "name": "👟 AirMax Fire",
+        "size": "36",
+        "color": "qora",
+        "qty": 1,
+        "price": 445000,
+        "lineTotal": 445000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "shipped",
+    "createdAt": "2026-06-15T12:05:38.944Z",
+    "updatedAt": "2026-06-15T12:06:23.907Z"
+  },
+  {
+    "id": "ord_1781521260409",
+    "name": "Test Xaridor",
+    "phone": "+998901234567",
+    "address": "Toshkent Yunusobod 14-mavze 7-uy",
+    "note": "",
+    "subtotal": 199000,
+    "discountAmount": 0,
+    "promoCode": "",
+    "total": 199000,
+    "items": [
+      {
+        "productId": "prd_1775681573066",
+        "name": "🔥 Premium slim-fit erkaklar ko‘ylagi",
+        "size": "",
+        "color": "",
+        "qty": 1,
+        "price": 199000,
+        "lineTotal": 199000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "new",
+    "createdAt": "2026-06-15T11:01:00.409Z"
+  },
+  {
+    "id": "ord_1781521191914",
+    "name": "Azim Test",
+    "phone": "+998901234567",
+    "address": "Toshkent Chilonzor tumani 10-uy",
+    "note": "",
+    "subtotal": 199000,
+    "discountAmount": 0,
+    "promoCode": "",
+    "total": 199000,
+    "items": [
+      {
+        "productId": "prd_1775681573066",
+        "name": "🔥 Premium slim-fit erkaklar ko‘ylagi",
+        "size": "",
+        "color": "",
+        "qty": 1,
+        "price": 199000,
+        "lineTotal": 199000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "new",
+    "createdAt": "2026-06-15T10:59:51.914Z"
+  },
+  {
+    "id": "ord_1781475859228",
+    "name": "Test Mijoz",
+    "phone": "+998901234567",
+    "address": "Toshkent shahar Chilonzor tumani",
+    "note": "",
+    "subtotal": 199000,
+    "discountAmount": 0,
+    "promoCode": "",
+    "total": 199000,
+    "items": [
+      {
+        "productId": "prd_1775681573066",
+        "name": "Premium slim-fit erkaklar ko'ylagi",
+        "size": "L",
+        "color": "qora",
+        "qty": 1,
+        "price": 199000,
+        "lineTotal": 199000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "new",
+    "createdAt": "2025-06-14T22:24:19.000Z"
+  },
+  {
+    "id": "ord_1705312800000",
+    "name": "Ali Karimov",
+    "phone": "+998901234567",
+    "address": "Tashkent, Yunusobod 14-12",
+    "note": "Iltimos qo'ng'iroq qiling",
+    "subtotal": 240000,
+    "discountAmount": 24000,
+    "promoCode": "WELCOME10",
+    "total": 216000,
+    "items": [
+      {
+        "productId": "prd_1775681573066",
+        "name": "Premium slim-fit erkaklar ko'ylagi",
+        "size": "M",
+        "color": "oq",
+        "qty": 2,
+        "price": 120000,
+        "lineTotal": 240000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "delivered",
+    "createdAt": "2025-01-15T10:00:00.000Z",
+    "updatedAt": "2025-01-16T14:00:00.000Z"
+  },
+  {
+    "id": "ord_1706000400000",
+    "name": "Bobur Toshmatov",
+    "phone": "+998712345678",
+    "address": "Tashkent, Mirzo Ulugbek 5-kvartal, 22-uy",
+    "note": "",
+    "subtotal": 655000,
+    "discountAmount": 131000,
+    "promoCode": "SALE20",
+    "total": 524000,
+    "items": [
+      {
+        "productId": "prd_1775681008960",
+        "name": "AirMax Fire",
+        "size": "42",
+        "color": "qora",
+        "qty": 1,
+        "price": 445000,
+        "lineTotal": 445000
+      },
+      {
+        "productId": "prd_1775680295547",
+        "name": "Trend kepka",
+        "size": "Universal",
+        "color": "qora",
+        "qty": 2,
+        "price": 80000,
+        "lineTotal": 160000
+      },
+      {
+        "productId": "prd_1775677968638",
+        "name": "Premium Ko'z oynak",
+        "size": "Standart",
+        "color": "qora",
+        "qty": 1,
+        "price": 115000,
+        "lineTotal": 115000
+      }
+    ],
+    "paymentType": "karta",
+    "paymentScreenshot": "",
+    "status": "shipped",
+    "createdAt": "2025-01-23T09:00:00.000Z",
+    "updatedAt": "2025-01-23T15:30:00.000Z"
+  },
+  {
+    "id": "ord_1706700000000",
+    "name": "Dilorom Yusupova",
+    "phone": "+998901111222",
+    "address": "Tashkent, Chilanzar 3-mavze, 18-uy",
+    "note": "Tez yetkazib bering",
+    "subtotal": 580000,
+    "discountAmount": 0,
+    "promoCode": "",
+    "total": 580000,
+    "items": [
+      {
+        "productId": "prd_1775680656769",
+        "name": "Erkaklar uchun premium komplekt",
+        "size": "M",
+        "color": "qora",
+        "qty": 1,
+        "price": 380000,
+        "lineTotal": 380000
+      },
+      {
+        "productId": "prd_1775679045031",
+        "name": "PREMIUM SPORT SHIM",
+        "size": "32",
+        "color": "qora",
+        "qty": 1,
+        "price": 200000,
+        "lineTotal": 200000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "confirmed",
+    "createdAt": "2025-01-31T11:00:00.000Z"
+  },
+  {
+    "id": "ord_1707400000000",
+    "name": "Sherzod Mirzayev",
+    "phone": "+998998887766",
+    "address": "Tashkent, Sergeli 10-mavze, 4-blok, 7-xona",
+    "note": "",
+    "subtotal": 315000,
+    "discountAmount": 0,
+    "promoCode": "",
+    "total": 315000,
+    "items": [
+      {
+        "productId": "prd_1775678176548",
+        "name": "Trend Krasovka",
+        "size": "41",
+        "color": "oq",
+        "qty": 1,
+        "price": 299000,
+        "lineTotal": 299000
+      },
+      {
+        "productId": "prd_1775677711390",
+        "name": "PREMIUM MINIMAL KO'Z OYNAGI",
+        "size": "Standart",
+        "color": "qora",
+        "qty": 1,
+        "price": 115000,
+        "lineTotal": 115000
+      }
+    ],
+    "paymentType": "naqd",
+    "paymentScreenshot": "",
+    "status": "cancelled",
+    "createdAt": "2025-02-08T13:00:00.000Z",
+    "updatedAt": "2025-02-08T17:00:00.000Z"
+  }
+]

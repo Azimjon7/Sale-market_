@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sale Market | Buyurtma qabul qilindi</title>
+  <link rel="stylesheet" href="css/design-system.css" type="text/css">
+  <link rel="stylesheet" href="css/components.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/marketplace-upgrade.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile-premium.css" type="text/css" />
+  <link rel="stylesheet" href="css/shared-header.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css" />
+  <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+</head>
+<body class="market-body">
+  <header class="market-header" id="main-header">
+    <div class="market-topbar"><div class="container"><div class="market-topbar__inner">
+      <span><i class="fa fa-map-marker"></i> O'zbekiston bo'ylab tez yetkazib berish</span>
+      <span>Har kuni chegirmalar &bull; Xavfsiz buyurtma &bull; Sifat kafolati</span>
+    </div></div></div>
+    <div class="market-mainbar"><div class="container-fluid"><div class="market-row">
+      <a class="market-logo" href="index.html" aria-label="Sale Market - Bosh sahifa">
+        <span class="market-logo__mark">SM</span>
+        <span>Sale Market</span>
+      </a>
+      <a class="market-catalog-btn" href="shop.html"><i class="fa fa-th-large"></i> Katalog</a>
+      <form class="market-search js-market-search" role="search">
+        <input type="search" placeholder="Mahsulot, kategoriya yoki brend qidirish..." aria-label="Qidirish"/>
+        <button type="submit" aria-label="Qidirish"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="market-actions">
+        <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
+          <i class="fa fa-truck"></i><span>Kuzatish</span>
+        </a>
+        <a class="market-action" href="shop-cart.html" aria-label="Savat">
+          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+          <em class="market-cart-tip js-cart-count">0</em>
+        </a>
+        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
+          <i class="fa fa-user-o"></i><span>Admin</span>
+        </a>
+      </div>
+      <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
+        <span></span><span></span><span></span>
+      </button>
+    </div></div></div>
+    <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
+      <li><a href="index.html">Bosh sahifa</a></li>
+      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="contact.html">Bog'lanish</a></li>
+    </ul></div></nav>
+  </header>
+  <!-- Mobile nav drawer -->
+  <div class="mh-mobile-nav" id="mh-mobile-nav" aria-hidden="true">
+    <div class="mh-mobile-nav__inner">
+      <div class="mh-mobile-nav__title">Sale Market</div>
+      <ul>
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="checkout.html">Buyurtma</a></li>
+        <li><a href="contact.html">Bog'lanish</a></li>
+        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+         
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+  <section class="success-section spad">
+    <div class="container">
+      <div class="success-card">
+
+        <!-- Success mark -->
+        <div class="success-mark">
+          <i class="fa fa-check-circle"></i>
+        </div>
+
+        <h1>Buyurtmangiz qabul qilindi!</h1>
+        <p>Operatorlarimiz tez orada siz bilan bog'lanadi. Buyurtma holatini ID va telefon raqamingiz orqali kuzatishingiz mumkin.</p>
+
+        <div class="success-details">
+          <div class="success-detail">
+            <span>Buyurtma ID</span>
+            <strong id="successOrderId">-</strong>
+          </div>
+          <div class="success-detail">
+            <span>Sana</span>
+            <strong id="successDate">-</strong>
+          </div>
+          <div class="success-detail">
+            <span>Summa</span>
+            <strong id="successTotal">0 so'm</strong>
+          </div>
+        </div>
+
+        <div class="success-actions">
+          <a id="trackLink" class="site-btn" href="track-order.html">
+            <i class="fa fa-truck"></i> Buyurtmani kuzatish
+          </a>
+          <a class="site-btn site-btn--ghost" href="shop.html">
+            <i class="fa fa-shopping-bag"></i> Do'konga qaytish
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="sm-footer">
+    <div class="sm-footer__grid">
+      <div class="sm-footer__brand">
+        <a class="sm-logo" href="index.html" aria-label="Sale Market">
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+          <span>Sale Market</span>
+        </a>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+      </div>
+      <div>
+        <h6>Bo'limlar</h6>
+        <a href="shop.html">Katalog</a>
+        <a href="shop-cart.html">Savat</a>
+        <a href="checkout.html">Buyurtma</a>
+      </div>
+      <div>
+        <h6>Yordam</h6>
+        <a href="track-order.html">Buyurtmani kuzatish</a>
+        <a href="contact.html">Bog'lanish</a>
+      </div>
+      <div>
+        <h6>Aloqa</h6>
+        <a href="https://t.me/salemarket_uz" target="_blank" rel="noopener"><i class="fa fa-telegram" aria-hidden="true"></i> @salemarket_uz1</a>
+      </div>
+    </div>
+    <div class="sm-footer__bottom">© 2026 Sale Market</div>
+  </footer>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/panel-manager.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+  <script src="js/shared-header-init.js"></script>
+  <script>
+    function formatMoney(value) {
+      return Number(value || 0).toLocaleString("uz-UZ") + " so'm";
+    }
+
+    function formatDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "-";
+      return new Intl.DateTimeFormat("uz-UZ", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(date);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get("orderId") || "-";
+    const phone = params.get("phone") || "";
+    document.getElementById("successOrderId").textContent = orderId && orderId !== "-" ? orderId : "—";
+    document.getElementById("successDate").textContent = formatDate(params.get("date"));
+    document.getElementById("successTotal").textContent = formatMoney(params.get("total"));
+    document.getElementById("trackLink").href =
+      "track-order.html?orderId=" + encodeURIComponent(orderId) +
+      "&phone=" + encodeURIComponent(phone);
+  </script>
+</body>
+</html>

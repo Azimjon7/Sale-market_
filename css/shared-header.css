@@ -1,0 +1,565 @@
+/*
+ * Sale Market — Shared Marketplace Header
+ * Applies consistently across all customer-facing pages.
+ * Uses the white marketplace-style header (market-header) as the single design.
+ * Provides a mobile responsive hamburger nav as well.
+ */
+
+/* ──────────────────────────────────────────────────────────────
+   GLOBAL SCROLL & TOUCH BASELINE
+   Ensures mobile scrolling is never accidentally locked by
+   a panel/overlay close race. Panel JS overrides overflow only
+   when explicitly open; this baseline reclaims it.
+────────────────────────────────────────────────────────────── */
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Product grid and main content must never restrict height */
+main,
+.page-wrapper,
+.search-results,
+.product-grid-wrapper,
+#new-products,
+#shop-grid {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  touch-action: pan-y;
+}
+
+/* Bottom-nav safe padding so last product card is not hidden */
+@media (max-width: 768px) {
+  main {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   TOP PROMO BAR
+────────────────────────────────────────────────────────────── */
+.market-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(15,23,42,.07);
+}
+
+.market-topbar {
+  display: none !important;
+}
+
+.market-topbar .container {
+  max-width: 1320px;
+}
+
+.market-topbar__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.market-topbar__inner span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.market-topbar__inner i {
+  color: #e94560;
+  font-size: 12px;
+}
+
+/* Hide hero product carousel panel completely */
+.sm-hero-preview {
+  display: none !important;
+}
+
+/* Make hero single-column since preview is gone — full container width */
+.sm-hero-card-grid {
+  grid-template-columns: 1fr !important;
+  max-width: 100% !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MAIN BAR (logo / catalog / search / actions)
+────────────────────────────────────────────────────────────── */
+.market-mainbar {
+  padding: 12px 0;
+  border-bottom: 1px solid #eef2f7;
+  background: #fff;
+}
+
+.market-mainbar .container-fluid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.market-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Logo */
+.market-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.market-logo__mark {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffd400, #fb923c);
+  color: #111827;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: .5px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(251,146,60,.28);
+}
+
+.market-logo > span:last-child {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: -.2px;
+}
+
+.market-logo:hover > span:last-child { color: #e94560; }
+
+/* Catalog button */
+.market-catalog-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #f3e8ff;
+  color: #6d28d9;
+  font-weight: 800;
+  font-size: 13.5px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid #e9d5ff;
+  transition: all .18s ease;
+  flex-shrink: 0;
+}
+.market-catalog-btn:hover {
+  background: #6d28d9;
+  color: #fff;
+  border-color: #6d28d9;
+}
+
+/* Search bar */
+.market-search {
+  display: flex;
+  flex: 1;
+  max-width: 580px;
+  border: 2px solid #ffd400;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(255,212,0,.18);
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.market-search:focus-within {
+  border-color: #ffd400;
+  box-shadow: 0 6px 20px rgba(255,212,0,.28);
+}
+.market-search input {
+  border: 0;
+  outline: 0;
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 14px;
+  background: transparent;
+  color: #1a1a2e;
+  min-width: 0;
+}
+.market-search input::placeholder { color: #9ca3af; }
+.market-search button {
+  border: 0;
+  background: #ffd400;
+  padding: 0 18px;
+  color: #111827;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background .18s ease;
+  flex-shrink: 0;
+}
+.market-search button:hover { background: #e6bf00; }
+
+/* Action buttons */
+.market-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.market-action {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 11px;
+  font-weight: 700;
+  transition: all .15s ease;
+  min-width: 52px;
+}
+.market-action i {
+  font-size: 18px;
+  line-height: 1;
+}
+.market-action:hover {
+  background: #f3e8ff;
+  color: #6d28d9;
+}
+.market-action span { white-space: nowrap; }
+
+/* Cart badge */
+.market-cart-tip, .js-cart-count {
+  position: absolute !important;
+  top: 4px !important;
+  right: 6px !important;
+  background: #ef4444 !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  display: grid !important;
+  place-items: center !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  padding: 0 4px !important;
+}
+
+/* Admin button: small, subtle, icon-only label */
+.market-action--admin {
+  color: #9ca3af;
+  font-size: 10.5px;
+  padding: 7px 8px;
+  min-width: 44px;
+}
+.market-action--admin:hover {
+  color: #1a1a2e;
+  background: #f3f4f6;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SECONDARY NAV BAR
+────────────────────────────────────────────────────────────── */
+.market-nav {
+  background: #fff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.market-nav .container-fluid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.market-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.market-nav ul::-webkit-scrollbar { display: none; }
+
+.market-nav a {
+  display: block;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #4b5563;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2.5px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.market-nav a:hover {
+  color: #6d28d9;
+}
+.market-nav li.active > a {
+  color: #ef4444;
+  border-bottom-color: #ef4444;
+  font-weight: 700;
+}
+
+/* Hide Admin from secondary nav — admin should not be a customer nav item */
+.market-nav .nav-admin { display: none !important; }
+
+/* ──────────────────────────────────────────────────────────────
+   MOBILE HAMBURGER NAV
+────────────────────────────────────────────────────────────── */
+.mh-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.mh-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #374151;
+  border-radius: 2px;
+  transition: all .2s ease;
+}
+
+/* ── Overlay (real element, replaces ::before pseudo) ─────── */
+.mh-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1199;           /* below drawer (1200), above page content */
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  transition: opacity .25s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mh-nav-overlay--visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ── Drawer container ─────────────────────────────────────── */
+.mh-mobile-nav {
+  display: none; /* shown on mobile only */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(80vw, 300px);
+  z-index: 1200;
+  pointer-events: none;
+}
+.mh-mobile-nav--open {
+  pointer-events: auto;
+}
+
+/* Remove old pseudo-element backdrop — no longer used */
+.mh-mobile-nav::before { display: none; }
+
+/* Drawer panel */
+.mh-mobile-nav__inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  gap: 2px;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  box-shadow: -4px 0 24px rgba(0,0,0,.15);
+}
+.mh-mobile-nav--open .mh-mobile-nav__inner {
+  transform: translateX(0);
+}
+
+.mh-mobile-nav__title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.mh-mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mh-mobile-nav a {
+  display: block;
+  padding: 12px 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  text-decoration: none;
+  border-bottom: 1px solid #f9fafb;
+}
+.mh-mobile-nav a:hover { color: #e94560; }
+.mh-mobile-nav li.active > a { color: #e94560; font-weight: 700; }
+
+/* Admin in mobile nav: separate, subtle */
+.mh-mobile-nav .nav-admin { border-top: 1px solid #e5e7eb; margin-top: 8px; }
+.mh-mobile-nav .nav-admin a { color: #9ca3af; font-size: 13px; }
+
+/* ──────────────────────────────────────────────────────────────
+   RESPONSIVE — Tablet (≤1100px)
+────────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .market-search { max-width: 400px; }
+  .market-action span { display: none; }  /* icon-only actions */
+  .market-action { min-width: 44px; padding: 9px 8px; }
+  .market-action i { font-size: 20px; }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   RESPONSIVE — Mobile (≤767px)
+────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .market-topbar { display: none; }  /* hide promo bar on small phones */
+  .market-mainbar { padding: 10px 0; }
+
+  .market-mainbar .container-fluid {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .market-row { gap: 8px; }
+
+  .market-catalog-btn { display: none; }  /* catalog is in hamburger nav */
+
+  .market-search {
+    flex: 1;
+    max-width: none;
+  }
+  .market-search input { padding: 9px 10px; font-size: 13px; }
+  .market-search button { padding: 0 13px; }
+
+  .market-action--admin { display: none; }  /* hide admin on mobile mainbar */
+
+  /* Show hamburger */
+  .mh-hamburger { display: flex; }
+  /* Show mobile nav panel (positioned fixed, no longer full-screen) */
+  .mh-mobile-nav { display: block; }
+  /* Hide desktop secondary nav on mobile */
+  .market-nav { display: none; }
+
+  /* Logo shrinks slightly */
+  .market-logo > span:last-child { font-size: 16px; }
+  .market-logo__mark { width: 34px; height: 34px; font-size: 12px; }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MOBILE CATALOG BUTTON — appears in header row on ≤768px
+   Square button to the left of the search bar
+────────────────────────────────────────────────────────────── */
+.mh-catalog-open-btn {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .mh-catalog-open-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 14px;
+    background: #ffd400;
+    color: #111827;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 17px;
+    transition: background 0.15s ease, transform 0.12s ease;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+  }
+  .mh-catalog-open-btn:active {
+    background: #e6bf00;
+    transform: scale(0.95);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   RESPONSIVE — Very small (≤480px)
+────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .market-mainbar .container-fluid { padding-left: 10px; padding-right: 10px; }
+  .market-row { gap: 6px; }
+  .market-action { min-width: 38px; padding: 8px 6px; }
+  .market-action i { font-size: 19px; }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   PAGE BODY — consistent background & spacing
+────────────────────────────────────────────────────────────── */
+body.market-body {
+  background: #f4f6f9;
+}
+
+/* Remove old dark sm-header if still present on a page — safety override */
+.sm-header { display: none !important; }
+
+/* ──────────────────────────────────────────────────────────────
+   SM-FOOTER override — match same max-width
+────────────────────────────────────────────────────────────── */
+.sm-footer .sm-footer__grid,
+.sm-footer__bottom {
+  max-width: 1320px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SM-FOOTER — bottom nav clearance on mobile
+   The fixed bottom nav is 58–62px + safe-area. Add matching
+   padding-bottom to the footer so its last line is never hidden.
+────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sm-footer {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}

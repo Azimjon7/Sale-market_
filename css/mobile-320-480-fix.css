@@ -1,0 +1,683 @@
+/*
+ * Sale Market — Mobile 320–480px Responsive Fix
+ * Fixes:
+ *   1. Header / search bar removed from sticky/fixed on mobile (scrolls with page)
+ *   2. Product cards sized correctly on small phones
+ *   3. Product detail image capped at a reasonable height
+ *   4. Text sizes normalized
+ *   5. Bottom nav padding kept so content is not hidden
+ *
+ * Loaded LAST — overrides shared-header.css and mobile-premium.css.
+ * Desktop (> 480px) is completely untouched.
+ */
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 1 — Header: remove sticky on mobile (≤ 480px)
+   ══════════════════════════════════════════════════════════
+   Both shared-header.css (position: sticky) and
+   mobile-premium.css (position: sticky !important) set the
+   header sticky.  On 320–480 px screens this means the logo,
+   search bar and hamburger permanently block the top ~80–90px
+   of screen space.  We flip it back to static so it scrolls
+   away with the rest of the page.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── 1a. Header: static flow (scrolls away) ── */
+  .market-header,
+  #main-header {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  /* ── 1b. Main bar: tighter padding ── */
+  .market-mainbar {
+    padding: 8px 0 6px !important;
+  }
+
+  /* ── 1c. Row layout: logo + hamburger on row 1, search on row 2 ── */
+  .market-row {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding: 0 12px !important;
+  }
+
+  /* ── 1d. Logo stays compact ── */
+  .market-logo {
+    grid-row: 1 !important;
+    grid-column: 1 !important;
+  }
+  .market-logo__mark {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 12px !important;
+    border-radius: 9px !important;
+  }
+  .market-logo > span:last-child {
+    font-size: 15px !important;
+  }
+
+  /* ── 1e. Hamburger button visible on row 1 right side ── */
+  .mh-hamburger {
+    grid-row: 1 !important;
+    grid-column: 2 !important;
+    display: flex !important;
+  }
+
+  /* ── 1f. Action icons — hide on very small screens (bottom nav handles navigation) ── */
+  .market-actions {
+    display: none !important;
+  }
+
+  /* ── 1g. Catalog btn always hidden on mobile ── */
+  .market-catalog-btn {
+    display: none !important;
+  }
+
+  /* ── 1h. Search bar: full width on row 2, inside .market-search-row ── */
+  .market-search-row {
+    grid-row: 2 !important;
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 6px 0 4px !important;
+  }
+  .market-search-row .market-search {
+    grid-row: unset !important;
+    grid-column: unset !important;
+    margin: 0 !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    border-radius: 10px !important;
+    border-width: 2px !important;
+  }
+  .market-search-row .market-search input {
+    padding: 10px 10px !important;
+    font-size: 13px !important;
+  }
+  .market-search-row .market-search button {
+    padding: 0 14px !important;
+    font-size: 14px !important;
+  }
+  /* Also handle if search is not wrapped (fallback) */
+  .market-search {
+    grid-row: 2 !important;
+    grid-column: 1 / -1 !important;
+    margin: 6px 0 4px !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+    border-width: 2px !important;
+  }
+  .market-search input {
+    padding: 10px 10px !important;
+    font-size: 13px !important;
+  }
+  .market-search button {
+    padding: 0 14px !important;
+    font-size: 14px !important;
+  }
+
+  /* ── 1i. Nav strip: hidden on mobile (bottom nav is used) ── */
+  .market-nav {
+    display: none !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 2 — Catalog product cards (shop.html)
+   ══════════════════════════════════════════════════════════
+   Target: 320–480 px
+   Cards should be single-column OR tight 2-column depending
+   on width, with proper spacing and image heights.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── 2a. Catalog grid: 2-col, 12px side gutter, 10px gap ── */
+  body.market-body #shop-grid,
+  body.market-body #new-products,
+  body.market-body #featured-products {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    padding: 0 12px !important;
+  }
+
+  /* ── 2b. Each card fills its column ── */
+  body.market-body .product__item {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ── 2c. Product image: capped at ~240px, fills card width ── */
+  body.market-body .product__item__pic {
+    height: 220px !important;
+    width: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  /* Also handle <img> tags inside the pic container */
+  body.market-body .product__item__pic img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* ── 2d. Card text padding ── */
+  body.market-body .product__item__text {
+    padding: 8px 8px 10px !important;
+  }
+
+  /* ── 2e. Product title: 20–24px range, 2-line clamp ── */
+  body.market-body .product__item__text h6,
+  body.market-body .product__item__text h6 a {
+    font-size: 13px !important;   /* compact for 2-col layout */
+    line-height: 1.3 !important;
+    font-weight: 800 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    min-height: unset !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* ── 2f. Price: visible and prominent ── */
+  body.market-body .product__price {
+    font-size: 14px !important;
+    margin: 3px 0 6px !important;
+    font-weight: 900 !important;
+  }
+  body.market-body .product__oldprice {
+    font-size: 11px !important;
+  }
+
+  /* ── 2g. Add-to-cart button compact ── */
+  body.market-body .link-btn {
+    font-size: 10px !important;
+    padding: 7px 6px !important;
+    height: 32px !important;
+    border-radius: 9px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin-top: auto !important;
+  }
+}
+
+/* ── Very small phones (< 360px): single column ── */
+@media (max-width: 359px) {
+  body.market-body #shop-grid,
+  body.market-body #new-products,
+  body.market-body #featured-products {
+    grid-template-columns: 1fr !important;
+    padding: 0 12px !important;
+  }
+
+  body.market-body .product__item__pic {
+    height: 260px !important;
+  }
+
+  body.market-body .product__item__pic img {
+    height: 260px !important;
+  }
+
+  /* Larger text when single-column */
+  body.market-body .product__item__text h6,
+  body.market-body .product__item__text h6 a {
+    font-size: 14px !important;
+  }
+  body.market-body .product__price {
+    font-size: 16px !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 3 — Product detail page (product-details.html)
+   ══════════════════════════════════════════════════════════
+   The inline <style> on that page already handles 767px and
+   479px breakpoints.  We add a tighter 480px layer here to
+   ensure the image is capped and text is correct.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── 3a. Page wrap: less padding so image + info appear above fold ── */
+  .product-detail-wrap {
+    padding: 16px 0 !important;
+  }
+
+  /* ── 3b. Main image: max 340px height, fills width ── */
+  .pd-image-box {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+  .pd-image-box img,
+  #pdMainImage {
+    width: 100% !important;
+    height: 300px !important;
+    max-height: 340px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+  }
+
+  /* ── 3c. Navigation arrows smaller ── */
+  .pd-image-nav {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+  }
+  .pd-image-nav.prev { left: 6px !important; }
+  .pd-image-nav.next { right: 6px !important; }
+
+  /* ── 3d. Thumbnails smaller row ── */
+  .pd-thumbs {
+    gap: 6px !important;
+    margin-top: 8px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 2px !important;
+  }
+  .pd-thumbs::-webkit-scrollbar { display: none !important; }
+  .pd-thumb {
+    width: 56px !important;
+    height: 56px !important;
+    flex-shrink: 0 !important;
+    border-radius: 8px !important;
+  }
+
+  /* ── 3e. Info box compact ── */
+  .pd-info-box {
+    padding: 14px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  /* ── 3f. Product title: 20–22px on smallest screens ── */
+  .pd-title {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* ── 3g. Price: 22–24px ── */
+  .pd-price {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+  }
+  .pd-old-price {
+    font-size: 14px !important;
+  }
+
+  /* ── 3h. Buttons full-width stack ── */
+  .pd-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .pd-btn {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ── 3i. Meta grid single column ── */
+  .pd-meta-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* ── 3j. Related products grid ── */
+  .related-grid-inner {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 4 — Body padding for fixed bottom nav (all mobile)
+   ══════════════════════════════════════════════════════════
+   The bottom nav stays fixed at 58px.  Make sure the main
+   content is never hidden behind it.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  body.market-body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Main element on shop page: a bit extra space */
+  body.market-body main {
+    padding-bottom: 16px !important; /* bottom nav padding is on body, not main */
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 5 — Container / section horizontal gutters
+   ══════════════════════════════════════════════════════════
+   Ensure sections don't add excessive left/right padding that
+   would squeeze cards too narrow.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  body.market-body .market-section .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  body.market-body .market-section {
+    padding: 14px 0 !important;
+  }
+
+  /* Breadcrumb tighter */
+  body.market-body .market-breadcrumb {
+    padding: 12px 0 10px !important;
+  }
+  body.market-body .market-breadcrumb h1 {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+  }
+  body.market-body .market-breadcrumb p {
+    font-size: 12px !important;
+  }
+
+  /* Toolbar */
+  body.market-body .market-toolbar {
+    border-radius: 12px !important;
+    padding: 10px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 6 — Catalog filter toolbar (shop.html) — 320–480px
+   ══════════════════════════════════════════════════════════
+   Goals:
+   - Filter toolbar must not occupy most of the screen height
+   - Category chips wrap into up to 2 rows (not a single
+     horizontal scroll that hides most buttons)
+   - Min / Max price inputs sit side by side in one row
+   - Search + sort fields stay compact
+   - Clear button is a short single row
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── 6a. Toolbar card: tight padding, smaller radius ── */
+  .market-toolbar {
+    padding: 10px 10px 8px !important;
+    border-radius: 14px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  /* ── 6b. Category chip row: wrap (max 2 rows) not single scroll ── */
+  .market-filter-row {
+    display: flex !important;
+    flex-wrap: wrap !important;          /* override the nowrap from mobile-premium */
+    overflow-x: visible !important;
+    gap: 5px !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 0 !important;
+    max-height: none !important;
+  }
+
+  /* ── 6c. Each chip: compact pill ── */
+  body.market-body .filter-btn {
+    flex: 0 0 auto !important;
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    height: 28px !important;
+    line-height: 1 !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+  }
+
+  /* ── 6d. Search + sort: each on its own row, compact height ── */
+  .market-control-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+  .market-control-row input,
+  .market-control-row select {
+    height: 38px !important;
+    font-size: 12px !important;
+    padding: 0 10px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ── 6e. Price row: min + max side by side, clear below ── */
+  .shop-price-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 6px !important;
+    margin-top: 0 !important;
+    align-items: end !important;
+  }
+
+  /* Min price label — col 1 */
+  .shop-price-field:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Max price label — col 2 */
+  .shop-price-field:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Clear button — spans both columns below */
+  #shop-clear-filters {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    height: 34px !important;
+    font-size: 12px !important;
+    padding: 0 10px !important;
+    border-radius: 10px !important;
+    margin-top: 0 !important;
+  }
+
+  /* Price inputs compact */
+  .shop-price-field {
+    flex: unset !important;
+    font-size: 11px !important;
+    gap: 3px !important;
+  }
+  .shop-price-field span {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+  }
+  .shop-price-field input {
+    width: 100% !important;
+    height: 36px !important;
+    font-size: 12px !important;
+    padding: 0 8px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ── 6f. Product count line: tight margin ── */
+  .shop-count {
+    margin: 6px 0 0 !important;
+    font-size: 11px !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 7 — Benefits / Features section — 320–480px
+   ══════════════════════════════════════════════════════════
+   mobile-premium.css forces 1-column at ≤480px.
+   We override back to 2-column and make each card compact.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── 7a. Force 2-column grid (override the 1-col from mobile-premium) ── */
+  .market-features {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* ── 7b. Each card: compact, horizontal icon + text layout ── */
+  .market-feature {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
+    min-height: unset !important;
+  }
+
+  /* ── 7c. Icon: smaller ── */
+  .market-feature i {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ── 7d. Text block fills remaining space ── */
+  .market-feature > div,
+  .market-feature > .market-feature__text {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  /* ── 7e. Title compact ── */
+  .market-feature h6 {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    margin-bottom: 2px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* ── 7f. Description compact, 2-line clamp ── */
+  .market-feature p {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 8 — Footer (sm-footer) — 320–480px
+   ══════════════════════════════════════════════════════════
+   Goals:
+   - Brand description hidden (takes too much vertical space)
+   - "Sections" + "Help" in 2 columns side by side
+   - Contact row below them, full width
+   - Compact padding, tight link spacing, smaller text
+   - Bottom copyright row minimal height
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── 8a. Footer outer padding: much tighter ── */
+  .sm-footer {
+    padding: 18px 12px 12px !important;
+    margin-top: 0 !important;
+  }
+
+  /* ── 8b. Grid: brand full-width row 1, then sections+help as 2-col, contact full-width ── */
+  .sm-footer__grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px 16px !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Brand block: full width, but hide the long paragraph */
+  .sm-footer__brand {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Hide brand description paragraph — too long for mobile */
+  .sm-footer__brand p {
+    display: none !important;
+  }
+
+  /* ── 8c. Logo inside brand ── */
+  .sm-footer .sm-logo,
+  .sm-footer .market-logo {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    gap: 7px !important;
+    text-decoration: none !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Contact column: spans both columns, placed below sections+help */
+  /* The contact div is the 4th child of sm-footer__grid */
+  .sm-footer__grid > div:nth-child(4) {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* ── 8d. Section headers tighter ── */
+  .sm-footer h6 {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    margin-bottom: 6px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.4px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  /* ── 8e. Links compact ── */
+  .sm-footer a {
+    font-size: 12px !important;
+    padding: 2px 0 !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.65) !important;
+  }
+
+  /* ── 8f. Bottom bar: minimal ── */
+  .sm-footer__bottom {
+    margin: 12px auto 0 !important;
+    padding-top: 10px !important;
+    font-size: 11px !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

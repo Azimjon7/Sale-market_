@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Sale Market — mahsulot tafsilotlari, narx va xususiyatlar" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sale Market | Mahsulot</title>
+
+  <link rel="stylesheet" href="css/design-system.css" type="text/css">
+  <link rel="stylesheet" href="css/components.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/marketplace-upgrade.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-premium.css" type="text/css">
+  <link rel="stylesheet" href="css/shared-header.css" type="text/css">
+  <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css">
+
+  <style>
+    :root {
+      --border: var(--color-border);
+      --surface: var(--color-surface);
+      --text: var(--color-text-primary);
+      --accent: var(--color-accent);
+      --muted: var(--color-text-secondary);
+      --success: var(--color-success);
+    }
+    .product-detail-wrap { padding: 60px 0; }
+    .pd-page-top { margin-bottom: 18px; }
+
+    .pd-back-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      transition: 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pd-back-btn:hover { background: #f3efe6; }
+
+    .pd-image-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pd-image-box img { width: 100%; height: 640px; object-fit: cover; display: block; background: #fff; }
+
+    .pd-image-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 26px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.15s ease; z-index:2; }
+    .pd-image-nav.prev { left: 14px; }
+    .pd-image-nav.next { right: 14px; }
+
+    .pd-thumbs { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .pd-thumb { width:86px; height:86px; object-fit:cover; border-radius:12px; border:2px solid var(--border); cursor:pointer; background:#fff; }
+    .pd-thumb.active { border-color: var(--accent); }
+
+    .pd-info-box { background: var(--surface); border:1px solid var(--border); border-radius:18px; padding:28px; height:100%; display:flex; flex-direction:column; }
+
+    .pd-badge { display:inline-flex; align-items:center; padding:7px 12px; border-radius:999px; background:var(--accent); color:#fff; font-size:12px; margin-bottom:14px; font-weight:700; }
+
+    .pd-title { font-size:34px; line-height:1.22; font-weight:800; margin-bottom:10px; color:var(--text); }
+
+    .pd-rating-row { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:14px; margin-bottom:16px; }
+    .pd-rating-stars { color:var(--accent); font-size:15px; }
+
+    .pd-price-wrap { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .pd-price { font-size:36px; font-weight:800; color:var(--accent); }
+    .pd-old-price { font-size:20px; color:var(--muted); text-decoration:line-through; }
+
+    .pd-label { font-size:16px; font-weight:700; margin-bottom:14px; color:var(--text); }
+
+    .pd-options { margin-bottom:18px; }
+    .pd-option-list { display:flex; gap:12px; flex-wrap:wrap; }
+
+    .pd-chip { border:1px solid var(--border); background:#fff; color:var(--text); border-radius:999px; padding:9px 16px; cursor:pointer; transition:0.12s ease; font-weight:600; min-width:64px; text-align:center; }
+    .pd-chip:hover, .pd-chip.active { background:var(--accent); color:#000; border-color:var(--accent); }
+
+    .pd-qty-wrap { display:flex; align-items:center; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+    .pd-qty-input { width:110px; height:52px; border-radius:14px; border:1px solid var(--border); background:#fff; color:var(--text); padding:0 14px; font-size:18px; }
+
+    .pd-meta-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:2px 0 22px; }
+    .pd-info-card { min-height:76px; border:1px solid var(--border); background:var(--surface); border-radius:14px; padding:12px 14px; }
+    .pd-info-card span { display:block; color:var(--muted); font-size:12px; font-weight:700; margin-bottom:6px; text-transform:uppercase; }
+    .pd-info-card strong { color:var(--text); display:block; font-size:15px; line-height:1.35; }
+
+    .pd-actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:auto; }
+    .pd-btn { border:none; outline:none; border-radius:14px; padding:15px 24px; font-size:16px; font-weight:800; cursor:pointer; transition:0.15s ease; flex:1 1 180px; text-align:center; }
+    .pd-btn-primary { background:var(--accent); color:#000; }
+    .pd-btn-dark { background:#fff; color:var(--text); border:1px solid var(--border); }
+    .pd-btn:hover:not(:disabled){ transform:translateY(-1px); }
+
+    .pd-message { margin-top:18px; font-size:15px; color:var(--success); }
+    .pd-error { padding:80px 20px; text-align:center; font-size:24px; color:var(--text); }
+    .pd-error a { color:var(--accent); text-decoration:underline; }
+
+    .pd-section { margin-top:18px; border:1px solid var(--border); background:var(--surface); border-radius:18px; padding:22px; }
+    .pd-section-title { color:var(--text); font-size:22px; font-weight:800; margin-bottom:14px; }
+
+    .pd-about-card { max-width:920px; border:1px solid var(--border); background:var(--surface); border-radius:14px; padding:16px 18px; }
+    .pd-about-text { color:var(--muted); font-size:15px; line-height:1.75; margin-bottom:0; white-space:pre-line; }
+
+    .pd-feature-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; list-style:none; margin:0; padding:0; }
+    .pd-feature-list li { position:relative; color:var(--text); font-size:15px; line-height:1.55; padding-left:18px; }
+    .pd-feature-list li:before { content:""; position:absolute; left:0; top:0.68em; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(184,134,70,0.12); }
+
+
+
+    @media (max-width: 991px) {
+      .pd-image-box img {
+        height: 460px;
+      }
+
+      .pd-image-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+      }
+
+      .pd-title {
+        font-size: 30px;
+      }
+
+      .pd-price {
+        font-size: 31px;
+      }
+
+      .pd-old-price {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .product-detail-wrap {
+        padding: 24px 0;
+      }
+
+      .pd-page-top {
+        margin-bottom: 10px;
+      }
+
+      .pd-back-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .pd-image-box {
+        border-radius: 14px;
+      }
+
+      .pd-image-box img {
+        height: 300px;
+      }
+
+      .pd-image-nav {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+      }
+
+      .pd-image-nav.prev {
+        left: 8px;
+      }
+
+      .pd-image-nav.next {
+        right: 8px;
+      }
+
+      .pd-thumbs {
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .pd-thumb {
+        width: 64px;
+        height: 64px;
+      }
+
+      .pd-info-box {
+        padding: 16px;
+        border-radius: 14px;
+      }
+
+      .pd-badge {
+        font-size: 11px;
+        margin-bottom: 10px;
+      }
+
+      .pd-title {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        overflow-wrap: anywhere;
+      }
+
+      .pd-rating-row {
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
+
+      .pd-price-wrap {
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .pd-price {
+        font-size: 28px;
+      }
+
+      .pd-old-price {
+        font-size: 16px;
+      }
+
+      .pd-options {
+        margin-bottom: 16px;
+      }
+
+      .pd-meta-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 16px;
+        order: 5;
+      }
+
+      .pd-control-panel {
+        order: 3;
+      }
+
+      .pd-actions {
+        order: 4;
+        margin-top: 0;
+      }
+
+      #pdMessage {
+        order: 6;
+      }
+
+      .pd-label {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .pd-chip {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-width: 52px;
+      }
+
+      .pd-qty-wrap {
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .pd-qty-input {
+        width: 84px;
+        height: 40px;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+
+      .pd-meta {
+        margin-bottom: 16px;
+        padding-top: 8px;
+      }
+
+      .pd-meta div {
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+
+      .pd-meta strong {
+        min-width: 72px;
+      }
+
+      .pd-actions {
+        gap: 10px;
+      }
+
+      .pd-btn {
+        width: 100%;
+        padding: 11px 14px;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+
+      .pd-message {
+        font-size: 13px;
+        margin-top: 12px;
+      }
+
+      .pd-section,
+      .pd-section-title {
+        padding: 16px;
+        border-radius: 14px;
+      }
+
+      .pd-section-title {
+        font-size: 18px;
+      }
+
+      .pd-about-card {
+        padding: 13px;
+      }
+
+      .pd-feature-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .pd-feature-list li,
+      .pd-about-text {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .pd-image-box img {
+        height: 250px;
+      }
+
+      .pd-thumb {
+        width: 56px;
+        height: 56px;
+      }
+
+      .pd-title {
+        font-size: 22px;
+      }
+
+      .pd-price {
+        font-size: 24px;
+      }
+
+      .pd-old-price {
+        font-size: 14px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+</head>
+<body class="market-body">
+  <header class="market-header" id="main-header">
+    <div class="market-topbar"><div class="container"><div class="market-topbar__inner">
+      <span><i class="fa fa-map-marker"></i> O'zbekiston bo'ylab tez yetkazib berish</span>
+      <span>Har kuni chegirmalar &bull; Xavfsiz buyurtma &bull; Sifat kafolati</span>
+    </div></div></div>
+    <div class="market-mainbar"><div class="container-fluid"><div class="market-row">
+      <a class="market-logo" href="index.html" aria-label="Sale Market - Bosh sahifa">
+        <span class="market-logo__mark">SM</span>
+        <span>Sale Market</span>
+      </a>
+      <a class="market-catalog-btn" href="shop.html"><i class="fa fa-th-large"></i> Katalog</a>
+      <form class="market-search js-market-search" role="search">
+        <input type="search" placeholder="Mahsulot, kategoriya yoki brend qidirish..." aria-label="Qidirish"/>
+        <button type="submit" aria-label="Qidirish"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="market-actions">
+        <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
+          <i class="fa fa-truck"></i><span>Kuzatish</span>
+        </a>
+        <a class="market-action" href="shop-cart.html" aria-label="Savat">
+          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+          <em class="market-cart-tip js-cart-count">0</em>
+        </a>
+        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
+          <i class="fa fa-user-o"></i><span>Admin</span>
+        </a>
+      </div>
+      <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
+        <span></span><span></span><span></span>
+      </button>
+    </div></div></div>
+    <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
+      <li><a href="index.html">Bosh sahifa</a></li>
+      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="contact.html">Bog'lanish</a></li>
+    </ul></div></nav>
+  </header>
+  <!-- Mobile nav drawer -->
+  <div class="mh-mobile-nav" id="mh-mobile-nav" aria-hidden="true">
+    <div class="mh-mobile-nav__inner">
+      <div class="mh-mobile-nav__title">Sale Market</div>
+      <ul>
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="checkout.html">Buyurtma</a></li>
+        <li><a href="contact.html">Bog'lanish</a></li>
+        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+      </ul>
+    </div>
+  </div>
+  </header>
+
+  <main>
+
+  <section class="product-detail-wrap">
+    <div class="container">
+      <div class="pd-page-top">
+        <button type="button" class="pd-back-btn" id="pdBackBtn">&#8592; Saytga qaytish</button>
+      </div>
+      <div id="productDetailApp">
+        <div class="pd-error">Yuklanmoqda...</div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="sm-footer">
+    <div class="sm-footer__grid">
+      <div class="sm-footer__brand">
+        <a class="market-logo" href="index.html" aria-label="Sale Market">
+          <span class="market-logo__mark">SM</span>
+          <span style="color:#fff">Sale Market</span>
+        </a>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+      </div>
+      <div>
+        <h6>Bo'limlar</h6>
+        <a href="shop.html">Katalog</a>
+        <a href="shop-cart.html">Savat</a>
+        <a href="checkout.html">Buyurtma</a>
+      </div>
+      <div>
+        <h6>Yordam</h6>
+        <a href="track-order.html">Buyurtmani kuzatish</a>
+        <a href="contact.html">Bog'lanish</a>
+      </div>
+      <div>
+        <h6>Aloqa</h6>
+        <a href="https://t.me/salemarket_uz" target="_blank" rel="noopener"><i class="fa fa-telegram" aria-hidden="true"></i> @salemarket_uz</a>
+      </div>
+    </div>
+    <div class="sm-footer__bottom">© 2026 Sale Market</div>
+  </footer>
+
+  <script src="js/helpers.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+  <script src="js/shared-header-init.js"></script>
+  <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function goBackToSite() {
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      let fallback = "index.html";
+      if (document.referrer) {
+        try {
+          const refUrl = new URL(document.referrer);
+          if (refUrl.origin === window.location.origin) {
+            fallback = refUrl.href;
+          }
+        } catch (e) {}
+      }
+      window.location.href = fallback;
+    }
+
+    function initBackButton() {
+      const backBtn = document.getElementById("pdBackBtn");
+      if (!backBtn) return;
+
+      backBtn.addEventListener("click", function () {
+        goBackToSite();
+      });
+    }
+
+    initBackButton();
+
+    function parseOptions(value, type = "default") {
+  const text = String(value || "").trim();
+  if (!text) return [];
+
+  const sizeOrder = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
+
+  // Ranglar uchun: vergul ham, tire ham bo‘lsa bo‘lib tashlaydi
+  if (type === "color") {
+    return text
+      .split(/[,-]/)
+      .map(v => v.trim())
+      .filter(Boolean);
+  }
+
+  // Oddiy ro‘yxat: S, M, L yoki Qora, Oq
+  if (text.includes(",")) {
+    return text
+      .split(",")
+      .map(v => v.trim())
+      .filter(Boolean);
+  }
+
+  // Size range: 40-44, 30-35, S-3XL
+  if (text.includes("-")) {
+    const parts = text.split("-").map(v => v.trim()).filter(Boolean);
+
+    if (parts.length === 2) {
+      const start = parts[0];
+      
+      const end = parts[1];
+
+      // Raqamli range
+      if (!isNaN(start) && !isNaN(end)) {
+        const a = Number(start);
+        const b = Number(end);
+        const result = [];
+        for (let i = a; i <= b; i++) {
+          result.push(String(i));
+        }
+        return result;
+      }
+
+      // Harfli size range
+      const startIndex = sizeOrder.indexOf(start.toUpperCase());
+      const endIndex = sizeOrder.indexOf(end.toUpperCase());
+
+      if (startIndex !== -1 && endIndex !== -1 && startIndex <= endIndex) {
+        return sizeOrder.slice(startIndex, endIndex + 1);
+      }
+    }
+  }
+
+  return [text];
+}
+
+  // Bitta qiymat boвЂlsa
+
+    function formatPrice(value) {
+      if (value === null || value === undefined || value === "") return "0 so'm";
+      return Number(value).toLocaleString("uz-UZ") + " so'm";
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderStars(rating) {
+      const count = Math.max(1, Math.min(5, Math.round(Number(rating || 5))));
+      return "★".repeat(count) + "☆".repeat(5 - count);
+    }
+
+    function cleanFeatureText(value) {
+      return String(value || "")
+        .replace(/^[\s\-–—*•●▪▫✔✓✅☑]+/g, "")
+        .replace(/^(âœ”ï¸|âœ”|â€¢|âœ¨|ðŸ’¯|ðŸ‘”|ðŸ‘•|ðŸ’¥)+/g, "")
+        .replace(/\s{2,}/g, " ")
+        .replace(/^[.:;,\s]+|[|;\s]+$/g, "")
+        .trim();
+    }
+
+    function descriptionFeatures(value) {
+      const raw = String(value || "").replace(/\r\n?/g, "\n").trim();
+      if (!raw) return [];
+
+      const hasFeatureSignal = /[✔✓✅☑•●▪▫]|\n|âœ|â€¢|\s[|;]\s/.test(raw);
+      if (!hasFeatureSignal) return [];
+
+      const normalized = raw
+        .replace(/[✔✓✅☑•●▪▫]/g, "\n")
+        .replace(/âœ”ï¸|âœ”|â€¢|âœ¨|ðŸ’¯|ðŸ‘”|ðŸ‘•|ðŸ’¥/g, "\n")
+        .replace(/\s+[|;]\s+/g, "\n")
+        .replace(/\n\s*[-–—*]+\s*/g, "\n");
+
+      const parts = normalized
+        .split(/\n+/)
+        .map(cleanFeatureText)
+        .filter(Boolean)
+        .filter((item) => {
+          const compactHeading = /[:?]\s*$/.test(item) && item.length <= 46;
+          const namedHeading = /^(mos keladi|qayerda kiyiladi|kombinatsiya|afzalliklari|xususiyatlari)\b/i.test(item);
+          return !compactHeading && !namedHeading;
+        });
+
+      return [...new Set(parts)].slice(0, 14);
+    }
+
+    function renderDescriptionContent(value) {
+      const raw = String(value || "").replace(/\r\n?/g, "\n").trim();
+      if (!raw) {
+        return '<p class="pd-about-text">Bu mahsulot haqida batafsil ma\'lumot tez orada qo\'shiladi.</p>';
+      }
+
+      const features = descriptionFeatures(raw);
+      if (features.length >= 2) {
+        return `
+          <ul class="pd-feature-list">
+            ${features.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ul>
+        `;
+      }
+
+      const compactText = raw
+        .split(/\n{2,}/)
+        .map((part) => cleanFeatureText(part).replace(/\n+/g, " "))
+        .filter(Boolean)
+        .join("\n\n");
+
+      return `<p class="pd-about-text">${escapeHtml(compactText)}</p>`;
+    }
+
+    /* Reviews section removed — these stubs prevent errors if any
+       external code still references these functions. */
+    function updateRatingRow() {}
+    async function initReviews() {}
+    async function loadReviews() {}
+
+    function makeChips(items, group) {
+  const list = items.length ? items : ["Standart"];
+  return `
+    <div class="pd-option-list">
+      ${list.map((item, index) => `
+        <button type="button" class="pd-chip ${index === 0 ? "active" : ""}" data-group="${group}">
+          ${item}
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function createChipList(items, group) {
+  return makeChips(items, group);
+}
+
+    function attachChipEvents() {
+      document.querySelectorAll(".pd-chip").forEach(chip => {
+        chip.addEventListener("click", function () {
+          const group = this.getAttribute("data-group");
+          if (!group) return;
+
+          document.querySelectorAll(`.pd-chip[data-group="${group}"]`).forEach(btn => {
+            btn.classList.remove("active");
+          });
+
+          this.classList.add("active");
+        });
+      });
+    }
+
+    function getActiveChipText(group) {
+      const active = document.querySelector(`.pd-chip[data-group="${group}"].active`);
+      return active ? active.textContent.trim() : "";
+    }
+
+    function addToCart(product) {
+      const qty = parseInt(document.getElementById("qtyInput").value) || 1;
+      if (Number(product.stock ?? 999) < qty) {
+        document.getElementById("pdMessage").textContent = "Omborda buncha mahsulot yo'q.";
+        return false;
+      }
+      const selectedSize = getActiveChipText("size");
+      const selectedColor = getActiveChipText("color");
+
+      const safeQty = Math.max(1, Number(qty) || 1);
+      const cartItem = {
+        productId: product.id,
+        qty: safeQty,
+        size: selectedSize || "",
+        color: selectedColor || "",
+        product
+      };
+
+      if (window.MBStore && typeof window.MBStore.addToCart === "function") {
+        window.MBStore.addToCart(cartItem);
+      } else {
+        const key = "mujskoy_cart";
+        const cart = JSON.parse(localStorage.getItem(key) || "[]");
+        const existingIndex = cart.findIndex((item) =>
+          String(item.productId) === String(cartItem.productId) &&
+          String(item.size || "") === String(cartItem.size || "") &&
+          String(item.color || "") === String(cartItem.color || "")
+        );
+
+        if (existingIndex !== -1) {
+          cart[existingIndex].qty = Math.max(1, Number(cart[existingIndex].qty || 1) + safeQty);
+        } else {
+          cart.push(cartItem);
+        }
+        localStorage.setItem(key, JSON.stringify(cart));
+      }
+
+      document.getElementById("pdMessage").textContent = "Mahsulot savatga qo'shildi.";
+      return true;
+    }
+
+    function buyNow(product) {
+      if (addToCart(product)) {
+        window.location.href = "checkout.html";
+      }
+    }
+
+    function renderProduct(product) {
+      const sizes = parseOptions(product.sizes, "size");
+      const colors = parseOptions(product.colors, "color");
+      const stock = Math.max(1, Number(product.stock ?? 999) || 999);
+      const inStock = true;
+      const label = product.label || product.badge || product.category || "Mahsulot";
+      const description = product.desc || product.description || "";
+      const productImages = Array.isArray(product.images) && product.images.length
+        ? product.images
+        : (product.image ? [product.image] : ["img/product/product-1.jpg"]);
+
+      const html = `
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="pd-image-box">
+              <button type="button" class="pd-image-nav prev" id="pdPrevImage" aria-label="Oldingi rasm">&lt;</button>
+              <img id="pdMainImage" src="${productImages[0]}" alt="${product.name || "Mahsulot"}">
+              <button type="button" class="pd-image-nav next" id="pdNextImage" aria-label="Keyingi rasm">&gt;</button>
+            </div>
+            <div class="pd-thumbs">
+              ${productImages.map((img, index) => `<img src="${img}" alt="${escapeHtml(product.name || 'Mahsulot')} rasmi" loading="lazy" class="pd-thumb ${index === 0 ? "active" : ""}" data-image="${img}" data-index="${index}" tabindex="0">`).join("")}
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="pd-info-box">
+              <div class="pd-badge">${escapeHtml(label)}</div>
+              <div style="margin-bottom:14px;">
+                <span class="badge badge-success">Sotuvda bor</span>
+              </div>
+
+              <h1 class="pd-title">${escapeHtml(product.name || "")}</h1>
+
+              <div id="pdRatingRow" class="pd-rating-row" hidden></div>
+
+              <div class="pd-price-wrap">
+                <div class="pd-price">${formatPrice(product.price)}</div>
+                ${product.oldPrice ? `<div class="pd-old-price">${formatPrice(product.oldPrice)}</div>` : ""}
+              </div>
+
+              <div class="pd-control-panel">
+                <div class="pd-options">
+                  <div class="pd-label">O'lcham</div>
+                  ${createChipList(sizes, "size")}
+                </div>
+
+                <div class="pd-options">
+                  <div class="pd-label">Rang</div>
+                  ${createChipList(colors, "color")}
+                </div>
+
+                <div class="pd-qty-wrap">
+                  <div class="pd-label" style="margin:0;">Soni</div>
+                  <input id="qtyInput" class="pd-qty-input" type="number" min="1" ${inStock ? `max="${stock}"` : ""} value="1">
+                </div>
+              </div>
+
+              <div class="pd-meta-grid">
+                <div class="pd-info-card">
+                  <span>Kategoriya</span>
+                  <strong>${escapeHtml(product.category || "-")}</strong>
+                </div>
+                <div class="pd-info-card">
+                  <span>Omborda</span>
+                  <strong>Mavjud</strong>
+                </div>
+                <div class="pd-info-card">
+                  <span>Yetkazish</span>
+                  <strong>7+ kun ichida</strong>
+                </div>
+                <div class="pd-info-card">
+                  <span>To'lov</span>
+                  <strong>Buyurtma asosida</strong>
+                </div>
+              </div>
+
+              <div class="pd-actions">
+                <button class="pd-btn pd-btn-primary" id="addToCartBtn">Savatga qo'shish</button>
+                <button class="pd-btn pd-btn-dark" id="buyNowBtn">Hozir olish</button>
+              </div>
+
+              <div id="pdMessage" class="pd-message"></div>
+            </div>
+          </div>
+        </div>
+
+        <section class="pd-section pd-about-section">
+          <h2 class="pd-section-title">Mahsulot haqida</h2>
+          <div class="pd-about-card">
+            ${renderDescriptionContent(description)}
+          </div>
+        </section>
+      `;
+
+      document.getElementById("productDetailApp").innerHTML = html;
+      attachChipEvents();
+
+      const mainImage = document.getElementById("pdMainImage");
+      const thumbs = Array.from(document.querySelectorAll(".pd-thumb"));
+      let currentImageIndex = 0;
+
+      function setActiveImage(index) {
+        if (!thumbs.length) return;
+        const total = thumbs.length;
+        const safeIndex = ((index % total) + total) % total;
+        currentImageIndex = safeIndex;
+
+        mainImage.src = thumbs[safeIndex].dataset.image;
+        thumbs.forEach((thumb, i) => {
+          thumb.classList.toggle("active", i === safeIndex);
+        });
+      }
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener("click", function () { setActiveImage(i); });
+        thumb.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setActiveImage(i);
+          }
+        });
+      });
+
+      if (mainImage && thumbs.length > 1) {
+        let touchStartX = 0;
+        mainImage.addEventListener("touchstart", function (event) {
+          touchStartX = event.changedTouches[0] ? event.changedTouches[0].clientX : 0;
+        }, { passive: true });
+        mainImage.addEventListener("touchend", function (event) {
+          const endX = event.changedTouches[0] ? event.changedTouches[0].clientX : touchStartX;
+          const delta = endX - touchStartX;
+          if (Math.abs(delta) < 45) return;
+          setActiveImage(currentImageIndex + (delta < 0 ? 1 : -1));
+        }, { passive: true });
+      }
+
+      const prevBtn = document.getElementById("pdPrevImage");
+      const nextBtn = document.getElementById("pdNextImage");
+
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener("click", function () {
+          setActiveImage(currentImageIndex - 1);
+        });
+
+        nextBtn.addEventListener("click", function () {
+          setActiveImage(currentImageIndex + 1);
+        });
+
+        if (thumbs.length <= 1) {
+          prevBtn.style.display = "none";
+          nextBtn.style.display = "none";
+        }
+      }
+
+      document.getElementById("addToCartBtn").addEventListener("click", function () {
+        addToCart(product);
+      });
+
+      document.getElementById("buyNowBtn").addEventListener("click", function () {
+        buyNow(product);
+      });
+
+      loadRelatedProducts(product);
+    }
+
+    async function loadRelatedProducts(product) {
+      const containerId = 'relatedProducts';
+      let container = document.getElementById(containerId);
+      if (!container) {
+        // append container after reviews
+        container = document.createElement('section');
+        container.id = containerId;
+        container.className = 'pd-section';
+        container.innerHTML = '<h2 class="pd-section-title">O\'xshash mahsulotlar</h2><div class="related-grid">Yuklanmoqda...</div>';
+        const app = document.getElementById('productDetailApp');
+        if (app) app.appendChild(container);
+      }
+
+      try {
+        const res = await fetch('data/products.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('data');
+        const products = await res.json();
+        const same = (products || []).filter(p => String(p.category || '') === String(product.category || '') && String(p.id) !== String(product.id));
+        let list = same.slice(0, 8);
+        if (list.length < 4) {
+          const others = (products || []).filter(p => String(p.id) !== String(product.id) && !list.find(x=>x.id===p.id));
+          list = list.concat(others.slice(0, Math.max(4 - list.length, 0)));
+        }
+        if (!list.length) {
+          container.querySelector('.related-grid').innerHTML = '<div class="pd-message">O\'xshash mahsulotlar topilmadi.</div>';
+          return;
+        }
+        renderRelatedProducts(container.querySelector('.related-grid'), list.slice(0,8));
+      } catch (err) {
+        const g = document.querySelector('#relatedProducts .related-grid');
+        if (g) g.innerHTML = '<div class="pd-message">O\'xshash mahsulotlarni yuklab bo\'lmadi.</div>';
+      }
+    }
+
+    function renderRelatedProducts(container, products) {
+      if (!container) return;
+      container.innerHTML = '<div class="related-grid-inner" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px"></div>';
+      const inner = container.querySelector('.related-grid-inner');
+      products.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.style.cursor = 'pointer';
+        card.innerHTML = `
+          <div style="border-radius:8px;overflow:hidden;"><img src="${p.image || (p.images && p.images[0]) || 'img/placeholders/placeholder.png'}" alt="${escapeHtml(p.name || '')}" loading="lazy" style="width:100%;height:140px;object-fit:cover"></div>
+          <div style="padding:8px">
+            ${p.label ? `<div class="badge">${escapeHtml(p.label)}</div>` : ''}
+            <div style="font-weight:700;color:var(--text);margin:6px 0;min-height:38px">${escapeHtml(p.name || '')}</div>
+            <div style="color:var(--accent);font-weight:800">${formatPrice(p.price)}</div>
+            ${p.oldPrice ? `<div style="text-decoration:line-through;color:var(--muted)">${formatPrice(p.oldPrice)}</div>` : ''}
+          </div>
+        `;
+        card.addEventListener('click', function(){ window.location.href = 'product-details.html?id=' + encodeURIComponent(p.id); });
+        inner.appendChild(card);
+      });
+    }
+
+    function renderNotFound() {
+      document.getElementById("productDetailApp").innerHTML = `
+        <div class="pd-error">
+          Mahsulot topilmadi.<br><br>
+          <a href="shop.html">Dokonga qaytish</a>
+        </div>
+      `;
+    }
+
+    async function loadProductById(productId) {
+      try {
+        if (window.MBHelpers && typeof window.MBHelpers.loadProductById === "function") {
+          return await window.MBHelpers.loadProductById(productId);
+        }
+      } catch (error) {}
+
+      try {
+        const listRes = await fetch("data/products.json", { cache: "no-store" });
+        if (!listRes.ok) return null;
+        const products = await listRes.json();
+        return (products || []).find((item) => String(item.id) === String(productId)) || null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+(async function initPage() {
+  const productId = getQueryParam("id");
+  if (!productId) {
+    renderNotFound();
+    return;
+  }
+
+  let product = await loadProductById(productId);
+  if (product && window.MBHelpers && typeof window.MBHelpers.normalizeProduct === "function") {
+    product = window.MBHelpers.normalizeProduct(product);
+  }
+  if (!product) {
+    document.getElementById("productDetailApp").innerHTML = `
+      <div class="pd-error">
+        Mahsulotni yuklashda xatolik bo'ldi.<br><br>
+        <a href="shop.html">Do'konga qaytish</a>
+      </div>
+    `;
+    return;
+  }
+
+  renderProduct(product);
+})();
+</script>
+</body>
+</html>

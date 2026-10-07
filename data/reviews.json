@@ -1,0 +1,42 @@
+[
+  {
+    "id": "rev_1706200000001",
+    "productId": "prd_1775681008960",
+    "name": "Jahongir Nazarov",
+    "rating": 5,
+    "review": "Juda zo'r krossovka! Sifati ajoyib, oyog'im charchamadi. Tez yetkazib berildi. Hammaga tavsiya qilaman!",
+    "createdAt": "2025-01-25T10:30:00.000Z"
+  },
+  {
+    "id": "rev_1706200000002",
+    "productId": "prd_1775681573066",
+    "name": "Rustam Ismoilov",
+    "rating": 5,
+    "review": "Ko'ylak juda chiroyli va sifatli. Slim fit dizayn qomatni zo'r ko'rsatdi. Yana buyurtma beraman!",
+    "createdAt": "2025-01-26T14:00:00.000Z"
+  },
+  {
+    "id": "rev_1706200000003",
+    "productId": "prd_1775680295547",
+    "name": "Kamola Saidova",
+    "rating": 4,
+    "review": "Kepka juda yengil va zamonaviy. Rangi fotosuratdagiga o'xshash. Kichik kamchilik: plastik qismi biroz qattiq.",
+    "createdAt": "2025-01-28T09:00:00.000Z"
+  },
+  {
+    "id": "rev_1706200000004",
+    "productId": "prd_1775677900792",
+    "name": "Anora Tursunova",
+    "rating": 5,
+    "review": "Ko'z oynagi original va chiroyli. Quyoshdan yaxshi himoya qiladi. Sifatiga norozi emasman. Savdo-sotiq tez edi.",
+    "createdAt": "2025-02-01T11:00:00.000Z"
+  },
+  {
+    "id": "rev_1706200000005",
+    "productId": "prd_1775681243067",
+    "name": "Sardor Toshpulatov",
+    "rating": 5,
+    "review": "Tapochka super qulay! Uyda va ko'chada kiyish uchun ideal. Material yumshoq, oyoq nafas oladi. Tez yetkazildi.",
+    "createdAt": "2025-02-03T15:00:00.000Z"
+  }
+]

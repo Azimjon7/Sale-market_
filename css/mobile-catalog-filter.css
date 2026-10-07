@@ -1,0 +1,900 @@
+/*
+ * Sale Market — Mobile Catalog Filter Redesign
+ * Modern marketplace UX (Uzum / Yandex Market inspired)
+ * Applies ONLY on mobile: 320px – 480px (and up to 768px where noted)
+ * Desktop layout is completely untouched.
+ * All existing JS filter IDs and classes are preserved.
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 1 — Hide original desktop toolbar on mobile
+   The original .market-toolbar is replaced by the new mobile
+   UI. Original inputs/selects/buttons stay in the DOM (hidden)
+   so all existing JS filter logic continues to work.
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Hide the original toolbar card on mobile */
+  .market-toolbar {
+    display: none !important;
+  }
+
+  /* Show the new mobile filter UI */
+  .mcf-wrap {
+    display: block !important;
+  }
+
+  /* Hide the original shop-count paragraph (replaced by mcf-count-bar) */
+  #shop-count {
+    display: none !important;
+  }
+
+  /* Keep shop-grid full width */
+  #shop-grid {
+    margin-top: 0 !important;
+  }
+}
+
+/* Hide mobile UI on desktop — default state */
+.mcf-wrap {
+  display: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 2 — Compact breadcrumb (catalog header)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .market-breadcrumb {
+    padding: 10px 0 8px !important;
+    background: #fff !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+  }
+  .market-breadcrumb h1 {
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    margin: 0 !important;
+    letter-spacing: -0.3px !important;
+    color: #111827 !important;
+    line-height: 1.2 !important;
+  }
+  .market-breadcrumb p {
+    font-size: 11px !important;
+    color: #9ca3af !important;
+    margin: 2px 0 0 !important;
+    line-height: 1.3 !important;
+  }
+  .market-breadcrumb .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .market-breadcrumb p {
+    display: none !important;  /* hide subtitle on very small screens */
+  }
+  .market-breadcrumb {
+    padding: 8px 0 6px !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 3 — Wrapper and section spacing
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Reduce section top padding */
+  .market-section {
+    padding-top: 0 !important;
+    padding-bottom: 16px !important;
+  }
+  .market-section .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 4 — mcf-wrap: the full mobile filter container
+   ═══════════════════════════════════════════════════════════ */
+
+.mcf-wrap {
+  background: #fff;
+  border-bottom: 1px solid #f1f5f9;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  /* shadows help separate from product grid */
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+
+/* ─── 4a. Category chip row ─────────────────────────────── */
+
+.mcf-cats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 6px;
+  padding: 8px 12px 6px;
+  background: #fff;
+  align-items: center;
+}
+.mcf-cats::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each chip mirrors .filter-btn styling but is tighter */
+.mcf-cats .filter-btn {
+  flex: 0 0 auto !important;
+  height: 36px !important;
+  padding: 0 14px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #f9fafb !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.mcf-cats .filter-btn.active,
+.mcf-cats .filter-btn:hover {
+  background: #6d28d9 !important;
+  border-color: #6d28d9 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 480px) {
+  .mcf-cats .filter-btn {
+    height: 34px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+
+/* ─── 4b. Action bar row ────────────────────────────────── */
+
+.mcf-action-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 8px;
+  background: #fff;
+}
+
+/* Each action button: equal pill look */
+.mcf-btn {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  position: relative;
+  /* no outline on touch */
+  -webkit-tap-highlight-color: transparent;
+}
+.mcf-btn i {
+  font-size: 13px;
+  line-height: 1;
+}
+.mcf-btn:active {
+  transform: scale(0.97);
+}
+
+/* Active / tapped state */
+.mcf-btn--active {
+  background: #6d28d9 !important;
+  border-color: #6d28d9 !important;
+  color: #fff !important;
+}
+.mcf-btn--active i {
+  color: #fff !important;
+}
+
+/* Filter badge (active filter indicator) */
+.mcf-filter-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ffd400;
+  color: #111827;
+  font-size: 9px;
+  font-weight: 900;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(255, 212, 0, 0.4);
+}
+.mcf-filter-badge--visible {
+  display: inline-flex !important;
+}
+
+@media (max-width: 480px) {
+  .mcf-btn {
+    height: 36px;
+    font-size: 11px;
+    gap: 4px;
+  }
+  .mcf-btn i {
+    font-size: 12px;
+  }
+}
+
+
+/* ─── 4c. Product count bar ─────────────────────────────── */
+
+.mcf-count-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px 4px;
+  background: #f9fafb;
+  border-top: 1px solid #f1f5f9;
+}
+
+.mcf-count-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+/* Grid/list view toggle (decorative — no JS needed) */
+.mcf-view-toggle {
+  display: flex;
+  gap: 4px;
+}
+.mcf-view-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  color: #9ca3af;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mcf-view-btn--active {
+  background: #6d28d9;
+  border-color: #6d28d9;
+  color: #fff;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 5 — Sort bottom sheet
+   ═══════════════════════════════════════════════════════════ */
+
+/* Overlay */
+.mcf-sort-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  z-index: 1190;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.mcf-sort-overlay--open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Sheet */
+.mcf-sort-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1191;
+  transform: translateY(110%);
+  transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mcf-sort-sheet--open {
+  transform: translateY(0) !important;
+}
+
+.mcf-sort-inner {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 0 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+  box-shadow: 0 -8px 40px rgba(15, 23, 42, 0.14);
+  overflow: hidden;
+}
+
+/* Drag handle */
+.mcf-sheet-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  margin: 10px auto 0;
+}
+
+/* Header row */
+.mcf-sort-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.mcf-sort-head h3 {
+  font-size: 15px;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+}
+.mcf-close-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #6b7280;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mcf-close-btn:hover { background: #f3e8ff; color: #6d28d9; border-color: #e9d5ff; }
+
+/* Sort option list */
+.mcf-sort-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mcf-sort-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  border: 1.5px solid transparent;
+  background: transparent;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mcf-sort-opt i {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+.mcf-sort-opt--active {
+  background: #f5f3ff !important;
+  border-color: #e9d5ff !important;
+  color: #6d28d9 !important;
+}
+.mcf-sort-opt--active i {
+  background: #6d28d9 !important;
+  color: #fff !important;
+}
+.mcf-sort-opt:active {
+  transform: scale(0.98);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 6 — Advanced filter bottom sheet
+   ═══════════════════════════════════════════════════════════ */
+
+/* Overlay */
+.mcf-filter-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  z-index: 1192;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.mcf-filter-overlay--open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Sheet */
+.mcf-filter-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1193;
+  transform: translateY(110%);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.mcf-filter-sheet--open {
+  transform: translateY(0) !important;
+}
+
+.mcf-filter-inner {
+  background: #fff;
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -10px 48px rgba(15, 23, 42, 0.15);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px));
+}
+
+/* Header */
+.mcf-filter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+}
+.mcf-filter-head h3 {
+  font-size: 16px;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+}
+
+/* Scrollable body */
+.mcf-filter-body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Field group */
+.mcf-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mcf-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Text input / select inside filter panel */
+.mcf-input,
+.mcf-select {
+  height: 44px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  background: #f9fafb;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.mcf-input:focus,
+.mcf-select:focus {
+  border-color: #7c3aed;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.10);
+}
+.mcf-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* Price row: two inputs side by side */
+.mcf-price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Footer: reset + apply */
+.mcf-filter-foot {
+  padding: 10px 16px 14px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mcf-reset-btn {
+  height: 46px;
+  flex: 0 0 auto;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  -webkit-tap-highlight-color: transparent;
+}
+.mcf-reset-btn:active { transform: scale(0.97); }
+.mcf-reset-btn:hover  { background: #fef3c7; border-color: #fbbf24; color: #92400e; }
+
+.mcf-apply-btn {
+  height: 46px;
+  flex: 1 1 auto;
+  border-radius: 12px;
+  border: 0;
+  background: #ffd400;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 6px 20px rgba(255, 212, 0, 0.3);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.mcf-apply-btn:hover  { background: #e6bf00; }
+.mcf-apply-btn:active { transform: scale(0.98); }
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 7 — Product grid spacing below sticky filter bar
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* The container holding the mcf-wrap and shop-grid */
+  .market-section .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Product grid: 2-col, proper side gutters */
+  body.market-body #shop-grid {
+    padding: 10px 12px 0 !important;
+  }
+
+  /* Ensure no gap between sticky bar and grid */
+  .market-section {
+    padding-top: 0 !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 8 — Catalog full-height overlay (mobile only)
+   Opens when user taps the yellow catalog button in header.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Backdrop */
+.mhc-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.40);
+  z-index: 1300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.mhc-overlay--open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Drawer — slides in from left */
+.mhc-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(88vw, 340px);
+  z-index: 1301;
+  transform: translateX(-110%);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mhc-drawer--open {
+  transform: translateX(0) !important;
+}
+
+/* Show on mobile */
+@media (max-width: 768px) {
+  .mhc-overlay,
+  .mhc-drawer {
+    display: block;
+  }
+}
+
+/* Inner container */
+.mhc-inner {
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 32px rgba(15, 23, 42, 0.18);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.mhc-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.mhc-back-btn,
+.mhc-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s ease;
+}
+.mhc-back-btn:active,
+.mhc-close-btn:active { background: #f3e8ff; color: #6d28d9; border-color: #e9d5ff; transform: scale(0.95); }
+
+.mhc-title {
+  flex: 1 1 auto;
+  font-size: 16px;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+/* ── Search inside catalog ── */
+.mhc-search-wrap {
+  padding: 10px 14px 8px;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.mhc-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  padding: 0 12px;
+  transition: border-color 0.15s ease;
+}
+.mhc-search:focus-within {
+  border-color: #7c3aed;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08);
+}
+.mhc-search__icon {
+  font-size: 13px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+.mhc-search__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: #111827;
+  font-weight: 500;
+  min-width: 0;
+}
+.mhc-search__input::placeholder { color: #9ca3af; }
+
+/* ── Category list ── */
+.mhc-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0 calc(env(safe-area-inset-bottom, 0px) + 12px);
+}
+
+/* Each row */
+.mhc-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0 14px;
+  height: 56px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid #f8fafc;
+  transition: background 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mhc-row:active,
+.mhc-row:hover { background: #f5f3ff; }
+
+.mhc-row--active {
+  background: #f5f3ff !important;
+}
+.mhc-row--active .mhc-row__label {
+  color: #6d28d9 !important;
+  font-weight: 800 !important;
+}
+.mhc-row--active .mhc-row__icon {
+  background: #6d28d9 !important;
+  color: #fff !important;
+}
+
+/* Icon */
+.mhc-row__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+/* Label */
+.mhc-row__label {
+  flex: 1 1 auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+/* Arrow */
+.mhc-row__arrow {
+  font-size: 14px;
+  color: #d1d5db;
+  flex-shrink: 0;
+}
+
+/* "Barchasi" row has a yellow icon */
+.mhc-row--all .mhc-row__icon {
+  background: #fef9c3;
+  color: #92400e;
+}
+
+/* Hidden rows (filtered out by search) */
+.mhc-row--hidden {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 9 — Remove category chip row from mcf-wrap
+   (chips moved to catalog overlay — mcf-cats no longer used)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* mcf-cats is no longer in the HTML, but guard against legacy */
+  #mcf-cats,
+  .mcf-cats {
+    display: none !important;
+  }
+
+  /* Active category label shown in the action bar */
+  .mcf-active-cat-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6d28d9;
+    background: #f5f3ff;
+    border: 1.5px solid #e9d5ff;
+    border-radius: 999px;
+    padding: 3px 8px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION 10 — mcf-wrap updated: no chip row, just action bar
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .mcf-wrap {
+    /* no longer sticky — breadcrumb section removed, header scrolls away */
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    background: #fff !important;
+  }
+
+  /* Tighten the action bar since chip row is gone */
+  .mcf-action-bar {
+    padding: 8px 12px 6px !important;
+  }
+}

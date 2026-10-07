@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+  <rect width="900" height="1100" fill="#111111"/>
+  <rect x="45" y="45" width="810" height="1010" rx="24" fill="#171717" stroke="#c7a44c" stroke-width="3" stroke-dasharray="12 12"/>
+  <text x="450" y="500" text-anchor="middle" fill="#c7a44c" font-size="46" font-family="Arial">MUJSKOY BREND</text>
+  <text x="450" y="565" text-anchor="middle" fill="#f3f3f3" font-size="30" font-family="Arial">Rasmni admin paneldan yuklang</text>
+</svg>

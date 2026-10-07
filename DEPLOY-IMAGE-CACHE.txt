@@ -1,0 +1,18 @@
+SALE MARKET - 3 IMAGE LOCAL CACHE
+
+1. npm install
+   - postinstall automatically runs the BUYO image cache.
+   - For each BUYO product, it tries to find up to 3 product gallery images.
+   - Images are saved under uploads/buyo/.
+   - data/products.json is rewritten to local uploads/buyo/... paths.
+
+2. npm start
+
+Manual retry if needed:
+   npm run cache:images
+
+IMPORTANT
+- If a product page exposes only 1 or 2 usable images, those are kept; duplicates are not invented.
+- Existing local cached image slots are never overwritten just because the source URL changes.
+- On a fresh deployment with an empty uploads/buyo/ directory, the cache needs network access once to create the local copies.
+- Keep/backup the populated uploads/buyo/ directory if you want the downloaded copies to survive every future redeploy independently of the source website.

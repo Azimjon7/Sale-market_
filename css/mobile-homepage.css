@@ -1,0 +1,349 @@
+/*
+ * Sale Market — Mobile Homepage Overrides
+ * Makes the homepage compact and marketplace-like on phones/tablets.
+ * Uzum/Yandex Market style: compact hero, small category cards, quick access.
+ * Loaded LAST so it wins over all other styles.
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   TABLET (≤768px)
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Body: bottom nav padding ─────────────────────── */
+  body.market-body main {
+    padding-bottom: 88px !important;
+  }
+
+  /* ── Hero: compact promo card ─────────────────────── */
+  .sm-hero-section {
+    padding: 10px 0 14px !important;
+  }
+  .sm-hero-inner {
+    padding: 0 12px !important;
+  }
+  .sm-hero-card-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 22px 18px 18px !important;
+    border-radius: 18px !important;
+    min-height: auto !important;
+  }
+  .sm-hero-card-grid::after {
+    width: 160px !important;
+    height: 160px !important;
+    right: -40px !important;
+    top: -40px !important;
+  }
+
+  /* Hero text */
+  .sm-hero-kicker {
+    font-size: 11.5px !important;
+    padding: 5px 10px !important;
+    margin-bottom: 12px !important;
+  }
+  .sm-hero-title {
+    font-size: 24px !important;
+    letter-spacing: -0.8px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.15 !important;
+  }
+  .sm-hero-subtitle {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+    max-width: 100% !important;
+    /* Show max 2 lines */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* Hero buttons compact */
+  .sm-hero-actions {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+  .sm-hero-btn {
+    padding: 10px 16px !important;
+    font-size: 12.5px !important;
+    border-radius: 10px !important;
+    flex: 1 !important;
+    width: auto !important;
+  }
+
+  /* ── Hero carousel: compact ───────────────────────── */
+  .sm-hero-preview {
+    max-width: 100% !important;
+  }
+  .hero-preview-wrap {
+    padding: 10px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12) !important;
+  }
+  .hsc {
+    min-height: auto !important;
+    border-radius: 12px !important;
+  }
+  .hsc__img-wrap,
+  .hsc__skel-img {
+    height: 140px !important;
+  }
+  .hsc__body {
+    padding: 8px 10px 9px !important;
+  }
+  .hsc__badge {
+    font-size: 10px !important;
+    padding: 2px 7px !important;
+  }
+  .hsc__name {
+    font-size: 13px !important;
+    -webkit-line-clamp: 1 !important;
+  }
+  .hsc__price {
+    font-size: 14px !important;
+  }
+  .hsc__old {
+    font-size: 11px !important;
+  }
+  .hsc__cta {
+    font-size: 11px !important;
+  }
+
+  /* Dots smaller */
+  .hero-preview-dots {
+    gap: 4px !important;
+    padding: 0 !important;
+  }
+  .hero-dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  .hero-dot--active {
+    width: 16px !important;
+  }
+
+  /* ── Categories: horizontal scroll marketplace style ─── */
+  .market-category-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 10px !important;
+    padding-bottom: 6px !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .market-category-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .market-category {
+    flex: 0 0 auto !important;
+    width: 100px !important;
+    min-width: 100px !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 12px 10px !important;
+    border-radius: 14px !important;
+    align-items: center !important;
+    text-align: center !important;
+    scroll-snap-align: start !important;
+    gap: 6px !important;
+  }
+  .market-category img {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 12px !important;
+    margin: 0 auto 6px !important;
+  }
+  .market-category h5 {
+    font-size: 12px !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+    /* Max 2 lines */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .market-category p {
+    display: none !important;  /* hide subtitle on mobile */
+  }
+
+  /* ── Section spacing compact ──────────────────────── */
+  .market-section {
+    padding: 18px 0 !important;
+  }
+  .market-section .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .market-section-title {
+    margin-bottom: 12px !important;
+  }
+  .market-section-title h2,
+  .market-section-title h4 {
+    font-size: 20px !important;
+  }
+  .market-section-title p {
+    font-size: 12.5px !important;
+  }
+  .market-section-title .market-btn--ghost {
+    padding: 7px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* ── Flash sale banner compact ────────────────────── */
+  .market-strip {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+  }
+  .market-strip h3 {
+    font-size: 16px !important;
+  }
+  .market-strip p {
+    font-size: 12px !important;
+  }
+  .market-strip__inner {
+    gap: 12px !important;
+  }
+  .market-timer span {
+    min-width: 38px !important;
+    height: 38px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ── Features compact ─────────────────────────────── */
+  .market-features {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .market-feature {
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+    gap: 10px !important;
+  }
+  .market-feature i {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+  }
+  .market-feature h6 {
+    font-size: 13px !important;
+  }
+  .market-feature p {
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* ── Product cards compact ────────────────────────── */
+  body.market-body .product__item__pic {
+    height: 180px !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SMALL PHONE (≤480px) — iPhone SE, smaller Androids
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .sm-hero-card-grid {
+    padding: 18px 14px 16px !important;
+    border-radius: 16px !important;
+    gap: 12px !important;
+  }
+  .sm-hero-title {
+    font-size: 21px !important;
+  }
+  .sm-hero-subtitle {
+    font-size: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .sm-hero-btn {
+    padding: 9px 14px !important;
+    font-size: 12px !important;
+  }
+
+  /* Carousel even more compact */
+  .hsc__img-wrap,
+  .hsc__skel-img {
+    height: 120px !important;
+  }
+  .hsc__name {
+    font-size: 12px !important;
+  }
+  .hsc__price {
+    font-size: 13px !important;
+  }
+  .hsc__old {
+    display: none !important;  /* hide old price on very small screens */
+  }
+  .hsc__cta {
+    display: none !important;  /* hide arrow link for space */
+  }
+
+  /* Categories even smaller */
+  .market-category {
+    width: 88px !important;
+    min-width: 88px !important;
+    padding: 10px 8px !important;
+  }
+  .market-category img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .market-category h5 {
+    font-size: 11px !important;
+  }
+
+  /* Features: single column on very small */
+  .market-features {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+
+  /* Products: smaller images */
+  body.market-body .product__item__pic {
+    height: 160px !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VERY SMALL (≤390px) — iPhone mini, narrow Androids
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 390px) {
+
+  .sm-hero-card-grid {
+    padding: 16px 12px 14px !important;
+    gap: 10px !important;
+  }
+  .sm-hero-title {
+    font-size: 19px !important;
+  }
+  .sm-hero-kicker {
+    font-size: 10.5px !important;
+  }
+  .sm-hero-btn {
+    padding: 8px 12px !important;
+    font-size: 11.5px !important;
+  }
+  .hsc__img-wrap,
+  .hsc__skel-img {
+    height: 110px !important;
+  }
+
+  /* Category cards */
+  .market-category {
+    width: 80px !important;
+    min-width: 80px !important;
+  }
+  .market-category img {
+    width: 38px !important;
+    height: 38px !important;
+  }
+}

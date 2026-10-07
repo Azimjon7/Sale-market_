@@ -1,0 +1,2946 @@
+[
+  {
+    "id": "buyo_chuholkris",
+    "name": "Kreslo uchun 3D jakkard chexol — 2 dona",
+    "price": 199000,
+    "oldPrice": 398000,
+    "category": "Mebel",
+    "desc": "Kresloni dog', tuk va ishqalanishdan himoya qiladigan elastik 3D jakkard chexollar. Zich va yumshoq mato kreslo shakliga yaxshi moslashadi, oson yechiladi va interyerni tez yangilaydi. To'plamda 2 dona; oq, jigarrang yoki kulrang variantlardan tanlash mumkin.",
+    "image": "uploads/buyo/buyo_chuholkris-1.webp",
+    "images": [
+      "uploads/buyo/buyo_chuholkris-1.webp",
+      "uploads/buyo/buyo_chuholkris-2.webp",
+      "uploads/buyo/buyo_chuholkris-3.webp"
+    ],
+    "sizes": [
+      "2 dona"
+    ],
+    "colors": [
+      "Oq",
+      "Jigarrang",
+      "Kulrang"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:48:00.000Z",
+    "tags": [
+      "kreslo chexol",
+      "jakkard",
+      "chair cover",
+      "mebel chexol",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/chuholkris",
+    "sourceImage": "https://media.buyo.uz/products/1380/c/s/3/1769266008.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1380/c/s/3/1769266008.webp",
+      "https://media.buyo.uz/products/1380/c/s/3/2Ge342fO.webp",
+      "https://media.buyo.uz/products/1380/c/s/3/1769266048.webp"
+    ]
+  },
+  {
+    "id": "buyo_pskst",
+    "name": "Portativ katlanadigan stul",
+    "price": 199000,
+    "oldPrice": 249000,
+    "category": "Mebel",
+    "desc": "Tabiat, baliq ovlash, piknik, dala hovli yoki sayohat uchun ixcham katlanadigan stul. Bir necha soniyada yig'iladi, yengil va tashishga qulay. Mustahkam konstruksiya va qulay o'tirish qismi kundalik foydalanish uchun mos.",
+    "image": "uploads/buyo/buyo_pskst-1.webp",
+    "images": [
+      "uploads/buyo/buyo_pskst-1.webp",
+      "uploads/buyo/buyo_pskst-2.webp",
+      "uploads/buyo/buyo_pskst-3.webp"
+    ],
+    "sizes": [
+      "Portativ"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:48:00.000Z",
+    "tags": [
+      "stul",
+      "katlanadigan stul",
+      "portable chair",
+      "piknik",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/pskst",
+    "sourceImage": "https://media.buyo.uz/products/516/c/s/1/1749635752.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/516/c/s/1/1749635752.webp",
+      "https://media.buyo.uz/products/516/c/s/3/1749635734.webp",
+      "https://media.buyo.uz/products/516/c/s/3/1749635738.webp"
+    ]
+  },
+  {
+    "id": "buyo_polkaorganayzer",
+    "name": "Devorga osiladigan polka-organayzer",
+    "price": 320000,
+    "oldPrice": 356000,
+    "category": "Mebel",
+    "desc": "Oshxona, hammom yoki koridorda joyni tejash uchun devorga o'rnatiladigan polka-organayzer. Kundalik buyumlar, kosmetika va maishiy vositalarni tartibli saqlashga yordam beradi. 2 yoki 3 qavatli variantlari bor, namlikka chidamli va ixcham dizaynli.",
+    "image": "uploads/buyo/buyo_polkaorganayzer-1.webp",
+    "images": [
+      "uploads/buyo/buyo_polkaorganayzer-1.webp",
+      "uploads/buyo/buyo_polkaorganayzer-2.webp",
+      "uploads/buyo/buyo_polkaorganayzer-3.webp"
+    ],
+    "sizes": [
+      "2 qavat",
+      "3 qavat"
+    ],
+    "colors": [
+      "Oq"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:48:00.000Z",
+    "tags": [
+      "polka",
+      "tokcha",
+      "organayzer",
+      "devor tokcha",
+      "wall shelf",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/polkaorganayzer",
+    "sourceImage": "https://media.buyo.uz/products/692/c/s/1/t0S9ylXJ.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/692/c/s/1/t0S9ylXJ.webp",
+      "https://media.buyo.uz/products/692/c/s/3/gLZ4VLkk.webp",
+      "https://media.buyo.uz/products/692/c/s/3/ly5flLb4.webp"
+    ]
+  },
+  {
+    "id": "buyo_ck4",
+    "name": "4-in-1 katlanadigan krovat",
+    "price": 1095000,
+    "oldPrice": 2282000,
+    "category": "Mebel",
+    "desc": "Uyda, mehmonlar uchun yoki ixcham xonada foydalanishga mos katlanadigan krovat. Mustahkam metall karkas va yumshoq matras qulay dam olishga yordam beradi. Oson yig'iladi, joyni tejaydi. O'lchami: 180 x 65 cm.",
+    "image": "uploads/buyo/buyo_ck4-1.webp",
+    "images": [
+      "uploads/buyo/buyo_ck4-1.webp",
+      "uploads/buyo/buyo_ck4-2.webp",
+      "uploads/buyo/buyo_ck4-3.webp"
+    ],
+    "sizes": [
+      "180 x 65 cm"
+    ],
+    "colors": [
+      "To'q sariq"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:35:00.000Z",
+    "tags": [
+      "katlanadigan krovat",
+      "folding bed",
+      "krovat",
+      "раскладная кровать",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/ck4",
+    "sourceImage": "https://media.buyo.uz/products/458/i/2292/6aAjYoSf.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/458/i/2292/6aAjYoSf.webp",
+      "https://media.buyo.uz/products/458/c/s/1/cJvcU0vp.webp",
+      "https://media.buyo.uz/products/458/c/s/3/DX7lkeWs.webp"
+    ]
+  },
+  {
+    "id": "buyo_sheelf",
+    "name": "Teshmasdan o'rnatiladigan devor tokchasi",
+    "price": 149000,
+    "oldPrice": 373000,
+    "category": "Mebel",
+    "desc": "Hammom yoki oshxona uchun devorni teshmasdan o'rnatiladigan tokcha. Zanglamaydigan po'lat, metall va plastikdan tayyorlangan. O'rta tokcha balandligi sozlanadi, har bir tokcha 6 kg gacha yukni ko'taradi. O'lchami: 40 x 35 x 15 cm.",
+    "image": "uploads/buyo/buyo_sheelf-1.webp",
+    "images": [
+      "uploads/buyo/buyo_sheelf-1.webp",
+      "uploads/buyo/buyo_sheelf-2.webp",
+      "uploads/buyo/buyo_sheelf-3.webp"
+    ],
+    "sizes": [
+      "40 x 35 x 15 cm"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:35:00.000Z",
+    "tags": [
+      "tokcha",
+      "polka",
+      "shelf",
+      "hammom tokcha",
+      "полка без сверления",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/sheelf",
+    "sourceImage": "https://media.buyo.uz/products/369/c/s/1/PnU3BCVE.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/369/c/s/1/PnU3BCVE.webp",
+      "https://media.buyo.uz/products/369/c/s/3/OkobcKM5.webp",
+      "https://media.buyo.uz/products/369/c/s/3/tKLUcPBg.webp"
+    ]
+  },
+  {
+    "id": "buyo_corner8",
+    "name": "Mebel burchaklari uchun yumshoq himoya — 8 dona",
+    "price": 85000,
+    "oldPrice": 170000,
+    "category": "Mebel",
+    "desc": "Stol, komod, krovat va boshqa mebellarning o'tkir burchaklarini yumshatish uchun 8 dona himoya. Oson yopishtiriladi, asbob talab qilmaydi va bolali uylar uchun qulay. To'plamda qora va oq variantlar mavjud.",
+    "image": "uploads/buyo/buyo_corner8-1.webp",
+    "images": [
+      "uploads/buyo/buyo_corner8-1.webp",
+      "uploads/buyo/buyo_corner8-2.webp",
+      "uploads/buyo/buyo_corner8-3.webp"
+    ],
+    "sizes": [
+      "8 dona"
+    ],
+    "colors": [
+      "Qora",
+      "Oq"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:35:00.000Z",
+    "tags": [
+      "mebel burchagi",
+      "himoya",
+      "child safety",
+      "уголки для мебели",
+      "8 dona"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/ugolok-dlya-mebeli?t=s",
+    "sourceImage": "https://media.buyo.uz/products/660/c/s/1/lglEQBsu.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/660/c/s/1/lglEQBsu.webp",
+      "https://media.buyo.uz/products/660/c/s/3/Y8gVrf2D.webp",
+      "https://media.buyo.uz/products/660/c/s/3/mGTHxu8y.webp"
+    ]
+  },
+  {
+    "id": "buyo_stelag",
+    "name": "Katlanadigan metall stellaj",
+    "price": 599000,
+    "oldPrice": 1332000,
+    "category": "Mebel",
+    "desc": "G'ildirakli va katlanadigan metall stellaj uy, balkon, ombor yoki oshxonada narsalarni tartibli saqlash uchun qulay. Taxminan 15 daqiqada yig'iladi, katlanganda kam joy egallaydi va 150 kg gacha yukni ko'tara oladi. Katlangan o'lchami: 125 x 72 x 34 cm.",
+    "image": "uploads/buyo/buyo_stelag-1.webp",
+    "images": [
+      "uploads/buyo/buyo_stelag-1.webp",
+      "uploads/buyo/buyo_stelag-2.webp",
+      "uploads/buyo/buyo_stelag-3.webp"
+    ],
+    "sizes": [
+      "125 x 72 x 34 cm"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:35:00.000Z",
+    "tags": [
+      "stellaj",
+      "metal rack",
+      "storage",
+      "стеллаж",
+      "katlanadigan stellaj",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/stelag",
+    "sourceImage": "https://media.buyo.uz/products/193/c/s/1/lhVdHDGR.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/193/c/s/1/lhVdHDGR.webp",
+      "https://media.buyo.uz/products/193/c/s/3/F8AQLaPx.webp",
+      "https://media.buyo.uz/products/193/c/s/3/W8G6VFZb.webp"
+    ]
+  },
+  {
+    "id": "buyo_bedside",
+    "name": "Krovat yoniga osiladigan organayzer",
+    "price": 65000,
+    "oldPrice": 260000,
+    "category": "Mebel",
+    "desc": "Telefon, kitob, planshet, ko'zoynak va mayda buyumlarni krovat yonida tartibli saqlash uchun osma organayzer. 4 ta bo'limga ega, mebelga oson mahkamlanadi. O'lchami: 32 x 20 x 9 cm.",
+    "image": "uploads/buyo/buyo_bedside-1.webp",
+    "images": [
+      "uploads/buyo/buyo_bedside-1.webp",
+      "uploads/buyo/buyo_bedside-2.webp",
+      "uploads/buyo/buyo_bedside-3.webp"
+    ],
+    "sizes": [
+      "32 x 20 x 9 cm"
+    ],
+    "colors": [
+      "To'q kulrang"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:35:00.000Z",
+    "tags": [
+      "krovat organayzer",
+      "bedside organizer",
+      "organayzer",
+      "прикроватный органайзер",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/bedside?t=s",
+    "sourceImage": "https://media.buyo.uz/products/319/c/s/1/mrjzHazh.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/319/c/s/1/mrjzHazh.webp",
+      "https://media.buyo.uz/products/319/c/s/3/wMVstUhc.webp",
+      "https://media.buyo.uz/products/319/c/s/3/YJD3EEHp.webp"
+    ]
+  },
+  {
+    "id": "buyo_shelf2",
+    "name": "Hammom va oshxona uchun 2 ta organayzer-tokcha",
+    "price": 325000,
+    "oldPrice": 650000,
+    "category": "Mebel",
+    "desc": "Hammom, dush yoki oshxonada mayda buyumlarni tartibli saqlash uchun 2 ta shaffof tokcha-organayzer. Mustahkam PET materialdan tayyorlangan va silliq yuzaga teshmasdan mahkamlanadi. To'plamda katta va kichik tokcha bor.",
+    "image": "uploads/buyo/buyo_shelf2-1.jpg",
+    "images": [
+      "uploads/buyo/buyo_shelf2-1.jpg",
+      "uploads/buyo/buyo_shelf2-2.webp",
+      "uploads/buyo/buyo_shelf2-3.webp"
+    ],
+    "sizes": [
+      "2 dona"
+    ],
+    "colors": [
+      "Shaffof"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T09:35:00.000Z",
+    "tags": [
+      "tokcha",
+      "organayzer",
+      "shelf",
+      "hammom",
+      "oshxona",
+      "полки органайзеры",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/shelf2",
+    "sourceImage": "https://media.buyo.uz/products/154/c/s/1/1743766508.jpg",
+    "sourceImages": [
+      "https://media.buyo.uz/products/154/c/s/1/1743766508.jpg"
+    ]
+  },
+  {
+    "id": "buyo_sofacover",
+    "name": "Mebel uchun qoplama",
+    "price": 249000,
+    "oldPrice": 498000,
+    "category": "Mebel",
+    "desc": "Kreslo va yumshoq mebelni chang, kir, yeyilish hamda uy hayvonlari junidan himoya qiladigan qulay qoplama. 6 ta yon cho'ntagi bor, yechish va yuvish oson. O'lchami: 195 x 225 cm.",
+    "image": "uploads/buyo/buyo_sofacover-1.webp",
+    "images": [
+      "uploads/buyo/buyo_sofacover-1.webp",
+      "uploads/buyo/buyo_sofacover-2.webp",
+      "uploads/buyo/buyo_sofacover-3.webp"
+    ],
+    "sizes": [
+      "195 x 225 cm"
+    ],
+    "colors": [
+      "Kulrang",
+      "Bej"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "mebel qoplama",
+      "divan qoplama",
+      "kreslo qoplama",
+      "chehol",
+      "чехол для мебели",
+      "uy jihozlari"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/sofacover",
+    "sourceImage": "https://media.buyo.uz/products/376/c/s/1/EKZatUzP.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/376/c/s/1/EKZatUzP.webp",
+      "https://media.buyo.uz/products/376/c/s/3/V5QdhKRj.webp",
+      "https://media.buyo.uz/products/376/c/s/3/ORG9FiHz.webp"
+    ]
+  },
+  {
+    "id": "buyo_cover_geo",
+    "name": "Divan/kreslo nakidkasi “Geometriya”",
+    "price": 275000,
+    "oldPrice": 550000,
+    "category": "Mebel",
+    "desc": "Divan va kresloni ifloslanish, ishqalanish va tirnalishdan himoya qiladigan dekorativ nakidka. Yumshoq sinel matodan tayyorlangan, kundalik ishlatishga qulay va oson yuviladi.",
+    "image": "uploads/buyo/buyo_cover_geo-1.png",
+    "images": [
+      "uploads/buyo/buyo_cover_geo-1.png",
+      "uploads/buyo/buyo_cover_geo-2.png",
+      "uploads/buyo/buyo_cover_geo-3.webp"
+    ],
+    "sizes": [
+      "180 x 130 cm",
+      "180 x 260 cm",
+      "180 x 300 cm"
+    ],
+    "colors": [
+      "Qora",
+      "Bej"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "divan nakidka",
+      "kreslo nakidka",
+      "geometriya",
+      "sinel",
+      "накидка на диван",
+      "мебель"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://www.buyo.uz/ru/item/cover-geo",
+    "sourceImage": "https://media.buyo.uz/products/732/c/s/1/1754297914.PNG",
+    "sourceImages": [
+      "https://media.buyo.uz/products/732/c/s/1/1754297914.PNG",
+      "https://media.buyo.uz/products/732/c/s/3/1754297405.PNG",
+      "https://media.buyo.uz/products/732/c/s/3/vg4me8Zg.webp"
+    ]
+  },
+  {
+    "id": "buyo_cover_brush",
+    "name": "Divan/kreslo nakidkasi “Brush”",
+    "price": 265000,
+    "oldPrice": 617000,
+    "category": "Mebel",
+    "desc": "Yumshoq mebel uchun zich va nafas oladigan sinel matoli dekorativ nakidka. Divan yoki kresloni kir, tirnalish va kundalik yeyilishdan saqlashga yordam beradi; parvarishi oson.",
+    "image": "uploads/buyo/buyo_cover_brush-1.png",
+    "images": [
+      "uploads/buyo/buyo_cover_brush-1.png",
+      "uploads/buyo/buyo_cover_brush-2.png",
+      "uploads/buyo/buyo_cover_brush-3.png"
+    ],
+    "sizes": [
+      "180 x 130 cm",
+      "180 x 260 cm"
+    ],
+    "colors": [
+      "Standart"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "brush",
+      "divan nakidka",
+      "kreslo nakidka",
+      "sinel",
+      "накидка brush",
+      "мебель"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/cover-brush",
+    "sourceImage": "https://media.buyo.uz/products/857/c/s/1/1757520122.PNG",
+    "sourceImages": [
+      "https://media.buyo.uz/products/857/c/s/1/1757520122.PNG",
+      "https://media.buyo.uz/products/857/c/s/3/1757519943.PNG",
+      "https://media.buyo.uz/products/857/c/s/3/1757519961.PNG"
+    ]
+  },
+  {
+    "id": "buyo_officekr",
+    "name": "Ofis kreslosi",
+    "price": 1249000,
+    "oldPrice": 1562000,
+    "category": "Mebel",
+    "desc": "Ergonomik orqa suyanchiqli va yumshoq o'rindiqli ofis kreslosi. Gazlift orqali balandligi sozlanadi, tebranish mexanizmi mavjud, mustahkam materiallardan tayyorlangan va yig'ish oson.",
+    "image": "uploads/buyo/buyo_officekr-1.webp",
+    "images": [
+      "uploads/buyo/buyo_officekr-1.webp",
+      "uploads/buyo/buyo_officekr-2.webp",
+      "uploads/buyo/buyo_officekr-3.webp"
+    ],
+    "sizes": [
+      "Standart"
+    ],
+    "colors": [
+      "Jigarrang",
+      "Qora"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "ofis kreslo",
+      "ofis stul",
+      "kreslo",
+      "office chair",
+      "офисное кресло",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/officekr?t=q",
+    "sourceImage": "https://media.buyo.uz/products/748/c/s/1/mvh7juvu.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/748/c/s/1/mvh7juvu.webp",
+      "https://media.buyo.uz/products/748/c/s/3/wuvYCsxH.webp",
+      "https://media.buyo.uz/products/748/c/s/3/P3q9GJdU.webp"
+    ]
+  },
+  {
+    "id": "buyo_kreslo_kachalka",
+    "name": "Tebranadigan kreslo",
+    "price": 2999000,
+    "oldPrice": 6975000,
+    "category": "Mebel",
+    "desc": "Dam olish uchun ergonomik tebranadigan kreslo. Yumshoq qoplama va olxa yog'ochidan tayyorlangan mustahkam ramkaga ega. Maksimal yuklama 120 kg gacha, og'irligi taxminan 12 kg.",
+    "image": "uploads/buyo/buyo_kreslo_kachalka-1.webp",
+    "images": [
+      "uploads/buyo/buyo_kreslo_kachalka-1.webp",
+      "uploads/buyo/buyo_kreslo_kachalka-2.webp",
+      "uploads/buyo/buyo_kreslo_kachalka-3.webp"
+    ],
+    "sizes": [
+      "Standart"
+    ],
+    "colors": [
+      "Standart"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "tebranadigan kreslo",
+      "kreslo kachalka",
+      "rocking chair",
+      "кресло качалка",
+      "olxa yogoch",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/uz/item/kreslo-kachalka",
+    "sourceImage": "https://media.buyo.uz/products/162/c/s/1/dssE0vCI.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/162/c/s/1/dssE0vCI.webp",
+      "https://media.buyo.uz/products/162/c/s/3/tVPlTk5t.webp",
+      "https://media.buyo.uz/products/162/c/s/3/pspNaQOy.webp"
+    ]
+  },
+  {
+    "id": "buyo_stolras",
+    "name": "Katlanadigan stol",
+    "price": 795000,
+    "oldPrice": 1807000,
+    "category": "Mebel",
+    "desc": "Uy, piknik va tashqi foydalanish uchun ixcham katlanadigan stol. Metall va mustahkam plastik konstruksiya saqlash hamda tashishni osonlashtiradi.",
+    "image": "uploads/buyo/buyo_stolras-1.webp",
+    "images": [
+      "uploads/buyo/buyo_stolras-1.webp",
+      "uploads/buyo/buyo_stolras-2.webp",
+      "uploads/buyo/buyo_stolras-3.webp"
+    ],
+    "sizes": [
+      "Standart"
+    ],
+    "colors": [
+      "Standart"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "katlanadigan stol",
+      "yig iladigan stol",
+      "folding table",
+      "складной стол",
+      "piknik stol",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/uz/item/stolras",
+    "sourceImage": "https://media.buyo.uz/products/463/c/s/1/ERJr3fO7.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/463/c/s/1/ERJr3fO7.webp",
+      "https://media.buyo.uz/products/463/c/s/3/H8EUsBml.webp",
+      "https://media.buyo.uz/products/463/c/s/3/IliKfzEK.webp"
+    ]
+  },
+  {
+    "id": "buyo_gamakpodves",
+    "name": "Osma kreslo-gamak",
+    "price": 399000,
+    "oldPrice": 1596000,
+    "category": "Mebel",
+    "desc": "Bog', ayvon yoki balkon uchun osma kreslo-gamak. Nafas oladigan matodan tayyorlangan, o'rnatish qulay va 150 kg gacha yuklamaga mo'ljallangan. Qadoq bilan og'irligi taxminan 1.5 kg.",
+    "image": "uploads/buyo/buyo_gamakpodves-1.webp",
+    "images": [
+      "uploads/buyo/buyo_gamakpodves-1.webp",
+      "uploads/buyo/buyo_gamakpodves-2.webp",
+      "uploads/buyo/buyo_gamakpodves-3.webp"
+    ],
+    "sizes": [
+      "Standart"
+    ],
+    "colors": [
+      "Standart"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "gamak",
+      "osma kreslo",
+      "hammock chair",
+      "подвесное кресло",
+      "dacha",
+      "balkon",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://www.buyo.uz/ru/item/gamakpodves?t=s",
+    "sourceImage": "https://media.buyo.uz/products/409/c/s/1/GVrLy66D.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/409/c/s/1/GVrLy66D.webp",
+      "https://media.buyo.uz/products/409/c/s/3/kyasYsml.webp",
+      "https://media.buyo.uz/products/409/c/s/3/J9WS1Hst.webp"
+    ]
+  },
+  {
+    "id": "buyo_seat_cushion",
+    "name": "Yumshoq stul yostig'i",
+    "price": 115000,
+    "oldPrice": 230000,
+    "category": "Mebel",
+    "desc": "Stul, kreslo yoki avtomobil o'rindig'i uchun ergonomik yumshoq yostiq. Tana konturiga moslashib qulay o'tirishga yordam beradi. O'lchami 40 x 40 cm, rangi kulrang.",
+    "image": "uploads/buyo/buyo_seat_cushion-1.webp",
+    "images": [
+      "uploads/buyo/buyo_seat_cushion-1.webp",
+      "uploads/buyo/buyo_seat_cushion-2.webp",
+      "uploads/buyo/buyo_seat_cushion-3.webp"
+    ],
+    "sizes": [
+      "40 x 40 cm"
+    ],
+    "colors": [
+      "Kulrang"
+    ],
+    "stock": 999,
+    "label": "Chegirma",
+    "createdAt": "2026-10-07T04:15:00.000Z",
+    "tags": [
+      "stul yostiq",
+      "otirish yostigi",
+      "seat cushion",
+      "подушка на сиденье",
+      "40x40",
+      "mebel"
+    ],
+    "sourceName": "BUYO",
+    "sourceUrl": "https://buyo.uz/ru/item/seat",
+    "sourceImage": "https://media.buyo.uz/products/286/i/1408/ZY52otU9.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/286/i/1408/ZY52otU9.webp",
+      "https://media.buyo.uz/products/286/i/1412/QRK4fG1H.webp",
+      "https://media.buyo.uz/products/286/i/1410/QP7HZHtE.webp"
+    ]
+  },
+  {
+    "id": "prd_1784615041900",
+    "name": "Ayollar va erkaklar uchun termokiyim to'plami 🌬️",
+    "price": 259000,
+    "oldPrice": 300000,
+    "category": "Ustki kiyimlar",
+    "desc": "Sovuq kunlarda tana haroratini saqlashga yordam beradigan yengil va qulay kiyim. Elastik materiali tanaga mos tushib, kundalik yurish, ish va faol dam olish uchun juda mos.\r\n\r\n✅ Issiqlikni yaxshi saqlaydi\r\n✅ Elastik va harakatga qulay\r\n🎁 Termopaypoq sovg'a sifatida",
+    "image": "uploads/prd_1784615041894_816405.jpg",
+    "images": [
+      "uploads/prd_1784615041894_816405.jpg"
+    ],
+    "sizes": "M-3XL",
+    "colors": "qora",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:24:01.900Z",
+    "tags": [
+      "termokiyim",
+      "termobelyo",
+      "termobelio",
+      "termo",
+      "issiq kiyim",
+      "qishki kiyim",
+      "issiqlikni saqlaydi",
+      "ustki kiyim",
+      "kiyim toplami",
+      "ayollar termokiyim",
+      "erkaklar termokiyim",
+      "elastik",
+      "sport kiyim",
+      "flis",
+      "fleece",
+      "qora",
+      "m",
+      "l",
+      "xl",
+      "2xl",
+      "3xl"
+    ]
+  },
+  {
+    "id": "prd_1784614920759",
+    "name": "Ayollar uchun Briddy oversayz ko'ylagi 👗",
+    "price": 279000,
+    "oldPrice": 350000,
+    "category": "Ustki kiyimlar",
+    "desc": "Erkin bichimi qomatga chiroyli tushib, qulay va nafis obraz yaratadi. Sifatli to'qimasi kundalik kiyish hamda zamonaviy uslub uchun juda mos.",
+    "image": "uploads/prd_1784614920754_24770.jpg",
+    "images": [
+      "uploads/prd_1784614920754_24770.jpg",
+      "uploads/prd_1784614920756_646818.jpg"
+    ],
+    "sizes": "M-3XL",
+    "colors": "qora, oq",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:22:00.759Z",
+    "brand": "Briddy",
+    "tags": [
+      "ko'ylak",
+      "koylak",
+      "kuylag",
+      "oversayz",
+      "oversized",
+      "erkin bichim",
+      "ustki kiyim",
+      "ayollar ko'ylagi",
+      "ayollar kiyimi",
+      "briddy",
+      "zamonaviy",
+      "qora",
+      "oq",
+      "m",
+      "l",
+      "xl",
+      "2xl",
+      "3xl"
+    ]
+  },
+  {
+    "id": "prd_1784614834803",
+    "name": "Ayollar uchun Ravelle flis shimlari 👖",
+    "price": 175000,
+    "oldPrice": 250000,
+    "category": "Shimlar",
+    "desc": "Sovuq kunlarda issiqlik va qulaylikni birlashtirgan zamonaviy model. Yumshoq flis materiali tanani iliq tutib, kundalik kiyish uchun juda qulay.",
+    "image": "uploads/prd_1784614834797_25047.jpg",
+    "images": [
+      "uploads/prd_1784614834797_25047.jpg",
+      "uploads/prd_1784614834798_432847.jpg"
+    ],
+    "sizes": "M-2XL",
+    "colors": "qora, jigarrang",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:20:34.803Z",
+    "brand": "Ravelle",
+    "tags": [
+      "shim",
+      "shimlar",
+      "flis shim",
+      "flisli shim",
+      "issiq shim",
+      "qishki shim",
+      "ayollar shimlari",
+      "ayollar shimi",
+      "bryuki",
+      "bryuka",
+      "ravelle",
+      "qora",
+      "jigarrang",
+      "kofe rangi",
+      "m",
+      "l",
+      "xl",
+      "2xl"
+    ]
+  },
+  {
+    "id": "prd_1784614708980",
+    "name": "Burun va quloq uchun trimmer 👃🏼👂🏻",
+    "price": 99000,
+    "oldPrice": 150000,
+    "category": "Jihozlar",
+    "desc": "Ortiqcha tuklarni tez, oson va ehtiyotkorlik bilan olib tashlash uchun qulay qurilma. Ixcham dizayni tufayli uyda va safarda foydalanish uchun mos.",
+    "image": "uploads/prd_1784614708969_558425.jpg",
+    "images": [
+      "uploads/prd_1784614708969_558425.jpg"
+    ],
+    "sizes": "",
+    "colors": "qora",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:18:28.980Z",
+    "tags": [
+      "trimmer",
+      "triymmer",
+      "tuk olish",
+      "burun trimmer",
+      "quloq trimmer",
+      "nos va quloq",
+      "burun va quloq",
+      "jihoz",
+      "erkaklar jihozi",
+      "suv o'tkazmaydigan",
+      "qora"
+    ]
+  },
+  {
+    "id": "prd_1784614625228",
+    "name": "Ayollar uchun yo'l-yo'l teksturali kiyim 😍",
+    "price": 199000,
+    "oldPrice": 250000,
+    "category": "Ustki kiyimlar",
+    "desc": "Qomatga chiroyli mos tushadigan zamonaviy va qulay model. Kundalik kiyish uchun ham, nafis va didli obrazlar yaratish uchun ham mos.",
+    "image": "uploads/prd_1784614625217_443178.jpg",
+    "images": [
+      "uploads/prd_1784614625217_443178.jpg",
+      "uploads/prd_1784614625218_22619.jpg",
+      "uploads/prd_1784614625219_454644.jpg"
+    ],
+    "sizes": "S-3XL",
+    "colors": "seriy, qizil, bej",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:17:05.228Z",
+    "tags": [
+      "ko'ylak",
+      "koylak",
+      "ustki kiyim",
+      "yo'l-yo'l",
+      "teksturali",
+      "ayollar kiyimi",
+      "elegant",
+      "nafis",
+      "seriy",
+      "qizil",
+      "bej",
+      "s",
+      "m",
+      "l",
+      "xl",
+      "2xl",
+      "3xl"
+    ]
+  },
+  {
+    "id": "prd_1784614410974",
+    "name": "Flowers idish quritish gilamchasi 😍",
+    "price": 135000,
+    "oldPrice": 200000,
+    "category": "Jihozlar",
+    "desc": "Yuvilgan idishlarni xavfsiz va tartibli quritish uchun qulay yechim. Namlikni tez shimib, oshxona yuzasini quruq va ozoda saqlashga yordam beradi.",
+    "image": "uploads/prd_1784614410971_887451.jpg",
+    "images": [
+      "uploads/prd_1784614410971_887451.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:13:30.974Z",
+    "tags": [
+      "gilamcha",
+      "idish gilamchasi",
+      "quritish gilamchasi",
+      "idish quritish",
+      "oshxona gilamchasi",
+      "taglik",
+      "namlikni shimadi",
+      "oshxona",
+      "jihoz",
+      "flowers"
+    ]
+  },
+  {
+    "id": "prd_1784614306002",
+    "name": "Sochiq uchun so'rg'ichli ilgich",
+    "price": 149000,
+    "oldPrice": 200000,
+    "category": "Jihozlar",
+    "desc": "Devorni teshmasdan tez va oson o'rnatiladi. Hammom yoki oshxonada sochiqlarni tartibli saqlash uchun qulay yechim.",
+    "image": "uploads/prd_1784614305999_538226.jpg",
+    "images": [
+      "uploads/prd_1784614305999_538226.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:11:46.002Z",
+    "tags": [
+      "ilgich",
+      "sochiq ilgich",
+      "so'rg'ichli ilgich",
+      "hammom ilgich",
+      "oshxona ilgich",
+      "devor ilgich",
+      "devorsiz",
+      "jihoz",
+      "hammom",
+      "oshxona"
+    ]
+  },
+  {
+    "id": "prd_1784614212254",
+    "name": "Bo'yni balandroq ko'rsatuvchi yarim tagliklar",
+    "price": 129000,
+    "oldPrice": 150000,
+    "category": "Oyoq kiyimlar",
+    "desc": "Oyoq kiyim ichiga qulay joylashib, bo'yingizni tabiiy ravishda balandroq ko'rsatishga yordam beradi. Yumshoq tuzilishi yurish paytida tovonga tushadigan bosimni kamaytiradi.",
+    "image": "uploads/prd_1784614212251_117777.jpg",
+    "images": [
+      "uploads/prd_1784614212251_117777.jpg"
+    ],
+    "sizes": "",
+    "colors": "qora",
+    "stock": 999,
+    "label": "",
+    "createdAt": "2026-07-21T06:10:12.254Z",
+    "tags": [
+      "taglik",
+      "yarim taglik",
+      "oyoq taglik",
+      "bo'yni balandroq",
+      "bo'y oshiruvchi",
+      "bo'yi baland",
+      "bo'y ko'rsatuvchi",
+      "balandlik",
+      "oyoq kiyim ichiga",
+      "kiyim ichki taglik",
+      "tovon",
+      "amortizatsiya",
+      "qora"
+    ]
+  },
+  {
+    "id": "prd_1784614150176",
+    "name": "Yumshoq va shinam pled 🤍",
+    "price": 199000,
+    "oldPrice": 250000,
+    "category": "Yostiq",
+    "desc": "Yoqimli va mayin materiali uyda dam olish, divan yoki yotoqda foydalanish uchun juda qulay. Xonaga yanada iliq va shinam muhit bag'ishlaydi.",
+    "image": "uploads/prd_1784614150170_901503.jpg",
+    "images": [
+      "uploads/prd_1784614150170_901503.jpg"
+    ],
+    "sizes": "160x100",
+    "colors": "oq",
+    "stock": 999,
+    "label": "",
+    "createdAt": "2026-07-21T06:09:10.176Z",
+    "tags": [
+      "pled",
+      "adyol",
+      "yumshoq pled",
+      "shinam",
+      "issiq pled",
+      "divan uchun",
+      "yotoq uchun",
+      "uy uchun",
+      "dam olish",
+      "oq",
+      "160x100"
+    ]
+  },
+  {
+    "id": "prd_1784614069126",
+    "name": "Uy uchun tapochka-paypoq 🦶🏼",
+    "price": 129000,
+    "oldPrice": 160000,
+    "category": "Oyoq kiyimlar",
+    "desc": "Yumshoq va qulay materiali oyoqlarni iliq tutib, uyda bemalol harakatlanish imkonini beradi. Kundalik foydalanish uchun juda qulay tanlov.",
+    "image": "uploads/prd_1784614069120_38853.jpg",
+    "images": [
+      "uploads/prd_1784614069120_38853.jpg"
+    ],
+    "sizes": "36-41",
+    "colors": "oq, pushti",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:07:49.126Z",
+    "tags": [
+      "tapochka",
+      "tapchika",
+      "shippak",
+      "shipak",
+      "paypoq tapochka",
+      "uy tapochkasi",
+      "uy oyoq kiyimi",
+      "yumshoq tapochka",
+      "slansi",
+      "uy kiyimi",
+      "oyoq kiyim",
+      "oq",
+      "pushti",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ]
+  },
+  {
+    "id": "prd_1784613960253",
+    "name": "Erkaklar uchun zamonaviy qo'l soati ⌚",
+    "price": 149000,
+    "oldPrice": 200000,
+    "category": "Aksesuarlar",
+    "desc": "Nafis va jiddiy dizayni bilan kundalik foydalanish hamda sovg'a uchun ajoyib tanlov. Qulay taqiladi va erkaklar obraziga yanada ko'rkamlik qo'shadi.",
+    "image": "uploads/prd_1784613960250_695950.jpg",
+    "images": [
+      "uploads/prd_1784613960250_695950.jpg"
+    ],
+    "sizes": "",
+    "colors": "seriy",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:06:00.253Z",
+    "tags": [
+      "soat",
+      "qo'l soat",
+      "qo'lsoat",
+      "erkaklar soati",
+      "erkaklar aksessuari",
+      "suv o'tkazmaydigan",
+      "zamonaviy soat",
+      "sovg'a",
+      "aksessuar",
+      "seriy",
+      "metal"
+    ]
+  },
+  {
+    "id": "prd_1784613706543",
+    "name": "Angelika klatch-sumkasi 👜",
+    "price": 199000,
+    "oldPrice": 250000,
+    "category": "Sumkalar",
+    "desc": "Nafis dizayni va qulay shakli kundalik obraz hamda maxsus tadbirlar uchun juda mos. Ixcham ko'rinishiga qaramay, kerakli buyumlaringizni bemalol sig'diradi.",
+    "image": "uploads/prd_1784613706531_628728.png",
+    "images": [
+      "uploads/prd_1784613706531_628728.png",
+      "uploads/prd_1784613706535_298116.png"
+    ],
+    "sizes": "",
+    "colors": "jigarrang, qora",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T06:01:46.543Z",
+    "brand": "Angelika",
+    "tags": [
+      "klatch",
+      "clutch",
+      "klatchi",
+      "sumka",
+      "ayollar sumkasi",
+      "bayramona sumka",
+      "kichik sumka",
+      "ixcham",
+      "nafis",
+      "angelika",
+      "jigarrang",
+      "qora"
+    ]
+  },
+  {
+    "id": "prd_1784613288226",
+    "name": "Oshxona uchun ko'p qavatli stellaj",
+    "price": 335000,
+    "oldPrice": 450000,
+    "category": "Jihozlar",
+    "desc": "Oshxona buyumlarini tartibli joylashtirish va bo'sh joydan unumli foydalanish uchun qulay yechim. Sozlanadigan tokchalari turli o'lchamdagi idish va jihozlarni joylashtirish imkonini beradi.",
+    "image": "uploads/prd_1784613288219_316504.jpg",
+    "images": [
+      "uploads/prd_1784613288219_316504.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T05:54:48.226Z",
+    "tags": [
+      "stellaj",
+      "ko'p qavatli stellaj",
+      "oshxona stellaji",
+      "javon",
+      "tokcha",
+      "oshxona tokchasi",
+      "shkaf",
+      "tartib",
+      "organayzer",
+      "jihoz",
+      "oshxona"
+    ]
+  },
+  {
+    "id": "prd_1784613189451",
+    "name": "Chandiq va teri cho'zilishiga qarshi MEJISOO kremi",
+    "price": 125000,
+    "oldPrice": 165000,
+    "category": "Teri parvarishi",
+    "desc": "Teri ko'rinishini yanada silliq va parvarishlangan qilishga yordam beradi. Muntazam qo'llanganda chandiq, eski izlar va cho'zilish belgilarining ko'rinishini kamaytirishga ko'maklashadi.",
+    "image": "uploads/prd_1784613189447_126513.jpg",
+    "images": [
+      "uploads/prd_1784613189447_126513.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T05:53:09.451Z",
+    "brand": "MEJISOO",
+    "tags": [
+      "krem",
+      "chandiq kremi",
+      "teri kremi",
+      "chandiq",
+      "shram",
+      "dog'",
+      "cho'zilish",
+      "rastyajka",
+      "teri parvarishi",
+      "kosmetika",
+      "mejisoo",
+      "yuz kremi",
+      "tana kremi",
+      "tabiiy",
+      "silliq teri"
+    ]
+  },
+  {
+    "id": "prd_1784612937128",
+    "name": "Soch o'sishini qo'llab-quvvatlovchi rozmarin efir moyi 💆🏻‍♀️",
+    "price": 135000,
+    "oldPrice": 200000,
+    "category": "Shampun",
+    "desc": "Soch ildizlarini parvarishlab, ularning yanada sog'lom va mustahkam ko'rinishiga yordam beradi. Muntazam qo'llanganda soch to'kilishi va kepekni kamaytirishga ko'maklashadi.",
+    "image": "uploads/prd_1784612937125_267826.jpg",
+    "images": [
+      "uploads/prd_1784612937125_267826.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T05:48:57.128Z",
+    "tags": [
+      "rozmarin",
+      "rozmarin moyi",
+      "rozmarin yog'i",
+      "efir moyi",
+      "soch moyi",
+      "soch yog'i",
+      "soch o'sishi",
+      "soch to'kilishi",
+      "kepek",
+      "soch parvarishi",
+      "soch",
+      "qosh parvarishi",
+      "kiprik parvarishi",
+      "yuz teri",
+      "tabiiy moy",
+      "shampun",
+      "go'zallik"
+    ]
+  },
+  {
+    "id": "prd_1784612748674",
+    "name": "Oyoq barmoqlari uchun ajratgich 👣",
+    "price": 99000,
+    "oldPrice": 150000,
+    "category": "Jihozlar",
+    "desc": "Yurish paytida bosh barmoq suyagini bosim va ishqalanishdan himoya qiladi. Oyoq bosh barmog'ini ajratib, yumshoq holatda ushlab turadi.",
+    "image": "uploads/prd_1784612748670_868898.jpg",
+    "images": [
+      "uploads/prd_1784612748670_868898.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T05:45:48.674Z",
+    "tags": [
+      "barmoq ajratgich",
+      "oyoq ajratgich",
+      "oyoq barmoq",
+      "bosh barmoq",
+      "oyoq parvarishi",
+      "himoya",
+      "yumshoq",
+      "jihoz"
+    ]
+  },
+  {
+    "id": "prd_1784612650501",
+    "name": "Oqargan sochlar uchun 2 tasi 1 da shampun",
+    "price": 165000,
+    "oldPrice": 200000,
+    "category": "Shampun",
+    "desc": "Rang 45 kungacha saqlanadi. Bosh terisini bezovta qilmaydi. (boyash va parvarish)",
+    "image": "uploads/prd_1784612650496_316820.jpg",
+    "images": [
+      "uploads/prd_1784612650496_316820.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T05:44:10.502Z",
+    "tags": [
+      "shampun",
+      "soch shampun",
+      "oq soch",
+      "sedina",
+      "oqargan soch",
+      "soch bo'yash",
+      "bo'yovchi shampun",
+      "soch parvarishi",
+      "soch",
+      "kepek",
+      "2 tasi 1 da"
+    ]
+  },
+  {
+    "id": "prd_1784612324117",
+    "name": "Massaj va relaks yostiqchasi 🙌🏼",
+    "price": 99000,
+    "oldPrice": 150000,
+    "category": "Yostiq",
+    "desc": "Tana zo'riqishi va charchoqni kamaytiradi. Mushaklarni bo'shashtirishga yordam beradi. Uyqu sifatini yaxshilaydi.",
+    "image": "uploads/prd_1784612324108_857905.jpg",
+    "images": [
+      "uploads/prd_1784612324108_857905.jpg"
+    ],
+    "sizes": "",
+    "colors": "havorang",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-21T05:38:44.118Z",
+    "tags": [
+      "massaj yostiq",
+      "massaj yostiqcha",
+      "relaks yostiq",
+      "yostiq",
+      "massajer",
+      "massaj jihozi",
+      "bo'yin massaj",
+      "orqa massaj",
+      "charchoq",
+      "dam olish",
+      "havorang"
+    ]
+  },
+  {
+    "id": "prd_1783676215065",
+    "name": "❄️ Muzlatkich uchun saqlash paketlari",
+    "price": 125000,
+    "oldPrice": 150000,
+    "category": "Jihozlar",
+    "desc": "Qayta-qayta foydalanish mumkin. Har qanday oziq-ovqat mahsulotlari uchun mos.",
+    "image": "uploads/prd_1783676215057_382555.jpg",
+    "images": [
+      "uploads/prd_1783676215057_382555.jpg"
+    ],
+    "sizes": "",
+    "colors": "oq",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-10T09:36:55.065Z",
+    "tags": [
+      "paket",
+      "saqlash paketi",
+      "muzlatkich uchun",
+      "oziq-ovqat saqlash",
+      "qayta foydalanish",
+      "ekologik",
+      "oshxona",
+      "jihoz",
+      "oq"
+    ]
+  },
+  {
+    "id": "prd_1783676133353",
+    "name": "Achki",
+    "price": 149000,
+    "oldPrice": 200000,
+    "category": "Aksesuarlar",
+    "desc": "🕶️ «Mushuk ko'zi» uslubidagi quyoshdan himoyalovchi ko'zoynak. To'liq UV himoya. Sovg'a sifatida g'ilof va tozalash matochkasi.",
+    "image": "uploads/prd_1783676133348_752428.jpg",
+    "images": [
+      "uploads/prd_1783676133348_752428.jpg"
+    ],
+    "sizes": "",
+    "colors": "",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-10T09:35:33.353Z",
+    "tags": [
+      "ko'zoynak",
+      "achki",
+      "galdor",
+      "quyosh ko'zoynagi",
+      "uv himoya",
+      "mushuk ko'zi",
+      "ayollar ko'zoynagi",
+      "aksessuar",
+      "sovg'a"
+    ]
+  },
+  {
+    "id": "prd_1783676009196",
+    "name": "Ayollar sumkasi",
+    "price": 225000,
+    "oldPrice": 275000,
+    "category": "Sumkalar",
+    "desc": "Ayollar uchun kundalik sumka-ryukzak. Olinadigan yelkama tasmalari. Sifatli metall aksessuarlar.",
+    "image": "uploads/prd_1783676009189_581338.jpg",
+    "images": [
+      "uploads/prd_1783676009189_581338.jpg"
+    ],
+    "sizes": "",
+    "colors": "oq, qora",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-10T09:33:29.197Z",
+    "tags": [
+      "sumka",
+      "ayollar sumkasi",
+      "ryukzak",
+      "sumka ryukzak",
+      "yelkama",
+      "yelka sumka",
+      "kundalik sumka",
+      "oq",
+      "qora"
+    ]
+  },
+  {
+    "id": "prd_1783675562888",
+    "name": "O'z-o'zidan isitiladigan tizza bog'lovchi (nakolennik)",
+    "price": 135000,
+    "oldPrice": 160000,
+    "category": "Shimlar",
+    "desc": "Turmalin orqali tabiiy isituvchi effekt beradi. Universal o'lcham – hamma uchun mos keladi.",
+    "image": "uploads/prd_1783675562880_214411.jpg",
+    "images": [
+      "uploads/prd_1783675562880_214411.jpg"
+    ],
+    "sizes": "",
+    "colors": "qora",
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-07-10T09:26:02.888Z",
+    "tags": [
+      "nakolennik",
+      "tizza bog'lovchi",
+      "tizza",
+      "bog'lovchi",
+      "isituvchi",
+      "turmalin",
+      "tiz uchun",
+      "sport",
+      "universal",
+      "qora"
+    ]
+  },
+  {
+    "name": "Shim uchun ilgak",
+    "price": 99000,
+    "oldPrice": 300000,
+    "category": "Uy jihozlari",
+    "desc": "Shim, kamar va yengil kiyimlarni bir joyda tartibli saqlash uchun ixcham ko‘p qavatli ilgak. Shkaf ichidagi joydan samarali foydalanishga yordam beradi.",
+    "image": "uploads/buyo/buyo_cat_001-1.webp",
+    "sizes": [],
+    "colors": [
+      "Tabiiy yog‘och",
+      "Kumush"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/hanger",
+    "tags": [
+      "ilgak",
+      "shim ilgagi",
+      "shkaf",
+      "organayzer",
+      "uy jihozlari"
+    ],
+    "id": "buyo_cat_001",
+    "images": [
+      "uploads/buyo/buyo_cat_001-1.webp",
+      "uploads/buyo/buyo_cat_001-2.webp",
+      "uploads/buyo/buyo_cat_001-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:01Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/89/i/401/yvw07MwS.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/89/i/401/yvw07MwS.webp",
+      "https://media.buyo.uz/products/89/c/s/1/EvsxplWH.webp",
+      "https://media.buyo.uz/products/89/r/i/DO3Tbond.webp"
+    ]
+  },
+  {
+    "name": "Yog‘ purkagich",
+    "price": 179000,
+    "oldPrice": 597000,
+    "category": "Oshxona",
+    "desc": "Taom tayyorlashda yog‘ni bir tekis sepish uchun qulay purkagich. Salat, gril va qovurish jarayonida yog‘ sarfini nazorat qilishga yordam beradi.",
+    "image": "uploads/buyo/buyo_cat_002-1.webp",
+    "sizes": [],
+    "colors": [
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/raspmasla",
+    "tags": [
+      "yog purkagich",
+      "oshxona",
+      "spray",
+      "moy purkagich",
+      "idish"
+    ],
+    "id": "buyo_cat_002",
+    "images": [
+      "uploads/buyo/buyo_cat_002-1.webp",
+      "uploads/buyo/buyo_cat_002-2.avif",
+      "uploads/buyo/buyo_cat_002-3.avif"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:02Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1173/c/s/3/7ieOT5p4.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1173/c/s/3/7ieOT5p4.webp",
+      "https://media.buyo.uz/products/1173/r/i/1763552333_LYpvFJYC.avif",
+      "https://media.buyo.uz/products/1173/r/i/1763552366_hBut6QNT.avif"
+    ]
+  },
+  {
+    "name": "Idishlar uchun Oqartiruvchi tozalagich",
+    "price": 125000,
+    "oldPrice": 417000,
+    "category": "Tozalash",
+    "desc": "Idish va oshxona buyumlaridagi qiyin dog‘larni tozalashga mo‘ljallangan vosita. Kundalik tozalashni tezroq va qulayroq qiladi.",
+    "image": "uploads/buyo/buyo_cat_003-1.webp",
+    "sizes": [],
+    "colors": [],
+    "sourceUrl": "https://buyo.uz/uz/item/posydachistka",
+    "tags": [
+      "idish tozalagich",
+      "tozalash",
+      "oshxona",
+      "dog",
+      "cleaner"
+    ],
+    "id": "buyo_cat_003",
+    "images": [
+      "uploads/buyo/buyo_cat_003-1.webp",
+      "uploads/buyo/buyo_cat_003-2.webp",
+      "uploads/buyo/buyo_cat_003-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:03Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1181/c/s/3/xrqcrM8y.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1181/c/s/3/xrqcrM8y.webp",
+      "https://media.buyo.uz/products/1181/c/s/3/t27oOCyZ.webp",
+      "https://media.buyo.uz/products/1181/c/s/3/mX9kkwW8.webp"
+    ]
+  },
+  {
+    "name": "Lavabo va drenaj tozalagichi",
+    "price": 69000,
+    "oldPrice": 210000,
+    "category": "Tozalash",
+    "desc": "Lavabo va drenaj quvurlarida yig‘ilgan kir hamda tiqilishlarga qarshi ishlatish uchun kukunli tozalagich. Oshxona va vannaxona uchun mos.",
+    "image": "uploads/buyo/buyo_cat_004-1.webp",
+    "sizes": [],
+    "colors": [],
+    "sourceUrl": "https://buyo.uz/uz/item/powder-cleaner",
+    "tags": [
+      "lavabo",
+      "drenaj",
+      "quvur",
+      "tozalagich",
+      "vanna",
+      "oshxona"
+    ],
+    "id": "buyo_cat_004",
+    "images": [
+      "uploads/buyo/buyo_cat_004-1.webp",
+      "uploads/buyo/buyo_cat_004-2.webp",
+      "uploads/buyo/buyo_cat_004-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:04Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/690/i/3395/rkqqKVyk.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/690/i/3395/rkqqKVyk.webp",
+      "https://media.buyo.uz/products/690/c/s/1/grx7JQSU.webp",
+      "https://media.buyo.uz/products/690/r/i/ugS5KClF.webp"
+    ]
+  },
+  {
+    "name": "204L transformable saqlash organayzeri",
+    "price": 199000,
+    "oldPrice": 687000,
+    "category": "Uy jihozlari",
+    "desc": "Adyol, kiyim va mavsumiy buyumlarni saqlash uchun katta sig‘imli transformable organayzer. Ishlatilmaganda ixcham yig‘iladi.",
+    "image": "uploads/buyo/buyo_cat_005-1.webp",
+    "sizes": [
+      "204L"
+    ],
+    "colors": [
+      "Kulrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/organizer-transformer",
+    "tags": [
+      "organayzer",
+      "saqlash",
+      "adyol",
+      "kiyim",
+      "204l",
+      "uy jihozlari"
+    ],
+    "id": "buyo_cat_005",
+    "images": [
+      "uploads/buyo/buyo_cat_005-1.webp",
+      "uploads/buyo/buyo_cat_005-2.webp",
+      "uploads/buyo/buyo_cat_005-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:05Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1212/c/s/3/6Nnb17uT.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1212/c/s/3/6Nnb17uT.webp",
+      "https://media.buyo.uz/products/1212/r/i/VzspQpji.webp",
+      "https://media.buyo.uz/products/1212/c/s/3/hJU6qPEZ.webp"
+    ]
+  },
+  {
+    "name": "Aqlli LED RGB lenta",
+    "price": 135000,
+    "oldPrice": 450000,
+    "category": "Yoritish",
+    "desc": "Xona, televizor atrofi yoki dekor uchun rangli LED lenta. Muhitga mos yorug‘lik berib, interyerga zamonaviy ko‘rinish qo‘shadi.",
+    "image": "uploads/buyo/buyo_cat_006-1.webp",
+    "sizes": [],
+    "colors": [
+      "RGB"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/led-strip",
+    "tags": [
+      "led",
+      "rgb",
+      "lenta",
+      "yoritish",
+      "dekor",
+      "chiroq"
+    ],
+    "id": "buyo_cat_006",
+    "images": [
+      "uploads/buyo/buyo_cat_006-1.webp",
+      "uploads/buyo/buyo_cat_006-2.webp",
+      "uploads/buyo/buyo_cat_006-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:06Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/45/i/178/EwQevRLQ.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/45/i/178/EwQevRLQ.webp",
+      "https://media.buyo.uz/products/45/c/s/1/Nlkdld8v.webp",
+      "https://media.buyo.uz/products/45/r/i/fWRLmLsq.webp"
+    ]
+  },
+  {
+    "name": "Olti qirrali sensorli LED yoritgich",
+    "price": 165000,
+    "oldPrice": 500000,
+    "category": "Yoritish",
+    "desc": "Modulli olti qirrali LED yoritgich interyerga dekorativ aksent beradi. Sensorli boshqaruv tufayli kundalik foydalanish qulay.",
+    "image": "uploads/buyo/buyo_cat_007-1.webp",
+    "sizes": [],
+    "colors": [
+      "Oq yorug‘lik"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/led6",
+    "tags": [
+      "led",
+      "sensor",
+      "yoritgich",
+      "hexagon",
+      "dekor",
+      "yoritish"
+    ],
+    "id": "buyo_cat_007",
+    "images": [
+      "uploads/buyo/buyo_cat_007-1.webp",
+      "uploads/buyo/buyo_cat_007-2.webp",
+      "uploads/buyo/buyo_cat_007-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:07Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/452/c/s/1/PArc6Jgh.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/452/c/s/1/PArc6Jgh.webp",
+      "https://media.buyo.uz/products/452/r/i/ZOaomQxS.webp",
+      "https://media.buyo.uz/products/452/c/s/3/veMLREQT.webp"
+    ]
+  },
+  {
+    "name": "Elastik espander to‘plami",
+    "price": 125000,
+    "oldPrice": 313000,
+    "category": "Sport",
+    "desc": "Uyda yoki safarda mashq qilish uchun elastik qarshilik lentalari to‘plami. Oyoq, son va dumba mushaklari mashqlari uchun qulay.",
+    "image": "uploads/buyo/buyo_cat_008-1.webp",
+    "sizes": [
+      "To‘plam"
+    ],
+    "colors": [
+      "Ko‘p rangli"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/buttock-expander?t=q",
+    "tags": [
+      "espander",
+      "fitness",
+      "sport",
+      "rezina",
+      "mashq",
+      "resistance band"
+    ],
+    "id": "buyo_cat_008",
+    "images": [
+      "uploads/buyo/buyo_cat_008-1.webp",
+      "uploads/buyo/buyo_cat_008-2.webp",
+      "uploads/buyo/buyo_cat_008-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:08Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/136/c/s/1/2l89iiCt.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/136/c/s/1/2l89iiCt.webp",
+      "https://media.buyo.uz/products/136/r/i/47p079ci.webp",
+      "https://media.buyo.uz/products/136/c/s/3/RccZqNVG.webp"
+    ]
+  },
+  {
+    "name": "Ijodkorlik uchun sehrli to‘plam",
+    "price": 125000,
+    "oldPrice": 250000,
+    "category": "Bolalar",
+    "desc": "Bolalarning tasavvuri va mayda motorikasini rivojlantirishga yordam beradigan ijodiy to‘plam. Uyda foydali va qiziqarli mashg‘ulot uchun mos.",
+    "image": "uploads/buyo/buyo_cat_009-1.webp",
+    "sizes": [
+      "To‘plam"
+    ],
+    "colors": [
+      "Ko‘p rangli"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/creativity?t=q",
+    "tags": [
+      "bolalar",
+      "ijod",
+      "to‘plam",
+      "o‘yin",
+      "rivojlantiruvchi"
+    ],
+    "id": "buyo_cat_009",
+    "images": [
+      "uploads/buyo/buyo_cat_009-1.webp",
+      "uploads/buyo/buyo_cat_009-2.webp",
+      "uploads/buyo/buyo_cat_009-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:09Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/791/c/s/1/B7gIffjU.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/791/c/s/1/B7gIffjU.webp",
+      "https://media.buyo.uz/products/791/r/i/6bDuZA4T.webp",
+      "https://media.buyo.uz/products/791/c/s/3/fHPs4gX2.webp"
+    ]
+  },
+  {
+    "name": "Ortopedik o‘rindiq yostig‘i",
+    "price": 199000,
+    "oldPrice": 443000,
+    "category": "Uy jihozlari",
+    "desc": "Uzoq vaqt o‘tirganda qulaylikni oshirish uchun ergonomik shakldagi yostiq. Ofis kreslosi, uy yoki avtomobil o‘rindig‘ida ishlatish mumkin.",
+    "image": "uploads/buyo/buyo_cat_010-1.webp",
+    "sizes": [
+      "Universal"
+    ],
+    "colors": [
+      "Kulrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/ortpillow",
+    "tags": [
+      "ortopedik yostiq",
+      "o‘rindiq",
+      "ofis",
+      "komfort",
+      "uy jihozlari"
+    ],
+    "id": "buyo_cat_010",
+    "images": [
+      "uploads/buyo/buyo_cat_010-1.webp",
+      "uploads/buyo/buyo_cat_010-2.webp",
+      "uploads/buyo/buyo_cat_010-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:10Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/357/c/s/1/KQhRO1Yr.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/357/c/s/1/KQhRO1Yr.webp",
+      "https://media.buyo.uz/products/357/r/i/ntJBwn58.webp",
+      "https://media.buyo.uz/products/357/c/s/3/7zD6HJtg.webp"
+    ]
+  },
+  {
+    "name": "Teri taranglashtiruvchi krem",
+    "price": 145000,
+    "oldPrice": 290000,
+    "category": "Go‘zallik",
+    "desc": "Teri parvarishiga mo‘ljallangan krem, muntazam qo‘llashda terini nam va parvarishlangan ko‘rinishda saqlashga yordam beradi.",
+    "image": "uploads/buyo/buyo_cat_011-1.webp",
+    "sizes": [],
+    "colors": [],
+    "sourceUrl": "https://buyo.uz/uz/item/butt-cream",
+    "tags": [
+      "krem",
+      "teri parvarishi",
+      "go‘zallik",
+      "body cream",
+      "parvarish"
+    ],
+    "id": "buyo_cat_011",
+    "images": [
+      "uploads/buyo/buyo_cat_011-1.webp",
+      "uploads/buyo/buyo_cat_011-2.webp",
+      "uploads/buyo/buyo_cat_011-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:11Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1147/i/i/6194/ak35GHpZ.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1147/i/i/6194/ak35GHpZ.webp",
+      "https://media.buyo.uz/products/1147/i/i/6195/QSyqWXKh.webp",
+      "https://media.buyo.uz/products/1147/c/s/3/7R2Jo0qe.webp"
+    ]
+  },
+  {
+    "name": "Terini oqartiruvchi krem",
+    "price": 149000,
+    "oldPrice": 298000,
+    "category": "Go‘zallik",
+    "desc": "Teri rangini bir tekis ko‘rsatish va kundalik parvarish uchun mo‘ljallangan kosmetik krem. Toza teriga yo‘riqnoma bo‘yicha surtiladi.",
+    "image": "uploads/buyo/buyo_cat_012-1.webp",
+    "sizes": [],
+    "colors": [],
+    "sourceUrl": "https://buyo.uz/uz/item/brightener",
+    "tags": [
+      "oqartiruvchi krem",
+      "krem",
+      "teri",
+      "go‘zallik",
+      "kosmetika"
+    ],
+    "id": "buyo_cat_012",
+    "images": [
+      "uploads/buyo/buyo_cat_012-1.webp",
+      "uploads/buyo/buyo_cat_012-2.webp",
+      "uploads/buyo/buyo_cat_012-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:12Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/709/c/s/1/CV9OAmPE.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/709/c/s/1/CV9OAmPE.webp",
+      "https://media.buyo.uz/products/709/c/s/3/eyaRbjKl.webp",
+      "https://media.buyo.uz/products/709/c/s/3/FcDG4aG6.webp"
+    ]
+  },
+  {
+    "name": "Tonal krem-stick",
+    "price": 155000,
+    "oldPrice": 222000,
+    "category": "Go‘zallik",
+    "desc": "Ixcham stick formatidagi tonal vosita. Kundalik makiyajda teri rangini bir tekis ko‘rsatish va tez surtish uchun qulay.",
+    "image": "uploads/buyo/buyo_cat_013-1.webp",
+    "sizes": [],
+    "colors": [
+      "Natural"
+    ],
+    "sourceUrl": "https://www.buyo.uz/uz/item/tonalkrem",
+    "tags": [
+      "tonal krem",
+      "stick",
+      "makiyaj",
+      "kosmetika",
+      "go‘zallik"
+    ],
+    "id": "buyo_cat_013",
+    "images": [
+      "uploads/buyo/buyo_cat_013-1.webp",
+      "uploads/buyo/buyo_cat_013-2.webp",
+      "uploads/buyo/buyo_cat_013-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:13Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1158/c/s/1/1762943819.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1158/c/s/1/1762943819.webp",
+      "https://media.buyo.uz/products/1158/c/s/3/1762943591.webp",
+      "https://media.buyo.uz/products/1158/c/s/3/1762943597.webp"
+    ]
+  },
+  {
+    "name": "Tsellyulitga qarshi tungi krem",
+    "price": 199000,
+    "oldPrice": 398000,
+    "category": "Go‘zallik",
+    "desc": "Tungi tana parvarishi uchun krem. Massaj bilan birga qo‘llanganda terini yumshoq va parvarishlangan holatda saqlashga yordam beradi.",
+    "image": "uploads/buyo/buyo_cat_014-1.webp",
+    "sizes": [],
+    "colors": [],
+    "sourceUrl": "https://buyo.uz/uz/item/anticellulite",
+    "tags": [
+      "tsellyulit",
+      "krem",
+      "tana parvarishi",
+      "go‘zallik",
+      "night cream"
+    ],
+    "id": "buyo_cat_014",
+    "images": [
+      "uploads/buyo/buyo_cat_014-1.webp",
+      "uploads/buyo/buyo_cat_014-2.webp",
+      "uploads/buyo/buyo_cat_014-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:14Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/950/c/s/1/Od6QtNtF.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/950/c/s/1/Od6QtNtF.webp",
+      "https://media.buyo.uz/products/950/r/i/2wrgrIy1.webp",
+      "https://media.buyo.uz/products/950/c/s/3/f68kNJuZ.webp"
+    ]
+  },
+  {
+    "name": "3-in-1 tirnoq qaychisi",
+    "price": 99000,
+    "oldPrice": 231000,
+    "category": "Go‘zallik",
+    "desc": "Uyda manikyur va tirnoq parvarishi uchun ixcham 3-in-1 vosita. Sayohat sumkasida olib yurishga ham qulay.",
+    "image": "uploads/buyo/buyo_cat_015-1.webp",
+    "sizes": [
+      "3-in-1"
+    ],
+    "colors": [
+      "Kumush"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/nails-clip",
+    "tags": [
+      "tirnoq",
+      "qaychi",
+      "manikyur",
+      "3 in 1",
+      "go‘zallik"
+    ],
+    "id": "buyo_cat_015",
+    "images": [
+      "uploads/buyo/buyo_cat_015-1.webp",
+      "uploads/buyo/buyo_cat_015-2.webp",
+      "uploads/buyo/buyo_cat_015-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:15Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/322/c/s/1/1750713412.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/322/c/s/1/1750713412.webp",
+      "https://media.buyo.uz/products/322/r/i/ke0XydUl.webp",
+      "https://media.buyo.uz/products/322/c/s/3/h4tvcXxL.webp"
+    ]
+  },
+  {
+    "name": "IPL fotoepilyator",
+    "price": 410000,
+    "oldPrice": 1953000,
+    "category": "Elektronika",
+    "desc": "Uy sharoitida tana parvarishi uchun IPL texnologiyali fotoepilyator. Bir necha zona uchun qulay format va boshqaruvga ega.",
+    "image": "uploads/buyo/buyo_cat_016-1.webp",
+    "sizes": [
+      "Universal"
+    ],
+    "colors": [
+      "Oq"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/epilator",
+    "tags": [
+      "ipl",
+      "fotoepilyator",
+      "epilator",
+      "elektronika",
+      "parvarish"
+    ],
+    "id": "buyo_cat_016",
+    "images": [
+      "uploads/buyo/buyo_cat_016-1.webp",
+      "uploads/buyo/buyo_cat_016-2.webp",
+      "uploads/buyo/buyo_cat_016-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:16Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/289/c/s/1/JNSHptZZ.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/289/c/s/1/JNSHptZZ.webp",
+      "https://media.buyo.uz/products/289/r/i/lYtGnJfT.webp",
+      "https://media.buyo.uz/products/289/c/s/3/ko0ujDYZ.webp"
+    ]
+  },
+  {
+    "name": "Feromonli rolik atir",
+    "price": 125000,
+    "oldPrice": 417000,
+    "category": "Parfyumeriya",
+    "desc": "Ixcham rolik formatidagi atir. Sumkada olib yurish va kun davomida hidni yangilab turish uchun qulay.",
+    "image": "uploads/buyo/buyo_cat_017-1.webp",
+    "sizes": [
+      "Roll-on"
+    ],
+    "colors": [],
+    "sourceUrl": "https://buyo.uz/uz/item/feromonroller",
+    "tags": [
+      "atir",
+      "feromon",
+      "rolik",
+      "parfyumeriya",
+      "perfume"
+    ],
+    "id": "buyo_cat_017",
+    "images": [
+      "uploads/buyo/buyo_cat_017-1.webp",
+      "uploads/buyo/buyo_cat_017-2.avif",
+      "uploads/buyo/buyo_cat_017-3.avif"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:17Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1271/c/s/3/B6UQfxO4.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1271/c/s/3/B6UQfxO4.webp",
+      "https://media.buyo.uz/products/1271/r/i/1765728365_EfjWAU9N.avif",
+      "https://media.buyo.uz/products/1271/r/i/1765728349_U3RopwV3.avif"
+    ]
+  },
+  {
+    "name": "Yengil yozgi ayollar ko‘ylagi",
+    "price": 299000,
+    "oldPrice": 544000,
+    "category": "Ayollar kiyimi",
+    "desc": "Issiq kunlar uchun yengil va qulay ayollar ko‘ylagi. Kundalik obrazga mos, erkin bichim harakatni cheklamaydi.",
+    "image": "uploads/buyo/buyo_cat_018-1.webp",
+    "sizes": [
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "colors": [
+      "Yozgi print"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/summer-dress",
+    "tags": [
+      "ayollar ko‘ylagi",
+      "yozgi ko‘ylak",
+      "dress",
+      "ayollar kiyimi"
+    ],
+    "id": "buyo_cat_018",
+    "images": [
+      "uploads/buyo/buyo_cat_018-1.webp",
+      "uploads/buyo/buyo_cat_018-2.webp",
+      "uploads/buyo/buyo_cat_018-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:18Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/447/i/2262/Wtrun21Z.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/447/i/2262/Wtrun21Z.webp",
+      "https://media.buyo.uz/products/447/c/s/1/DUhGXdsQ.webp",
+      "https://media.buyo.uz/products/447/r/i/1mlFLwne.webp"
+    ]
+  },
+  {
+    "name": "Ayollar uchun atlas pijama to‘plami",
+    "price": 235000,
+    "oldPrice": 470000,
+    "category": "Ayollar kiyimi",
+    "desc": "Uyqu va uyda dam olish uchun atlas uslubidagi yengil pijama to‘plami. Yumshoq faktura va nafis ko‘rinish kundalik qulaylik beradi.",
+    "image": "uploads/buyo/buyo_cat_019-1.webp",
+    "sizes": [
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      "Bej",
+      "Moviy"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/atlspushamv",
+    "tags": [
+      "pijama",
+      "atlas",
+      "ayollar",
+      "uy kiyimi",
+      "ayollar kiyimi"
+    ],
+    "id": "buyo_cat_019",
+    "images": [
+      "uploads/buyo/buyo_cat_019-1.webp",
+      "uploads/buyo/buyo_cat_019-2.webp",
+      "uploads/buyo/buyo_cat_019-3.png"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:19Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1182/c/s/3/MF0XoGQ7.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1182/c/s/3/MF0XoGQ7.webp",
+      "https://media.buyo.uz/products/1182/c/s/3/1772901834.PNG",
+      "https://media.buyo.uz/products/1182/c/s/3/nJFjlQK8.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar uchun Feetflex krossovkalari",
+    "price": 340000,
+    "oldPrice": 400000,
+    "category": "Erkaklar poyabzali",
+    "desc": "Kundalik yurish va casual obraz uchun yengil erkaklar krossovkasi. Qulay taglik va universal dizayn turli kiyimlar bilan moslashadi.",
+    "image": "uploads/buyo/buyo_cat_020-1.webp",
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      "Qora",
+      "Kulrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/mkrosfeetflex",
+    "tags": [
+      "krossovka",
+      "erkaklar poyabzali",
+      "feetflex",
+      "sneakers",
+      "oyoq kiyim"
+    ],
+    "id": "buyo_cat_020",
+    "images": [
+      "uploads/buyo/buyo_cat_020-1.webp",
+      "uploads/buyo/buyo_cat_020-2.webp",
+      "uploads/buyo/buyo_cat_020-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:20Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/607/c/s/1/q0vq0UZ1.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/607/c/s/1/q0vq0UZ1.webp",
+      "https://media.buyo.uz/products/607/c/s/3/AX2JOvoS.webp",
+      "https://media.buyo.uz/products/607/c/s/3/UyhzG2Li.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar uchun keng shimlar",
+    "price": 255000,
+    "oldPrice": 0,
+    "category": "Erkaklar kiyimi",
+    "desc": "Erkin bichimli kundalik erkaklar shimi. Keng fason qulay harakatlanish va zamonaviy casual obraz uchun mos.",
+    "image": "uploads/buyo/buyo_cat_021-1.webp",
+    "sizes": [
+      "XL",
+      "2XL",
+      "3XL",
+      "4XL",
+      "5XL"
+    ],
+    "colors": [
+      "Ko‘k",
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/mshb",
+    "tags": [
+      "erkaklar shim",
+      "keng shim",
+      "casual",
+      "erkaklar kiyimi"
+    ],
+    "id": "buyo_cat_021",
+    "images": [
+      "uploads/buyo/buyo_cat_021-1.webp",
+      "uploads/buyo/buyo_cat_021-2.webp",
+      "uploads/buyo/buyo_cat_021-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:21Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/471/c/s/3/9PWXiq3I.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/471/c/s/3/9PWXiq3I.webp",
+      "https://media.buyo.uz/products/471/c/s/1/vcyfuAmT.webp",
+      "https://media.buyo.uz/products/471/c/s/4/I74mOH1g.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar to‘plami: polo va shim",
+    "price": 510000,
+    "oldPrice": 680000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Bir-biriga mos polo va shimdan iborat tayyor erkaklar komplekti. Kundalik va yarim klassik obraz uchun qulay variant.",
+    "image": "uploads/buyo/buyo_cat_022-1.webp",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      "Grafit",
+      "Melanj",
+      "Bej"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/kostumpolo",
+    "tags": [
+      "polo",
+      "shim",
+      "erkaklar komplekti",
+      "kostyum",
+      "erkaklar kiyimi"
+    ],
+    "id": "buyo_cat_022",
+    "images": [
+      "uploads/buyo/buyo_cat_022-1.webp",
+      "uploads/buyo/buyo_cat_022-2.webp",
+      "uploads/buyo/buyo_cat_022-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:22Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/865/c/s/3/luYky0iR.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/865/c/s/3/luYky0iR.webp",
+      "https://media.buyo.uz/products/865/c/s/3/ZufjVXEZ.webp",
+      "https://media.buyo.uz/products/865/c/s/3/9IAKnXUG.webp"
+    ]
+  },
+  {
+    "name": "Ayollar uchun to‘rsimon poshnali tufli",
+    "price": 299000,
+    "oldPrice": 598000,
+    "category": "Ayollar poyabzali",
+    "desc": "Nafis to‘rsimon dizayn va poshnali fasonli ayollar tuflisi. Bayramona va kechki obrazlar bilan uyg‘unlashadi.",
+    "image": "uploads/buyo/buyo_cat_023-1.webp",
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40"
+    ],
+    "colors": [
+      "Bej"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/mule-che?t=s",
+    "tags": [
+      "ayollar tufli",
+      "poshna",
+      "to‘rsimon",
+      "ayollar poyabzali",
+      "mule"
+    ],
+    "id": "buyo_cat_023",
+    "images": [
+      "uploads/buyo/buyo_cat_023-1.webp",
+      "uploads/buyo/buyo_cat_023-2.webp",
+      "uploads/buyo/buyo_cat_023-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:23Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1723/c/s/1/vYJVcXcH.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1723/c/s/1/vYJVcXcH.webp",
+      "https://media.buyo.uz/products/1723/c/s/3/lTrmIOgZ.webp",
+      "https://media.buyo.uz/products/1723/c/s/3/MjMUGpjV.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar Sport Fashion krossovkalari",
+    "price": 249000,
+    "oldPrice": 498000,
+    "category": "Erkaklar poyabzali",
+    "desc": "Setkali ustki qismli, yengil va kundalik foydalanishga mos erkaklar krossovkasi. Sport va casual uslubga mos keladi.",
+    "image": "uploads/buyo/buyo_cat_024-1.webp",
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46"
+    ],
+    "colors": [
+      "Qora",
+      "Kulrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/msksf",
+    "tags": [
+      "sport fashion",
+      "krossovka",
+      "erkaklar poyabzali",
+      "setka",
+      "sneakers"
+    ],
+    "id": "buyo_cat_024",
+    "images": [
+      "uploads/buyo/buyo_cat_024-1.webp",
+      "uploads/buyo/buyo_cat_024-2.jpg",
+      "uploads/buyo/buyo_cat_024-3.jpg"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:24Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/511/c/s/1/LQ9KWv8r.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/511/c/s/1/LQ9KWv8r.webp",
+      "https://media.buyo.uz/products/511/c/s/3/1749542249.jpg",
+      "https://media.buyo.uz/products/511/c/s/3/1749542246.jpg"
+    ]
+  },
+  {
+    "name": "Erkaklar sport oversize kostyumi",
+    "price": 629000,
+    "oldPrice": 839000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Erkin bichimdagi sport uslubidagi erkaklar kostyumi. Kundalik yurish, safar va faol kunlar uchun qulay ikki qismli set.",
+    "image": "uploads/buyo/buyo_cat_025-1.webp",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "colors": [
+      "Qora",
+      "Kulrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/sportkostumover",
+    "tags": [
+      "sport kostyum",
+      "oversize",
+      "erkaklar kiyimi",
+      "komplekt"
+    ],
+    "id": "buyo_cat_025",
+    "images": [
+      "uploads/buyo/buyo_cat_025-1.webp",
+      "uploads/buyo/buyo_cat_025-2.webp",
+      "uploads/buyo/buyo_cat_025-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:25Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/855/c/s/1/rHoqQJoh.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/855/c/s/1/rHoqQJoh.webp",
+      "https://media.buyo.uz/products/855/c/s/3/9mW0HAd0.webp",
+      "https://media.buyo.uz/products/855/c/s/3/ySmIwPVa.webp"
+    ]
+  },
+  {
+    "name": "CORFITMAN belni shakllantiruvchi",
+    "price": 250000,
+    "oldPrice": 358000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Kiyim ostida tanaga yaqin turadigan, bel siluetini tartibliroq ko‘rsatishga mo‘ljallangan erkaklar uchun shapewear modeli.",
+    "image": "uploads/buyo/buyo_cat_026-1.webp",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      "Qora",
+      "Oq"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/corfitman",
+    "tags": [
+      "corfitman",
+      "bel",
+      "shapewear",
+      "erkaklar kiyimi",
+      "korset"
+    ],
+    "id": "buyo_cat_026",
+    "images": [
+      "uploads/buyo/buyo_cat_026-1.webp",
+      "uploads/buyo/buyo_cat_026-2.webp",
+      "uploads/buyo/buyo_cat_026-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:26Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1844/c/s/1/iXncBnze.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1844/c/s/1/iXncBnze.webp",
+      "https://media.buyo.uz/products/1844/c/s/3/1786347125.webp",
+      "https://media.buyo.uz/products/1844/c/s/3/1786347141.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar Alladin kostyumi",
+    "price": 545000,
+    "oldPrice": 727000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Yengil mato va erkin fasonli erkaklar komplekti. Issiq mavsumda qulay, minimal va zamonaviy obraz yaratishga mos.",
+    "image": "uploads/buyo/buyo_cat_027-1.webp",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      "Oq",
+      "Grafit"
+    ],
+    "sourceUrl": "https://www.buyo.uz/uz/item/kostumalladin",
+    "tags": [
+      "alladin",
+      "erkaklar kostyumi",
+      "komplekt",
+      "erkaklar kiyimi"
+    ],
+    "id": "buyo_cat_027",
+    "images": [
+      "uploads/buyo/buyo_cat_027-1.webp",
+      "uploads/buyo/buyo_cat_027-2.webp",
+      "uploads/buyo/buyo_cat_027-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:27Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/864/i/i/4542/iggWfBfM.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/864/i/i/4542/iggWfBfM.webp",
+      "https://media.buyo.uz/products/864/c/s/3/4BptT9eb.webp",
+      "https://media.buyo.uz/products/864/c/s/3/WrnNThiw.webp"
+    ]
+  },
+  {
+    "name": "Yozgi erkaklar kostyumi",
+    "price": 589000,
+    "oldPrice": 786000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Yozgi mavsum uchun yengil erkaklar komplekti. Nafas oluvchi ko‘rinish va qulay fason kundalik foydalanishga mos.",
+    "image": "uploads/buyo/buyo_cat_028-1.webp",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      "Qora",
+      "Och kulrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/kostumletn",
+    "tags": [
+      "yozgi kostyum",
+      "erkaklar",
+      "komplekt",
+      "erkaklar kiyimi"
+    ],
+    "id": "buyo_cat_028",
+    "images": [
+      "uploads/buyo/buyo_cat_028-1.webp",
+      "uploads/buyo/buyo_cat_028-2.webp",
+      "uploads/buyo/buyo_cat_028-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:28Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/854/c/s/1/apIYoDez.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/854/c/s/1/apIYoDez.webp",
+      "https://media.buyo.uz/products/854/c/s/3/rmU6iWUv.webp",
+      "https://media.buyo.uz/products/854/c/s/3/d9F6crR4.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar oversize kostyumi",
+    "price": 525000,
+    "oldPrice": 1050000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Ko‘ylak va shimdan iborat oversize uslubidagi erkaklar to‘plami. Bo‘sh fason zamonaviy siluet va qulaylik beradi.",
+    "image": "uploads/buyo/buyo_cat_029-1.webp",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "colors": [
+      "Ivory",
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/kostumoversize",
+    "tags": [
+      "oversize",
+      "kostyum",
+      "ko‘ylak",
+      "shim",
+      "erkaklar kiyimi"
+    ],
+    "id": "buyo_cat_029",
+    "images": [
+      "uploads/buyo/buyo_cat_029-1.webp",
+      "uploads/buyo/buyo_cat_029-2.webp",
+      "uploads/buyo/buyo_cat_029-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:29Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/853/c/s/1/XeHoVVE8.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/853/c/s/1/XeHoVVE8.webp",
+      "https://media.buyo.uz/products/853/c/s/3/bdlNaqCs.webp",
+      "https://media.buyo.uz/products/853/c/s/3/4mRGKQlq.webp"
+    ]
+  },
+  {
+    "name": "Ayollar ko‘ylagi Vittoria Queen",
+    "price": 195000,
+    "oldPrice": 368000,
+    "category": "Ayollar kiyimi",
+    "desc": "Nafis fasonli Vittoria Queen ayollar ko‘ylagi. Kundalik va bayramona obrazlarda aksessuarlar bilan oson uyg‘unlashadi.",
+    "image": "uploads/buyo/buyo_cat_030-1.webp",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      "Klassik"
+    ],
+    "sourceUrl": "https://www.buyo.uz/uz/item/vq",
+    "tags": [
+      "vittoria queen",
+      "ayollar ko‘ylagi",
+      "dress",
+      "ayollar kiyimi"
+    ],
+    "id": "buyo_cat_030",
+    "images": [
+      "uploads/buyo/buyo_cat_030-1.webp",
+      "uploads/buyo/buyo_cat_030-2.webp",
+      "uploads/buyo/buyo_cat_030-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:30Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/307/i/1586/Z5Z2SPJI.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/307/i/1586/Z5Z2SPJI.webp",
+      "https://media.buyo.uz/products/307/c/s/3/sVOH80A0.webp",
+      "https://media.buyo.uz/products/307/c/s/3/XLbVwle0.webp"
+    ]
+  },
+  {
+    "name": "Erkaklar ichki kiyimi — 4 dona",
+    "price": 175000,
+    "oldPrice": 350000,
+    "category": "Erkaklar kiyimi",
+    "desc": "Kundalik foydalanish uchun 4 donalik erkaklar ichki kiyimi to‘plami. Nafas oluvchi dizayn va qulay elastik bel qismi bilan.",
+    "image": "uploads/buyo/buyo_cat_031-1.png",
+    "sizes": [
+      "L",
+      "XL",
+      "2XL",
+      "3XL",
+      "4XL"
+    ],
+    "colors": [
+      "Aralash ranglar"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/man-underwear",
+    "tags": [
+      "erkaklar ichki kiyimi",
+      "trusi",
+      "4 dona",
+      "erkaklar kiyimi"
+    ],
+    "id": "buyo_cat_031",
+    "images": [
+      "uploads/buyo/buyo_cat_031-1.png",
+      "uploads/buyo/buyo_cat_031-2.webp",
+      "uploads/buyo/buyo_cat_031-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:31Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/273/i/1348/1744648963.png",
+    "sourceImages": [
+      "https://media.buyo.uz/products/273/i/1348/1744648963.png",
+      "https://media.buyo.uz/products/273/i/1349/8MQ54l0G.webp",
+      "https://media.buyo.uz/products/273/i/1350/LUEpY1uH.webp"
+    ]
+  },
+  {
+    "name": "Ayollar uchun Orange uggi",
+    "price": 199000,
+    "oldPrice": 398000,
+    "category": "Ayollar poyabzali",
+    "desc": "Sovuq mavsumda kundalik kiyish uchun issiq ayollar uggi modeli. Yumshoq ichki qism va qulay taglik bilan.",
+    "image": "uploads/buyo/buyo_cat_032-1.webp",
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ],
+    "colors": [
+      "Orange",
+      "Bej"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/womanshoes2?t=s",
+    "tags": [
+      "uggi",
+      "ayollar oyoq kiyimi",
+      "qishki",
+      "ayollar poyabzali"
+    ],
+    "id": "buyo_cat_032",
+    "images": [
+      "uploads/buyo/buyo_cat_032-1.webp",
+      "uploads/buyo/buyo_cat_032-2.webp",
+      "uploads/buyo/buyo_cat_032-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:32Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/449/c/s/3/rtjJhgwN.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/449/c/s/3/rtjJhgwN.webp",
+      "https://media.buyo.uz/products/449/r/i/6JlXOxGg.webp",
+      "https://media.buyo.uz/products/449/c/s/3/8rx0L1sx.webp"
+    ]
+  },
+  {
+    "name": "Fashion ayollar sandaleti",
+    "price": 249000,
+    "oldPrice": 293000,
+    "category": "Ayollar poyabzali",
+    "desc": "Yozgi kunlar uchun yengil ayollar sandaleti. Minimal dizayn va ochiq fason kundalik obrazga qulaylik qo‘shadi.",
+    "image": "uploads/buyo/buyo_cat_033-1.webp",
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ],
+    "colors": [
+      "Qora",
+      "Jigarrang"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/bosfashion?t=s",
+    "tags": [
+      "sandal",
+      "ayollar poyabzali",
+      "yozgi oyoq kiyim",
+      "fashion"
+    ],
+    "id": "buyo_cat_033",
+    "images": [
+      "uploads/buyo/buyo_cat_033-1.webp",
+      "uploads/buyo/buyo_cat_033-2.webp",
+      "uploads/buyo/buyo_cat_033-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:33Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/696/c/s/1/1752841490.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/696/c/s/1/1752841490.webp",
+      "https://media.buyo.uz/products/696/c/s/3/1752841298.webp",
+      "https://media.buyo.uz/products/696/c/s/3/1752841301.webp"
+    ]
+  },
+  {
+    "name": "Issiq ayollar ortopedik etiklari",
+    "price": 299000,
+    "oldPrice": 598000,
+    "category": "Ayollar poyabzali",
+    "desc": "Sovuq mavsum uchun issiq astarli, qulay taglikka ega ayollar etiklari. Kundalik yurish uchun barqaror va shinam fason.",
+    "image": "uploads/buyo/buyo_cat_034-1.webp",
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ],
+    "colors": [
+      "Bordo",
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/ort-wshoes?t=q",
+    "tags": [
+      "etik",
+      "ortopedik",
+      "ayollar poyabzali",
+      "qishki oyoq kiyim"
+    ],
+    "id": "buyo_cat_034",
+    "images": [
+      "uploads/buyo/buyo_cat_034-1.webp",
+      "uploads/buyo/buyo_cat_034-2.webp",
+      "uploads/buyo/buyo_cat_034-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:34Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1213/c/s/3/xhjFAGCT.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1213/c/s/3/xhjFAGCT.webp",
+      "https://media.buyo.uz/products/1213/r/i/7sXz4ztV.webp",
+      "https://media.buyo.uz/products/1213/r/i/sGtjFYDn.webp"
+    ]
+  },
+  {
+    "name": "Ko‘rinmas ayollar ichki kiyimi — 3 dona",
+    "price": 125000,
+    "oldPrice": 250000,
+    "category": "Ayollar kiyimi",
+    "desc": "Silliq kiyimlar ostida iz qoldirmaslikka mo‘ljallangan 3 donalik ayollar ichki kiyimi to‘plami. Kundalik qulaylik uchun yumshoq fason.",
+    "image": "uploads/buyo/buyo_cat_035-1.webp",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Oq",
+      "Bej",
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/trustonk",
+    "tags": [
+      "ayollar ichki kiyimi",
+      "3 dona",
+      "seamless",
+      "ayollar kiyimi"
+    ],
+    "id": "buyo_cat_035",
+    "images": [
+      "uploads/buyo/buyo_cat_035-1.webp",
+      "uploads/buyo/buyo_cat_035-2.webp",
+      "uploads/buyo/buyo_cat_035-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:35Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1203/c/s/3/pT7cAd0G.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1203/c/s/3/pT7cAd0G.webp",
+      "https://media.buyo.uz/products/1203/c/s/3/1WfDi5rN.webp",
+      "https://media.buyo.uz/products/1203/c/s/3/LCwTfOBX.webp"
+    ]
+  },
+  {
+    "name": "Uzoq muddatli suyuq lab bo‘yoqlari to‘plami",
+    "price": 245000,
+    "oldPrice": 817000,
+    "category": "Go‘zallik",
+    "desc": "Turli obrazlar uchun bir nechta tusdagi suyuq lab bo‘yoqlari to‘plami. Kundalik va kechki makiyajda foydalanish uchun qulay.",
+    "image": "uploads/buyo/buyo_cat_036-1.webp",
+    "sizes": [
+      "To‘plam"
+    ],
+    "colors": [
+      "Aralash tuslar"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/matpomad",
+    "tags": [
+      "lab bo‘yoq",
+      "pomada",
+      "makiyaj",
+      "go‘zallik",
+      "lipstick"
+    ],
+    "id": "buyo_cat_036",
+    "images": [
+      "uploads/buyo/buyo_cat_036-1.webp",
+      "uploads/buyo/buyo_cat_036-2.avif",
+      "uploads/buyo/buyo_cat_036-3.avif"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:36Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/1297/c/s/3/wbtxl8aN.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/1297/c/s/3/wbtxl8aN.webp",
+      "https://media.buyo.uz/products/1297/r/i/1766242804_Hb3z0LuI.avif",
+      "https://media.buyo.uz/products/1297/r/i/1766242848_MSfZceTW.avif"
+    ]
+  },
+  {
+    "name": "Avtomobil o‘rindiqlari oralig‘i organayzeri",
+    "price": 149000,
+    "oldPrice": 347000,
+    "category": "Avtomobil",
+    "desc": "Telefon, kalit va mayda buyumlarni qo‘l ostida saqlash uchun avtomobil o‘rindiqlari orasiga joylashtiriladigan organayzer.",
+    "image": "uploads/buyo/buyo_cat_037-1.webp",
+    "sizes": [
+      "Universal"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/avtonayzer",
+    "tags": [
+      "avto organayzer",
+      "mashina",
+      "o‘rindiq",
+      "avtomobil aksessuari"
+    ],
+    "id": "buyo_cat_037",
+    "images": [
+      "uploads/buyo/buyo_cat_037-1.webp",
+      "uploads/buyo/buyo_cat_037-2.webp",
+      "uploads/buyo/buyo_cat_037-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:37Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/701/c/s/1/kDD3QoE0.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/701/c/s/1/kDD3QoE0.webp",
+      "https://media.buyo.uz/products/701/r/i/9NCl3GRB.webp",
+      "https://media.buyo.uz/products/701/c/s/3/h3iSsUyp.webp"
+    ]
+  },
+  {
+    "name": "Avtomobil ventilyatori",
+    "price": 120000,
+    "oldPrice": 200000,
+    "category": "Avtomobil",
+    "desc": "Salon ichida qo‘shimcha havo aylanishi yaratish uchun ixcham avtomobil ventilyatori. Issiq kunlarda foydalanish uchun qulay.",
+    "image": "uploads/buyo/buyo_cat_038-1.webp",
+    "sizes": [
+      "Universal"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/av?t=s",
+    "tags": [
+      "avto ventilyator",
+      "mashina",
+      "fan",
+      "avtomobil aksessuari"
+    ],
+    "id": "buyo_cat_038",
+    "images": [
+      "uploads/buyo/buyo_cat_038-1.webp",
+      "uploads/buyo/buyo_cat_038-2.webp",
+      "uploads/buyo/buyo_cat_038-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:38Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/466/c/s/1/YYgHSi96.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/466/c/s/1/YYgHSi96.webp",
+      "https://media.buyo.uz/products/466/c/s/3/l8HIdnJK.webp",
+      "https://media.buyo.uz/products/466/c/s/3/52hT0Rx3.webp"
+    ]
+  },
+  {
+    "name": "Avtomobil o‘rindig‘i uchun ortopedik yostiqlar",
+    "price": 225000,
+    "oldPrice": 682000,
+    "category": "Avtomobil",
+    "desc": "Uzoq safarlarda qulaylikni oshirishga mo‘ljallangan avtomobil o‘rindig‘i uchun ergonomik yostiqlar to‘plami.",
+    "image": "uploads/buyo/buyo_cat_039-1.webp",
+    "sizes": [
+      "Universal"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/podushkiavto",
+    "tags": [
+      "avto yostiq",
+      "ortopedik",
+      "mashina o‘rindig‘i",
+      "avtomobil"
+    ],
+    "id": "buyo_cat_039",
+    "images": [
+      "uploads/buyo/buyo_cat_039-1.webp",
+      "uploads/buyo/buyo_cat_039-2.webp",
+      "uploads/buyo/buyo_cat_039-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:39Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/735/c/s/1/1754392944.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/735/c/s/1/1754392944.webp",
+      "https://media.buyo.uz/products/735/r/i/T4fZnRaM.webp",
+      "https://media.buyo.uz/products/735/c/s/3/evbYhvG3.webp"
+    ]
+  },
+  {
+    "name": "Avtomobil uchun telefon ushlagichi",
+    "price": 225000,
+    "oldPrice": 450000,
+    "category": "Avtomobil",
+    "desc": "Navigatsiya va qo‘ng‘iroqlarni qulay ko‘rish uchun avtomobil saloniga mo‘ljallangan telefon ushlagichi. Telefonni barqaror ushlab turadi.",
+    "image": "uploads/buyo/buyo_cat_040-1.webp",
+    "sizes": [
+      "Universal"
+    ],
+    "colors": [
+      "Qora"
+    ],
+    "sourceUrl": "https://buyo.uz/uz/item/lisen",
+    "tags": [
+      "telefon ushlagich",
+      "avto holder",
+      "mashina",
+      "avtomobil aksessuari"
+    ],
+    "id": "buyo_cat_040",
+    "images": [
+      "uploads/buyo/buyo_cat_040-1.webp",
+      "uploads/buyo/buyo_cat_040-2.webp",
+      "uploads/buyo/buyo_cat_040-3.webp"
+    ],
+    "stock": 999,
+    "label": "Yangi",
+    "createdAt": "2026-10-07T04:50:40Z",
+    "sourceName": "BUYO",
+    "sourceImage": "https://media.buyo.uz/products/702/i/3481/gXyPVH8y.webp",
+    "sourceImages": [
+      "https://media.buyo.uz/products/702/i/3481/gXyPVH8y.webp",
+      "https://media.buyo.uz/products/702/c/s/3/4B5YrUJj.webp",
+      "https://media.buyo.uz/products/702/c/s/3/0kvFRhxG.webp"
+    ]
+  }
+]
