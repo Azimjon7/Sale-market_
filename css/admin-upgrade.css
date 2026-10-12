@@ -1430,6 +1430,33 @@ textarea:focus {
   }
 }
 
+.stock-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.stock-summary > div { padding: 12px; border: 1px solid var(--ap-border, #e2e8f0); border-radius: 12px; background: #f8fafc; }
+.stock-summary span, .stock-summary strong { display: block; }
+.stock-summary span { color: #64748b; font-size: 12px; }
+.stock-summary strong { margin-top: 4px; font-size: 18px; }
+.stock-low { color: #b45309 !important; font-weight: 700; }
+.stock-adjustment-form { display: grid; grid-template-columns: 140px minmax(0, 1fr) auto; align-items: end; gap: 10px; }
+.stock-adjustment-form .form-group { margin: 0; }
+.stock-history-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.stock-history-list { display: grid; gap: 8px; margin-top: 10px; }
+.stock-history-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px; border: 1px solid var(--ap-border, #e2e8f0); border-radius: 12px; }
+.stock-history-item span { display: block; margin-top: 3px; color: #64748b; font-size: 12px; }
+.stock-history-item b { font-size: 16px; }
+.stock-history-item p { grid-column: 1 / -1; margin: 2px 0 0; color: #475569; font-size: 13px; }
+.stock-positive { color: #15803d; }
+.stock-negative { color: #b91c1c; }
+@media (max-width: 640px) {
+  .stock-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stock-adjustment-form { grid-template-columns: 1fr; }
+  .stock-history-heading { align-items: flex-start; flex-direction: column; }
+}
+
 /* ===================== RECENT ORDERS (enhanced) ===================== */
 .recent-row {
   display: grid !important;
@@ -1651,6 +1678,95 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* Buyurtmalar boshqaruvi: mavjud panel uslubiga mos ixcham boshqaruvlar. */
+.order-management-toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 2fr) repeat(3, minmax(150px, 1fr));
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.order-management-toolbar .form-group { margin-bottom: 0; }
+
+.orders-state {
+  min-height: 20px;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.orders-state:empty { display: none; }
+
+.order-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ap-border, #e2e8f0);
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.order-page-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-page-controls .btn { min-width: 84px; }
+
+.odm-timeline {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.odm-history-item {
+  position: relative;
+  padding: 11px 12px 11px 32px;
+  border: 1px solid var(--ap-border, #e2e8f0);
+  border-radius: 12px;
+  background: var(--ap-surface-2, #f8fafc);
+}
+
+.odm-history-item::before {
+  position: absolute;
+  top: 15px;
+  left: 13px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9a6a36;
+  content: "";
+}
+
+.odm-history-item strong,
+.odm-history-item span { display: block; }
+
+.odm-history-item span {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .order-management-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .order-search-field { grid-column: 1 / -1; }
+}
+
+@media (max-width: 640px) {
+  .order-management-toolbar { grid-template-columns: 1fr; }
+  .order-search-field { grid-column: auto; }
+  .order-pagination { align-items: stretch; flex-direction: column; }
+  .order-page-controls { justify-content: space-between; }
+  .order-page-controls .btn { min-width: 76px; }
 }
 
 @keyframes odmFadeIn {

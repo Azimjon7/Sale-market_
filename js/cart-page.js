@@ -45,7 +45,7 @@
         '<span class="mb-bar-total-amount" id="mb-bar-amount">0 so\'m</span>' +
       '</div>' +
       '<a href="checkout.html" class="mb-bar-btn">' +
-        '<i class="fa fa-credit-card"></i> Buyurtma berish' +
+        '<i class="fa fa-credit-card"></i> Rasmiylashtirish' +
       '</a>';
     document.body.appendChild(bar);
   }
@@ -97,7 +97,7 @@
       '</div>' +
       '<div class="summary-divider"></div>' +
       '<div class="summary-total"><span>Umumiy summa</span><strong>' + formatMoney(grandTotal) + '</strong></div>' +
-      '<a href="checkout.html" class="market-btn market-btn--full"><i class="fa fa-credit-card"></i> Buyurtmaga o\'tish</a>' +
+      '<a href="checkout.html" class="market-btn market-btn--full"><i class="fa fa-credit-card"></i> Buyurtmani rasmiylashtirish</a>' +
       '<p class="summary-note">300 000 so\'mdan yuqori xaridlar uchun yetkazish bepul.</p>';
     bindPromoEvents();
   }
@@ -137,6 +137,51 @@
     }
   }
 
+  // ── validate product stock based on inventory mode ─────────────────────────
+  function validateItemStock(product, qty) {
+    if (!product) {
+      return { valid: false, error: 'Product not found' };
+    }
+    if (!qty || qty <= 0) {
+      return { valid: false, error: 'Quantity must be greater than 0' };
+    }
+    const inventoryMode = product._inventoryMode || 'standard';
+    // Made-to-order products: no stock validation
+    if (inventoryMode === 'made-to-order' && product.inventoryManaged !== true) {
+      if (qty > 100) {
+        return { valid: true, warning: 'High quantity for made-to-order item' };
+      }
+      return { valid: true };
+    }
+    // Standard inventory mode: strict stock validation
+    if (inventoryMode === 'standard' || !inventoryMode) {
+      const stock = product.stock === undefined || product.stock === null || product.stock === ''
+        ? 999
+        : Math.max(0, Math.floor(Number(product.stock) || 0));
+      if (qty > stock) {
+        return {
+          valid: false,
+          error: `Insufficient stock. Available: ${stock}, Requested: ${qty}`
+        };
+      }
+      return { valid: true };
+    }
+    return { valid: false, error: 'Unknown inventory mode' };
+  }
+
+  // ── get inventory mode badge ──────────────────────────────────────────────
+  function getInventoryModeBadge(product) {
+    const mode = product._inventoryMode || 'standard';
+    if (mode === 'made-to-order' && product.inventoryManaged !== true) {
+      return '<span class="inventory-badge mto" title="Buyurtma asosida">Buyurtma asosida</span>';
+    }
+    const stock = Number(product.stock || 0);
+    if (stock === 0) {
+      return '<span class="inventory-badge out-of-stock" title="Stokda yo\'q">Stokda yo\'q</span>';
+    }
+    return '<span class="inventory-badge in-stock" title="Stokda bor">Stokda bor</span>';
+  }
+
   // ── render a single cart card ─────────────────────────────────────────────
   function renderCard(item) {
     const img = item.product.image
@@ -154,6 +199,7 @@
             '<div>' +
               '<h4>' + (item.product.name || 'Mahsulot') + '</h4>' +
               '<p>' + (item.size || "O'lcham tanlanmagan") + ' / ' + (item.color || 'Rang tanlanmagan') + '</p>' +
+              getInventoryModeBadge(item.product) +
             '</div>' +
           '</div>' +
           '<div class="market-cart-price">' +
@@ -182,8 +228,8 @@
       root.innerHTML =
         '<div class="market-empty-state">' +
           '<div class="market-empty-icon"><i class="fa fa-shopping-bag"></i></div>' +
-          '<h3>Savat bo\'sh</h3>' +
-          '<p>Yoqtirgan mahsulotingizni katalogdan tanlang va savatga qo\'shing.</p>' +
+          '<h3>Korzina bo\'sh</h3>' +
+          '<p>Yoqtirgan mahsulotingizni katalogdan tanlang va korzinaga qo\'shing.</p>' +
           '<a href="shop.html" class="market-btn"><i class="fa fa-th-large"></i> Katalogga o\'tish</a>' +
         '</div>';
       // hide sticky bar
@@ -196,17 +242,46 @@
   }
 
   // ── update one card's qty display without full re-render ──────────────────
-  function updateCardQty(index, newQty) {
+  function updateCardQty(index, newQty, skipValidation = false) {
     const card = document.querySelector('.market-cart-card[data-cart-index="' + index + '"]');
     if (!card) return;
-    const input = card.querySelector('.cart-qty-input');
-    if (input) input.value = newQty;
     const item = cartItems.find(i => i.index === index);
     if (!item) return;
+    // Validate stock if not skipped
+    if (!skipValidation) {
+      const validation = validateItemStock(item.product, newQty);
+      if (!validation.valid) {
+        showMessage(validation.error, 'error');
+        const input = card.querySelector('.cart-qty-input');
+        if (input) input.value = item.qty; // revert to original
+        return;
+      }
+      if (validation.warning) {
+        showMessage(validation.warning, 'warning');
+      }
+    }
+    const input = card.querySelector('.cart-qty-input');
+    if (input) input.value = newQty;
     item.qty = newQty;
     const price = Number(item.product.price || 0);
     const lineTotalEl = document.getElementById('cart-line-total-' + index);
     if (lineTotalEl) lineTotalEl.textContent = 'Jami: ' + formatMoney(price * newQty);
+  }
+
+  // ── show temporary message ────────────────────────────────────────────────
+  function showMessage(text, type = 'info') {
+    // Remove existing messages
+    const existing = document.getElementById('cart-message');
+    if (existing) existing.remove();
+    const msg = document.createElement('div');
+    msg.id = 'cart-message';
+    msg.className = 'cart-message cart-message--' + type;
+    msg.textContent = text;
+    msg.style.cssText = 'position: fixed; top: 20px; right: 20px; max-width: 300px; padding: 12px 16px; background: ' +
+      (type === 'error' ? '#f8d7da' : type === 'warning' ? '#fff3cd' : '#d1ecf1') + '; color: ' +
+      (type === 'error' ? '#721c24' : type === 'warning' ? '#856404' : '#0c5460') + '; border-radius: 4px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.1);';
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 3000);
   }
 
   // ── bind events on rendered cards ────────────────────────────────────────
@@ -219,12 +294,11 @@
         const item = cartItems.find(i => i.index === index);
         if (!item) return;
         const newQty = Math.max(1, item.qty + delta);
-        MBStore.updateQty(index, newQty);
-        updateCardQty(index, newQty);
+        updateCardQty(index, newQty, false);
+        MBStore.updateQty(index, item.qty); // use updated item.qty
         renderSummary();
         updateCheckoutBar();
         refreshCartBadge();
-        // update item count label
         const countEl = document.querySelector('.market-cart-head p');
         if (countEl) countEl.textContent = cartItems.length + ' xil mahsulot tanlandi';
       });
@@ -235,8 +309,8 @@
       input.addEventListener('change', function () {
         const index = Number(this.dataset.index);
         const newQty = Math.max(1, Number(this.value) || 1);
-        MBStore.updateQty(index, newQty);
-        updateCardQty(index, newQty);
+        updateCardQty(index, newQty, false);
+        MBStore.updateQty(index, cartItems.find(i => i.index === index)?.qty || newQty);
         renderSummary();
         updateCheckoutBar();
         refreshCartBadge();
@@ -249,7 +323,6 @@
         e.preventDefault();
         const index = Number(this.dataset.index);
         MBStore.removeFromCart(index);
-        // re-build cartItems from store (indices shift after removal)
         const rawCart = MBStore.getCart();
         cartItems = rawCart.map((entry, i) => ({
           ...entry,
@@ -271,8 +344,8 @@
     root.innerHTML =
       '<div class="market-empty-state">' +
         '<div class="market-empty-icon"><i class="fa fa-shopping-bag"></i></div>' +
-        '<h3>Savat bo\'sh</h3>' +
-        '<p>Yoqtirgan mahsulotingizni katalogdan tanlang va savatga qo\'shing.</p>' +
+        '<h3>Korzina bo\'sh</h3>' +
+        '<p>Yoqtirgan mahsulotingizni katalogdan tanlang va korzinaga qo\'shing.</p>' +
         '<a href="shop.html" class="market-btn"><i class="fa fa-th-large"></i> Katalogga o\'tish</a>' +
       '</div>';
     // inject hidden bar anyway (CSS handles hiding)
@@ -294,7 +367,7 @@
       '<div class="market-cart-list">' +
         '<div class="market-cart-head">' +
           '<div>' +
-            '<h3>Savatdagi mahsulotlar</h3>' +
+            '<h3>Korzinadagi mahsulotlar</h3>' +
             '<p>' + cartItems.length + ' xil mahsulot tanlandi</p>' +
           '</div>' +
           '<a href="shop.html" class="market-mini-link"><i class="fa fa-plus"></i> Yana qo\'shish</a>' +
@@ -332,3 +405,4 @@
     }
   });
 })();
+

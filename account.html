@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Dodola — Mening kabinetim</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/customer-account.css">
+  <link rel="stylesheet" href="css/customer-navigation.css">
+</head>
+<body class="auth-body account-body market-body">
+  <header class="account-topbar">
+    <a class="auth-brand" href="index.html" aria-label="Bosh sahifa"><span class="auth-mark">SM</span><span>Sale Market</span></a>
+    <nav class="account-shopping-nav" aria-label="Do‘kon bo‘limlari">
+      <a href="index.html"><i class="fa fa-home"></i>Bosh sahifa</a>
+      <a href="shop.html"><i class="fa fa-th-large"></i>Katalog</a>
+      <a href="shop-cart.html"><i class="fa fa-shopping-bag"></i>Korzina <span class="account-cart-count js-cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="account-shell">
+    <section class="account-profile-hero">
+      <div class="account-avatar" aria-hidden="true"><i class="fa fa-user-o"></i></div>
+      <div>
+        <p class="account-eyebrow">Shaxsiy kabinet</p>
+        <h1 id="welcome">Mening kabinetim</h1>
+        <p id="accountIdentity" class="account-identity"></p>
+        <div id="accountVerification" class="account-verification"></div>
+        <button type="button" id="resendVerificationBtn" class="account-resend-verification hidden"><i class="fa fa-envelope-o"></i> Tasdiqlash xatini qayta yuborish</button>
+      </div>
+    </section>
+
+    <div class="account-grid">
+      <nav class="account-nav" aria-label="Kabinet bo‘limlari">
+        <button type="button" data-section="overview" class="active"><i class="fa fa-user-o"></i><span>Umumiy</span></button>
+        <button type="button" data-section="orders"><i class="fa fa-shopping-bag"></i><span>Buyurtmalarim</span></button>
+        <button type="button" data-section="payments"><i class="fa fa-credit-card"></i><span>To‘lovlarim</span></button>
+        <button type="button" data-section="addresses"><i class="fa fa-map-marker"></i><span>Manzillarim</span></button>
+        <button type="button" data-section="settings"><i class="fa fa-cog"></i><span>Profil sozlamalari</span></button>
+        <a class="account-nav-link" href="contact.html"><i class="fa fa-question-circle-o"></i><span>Yordam</span></a>
+        <button type="button" id="logoutBtn" class="account-logout" data-account-logout><i class="fa fa-sign-out"></i><span>Chiqish</span></button>
+      </nav>
+
+      <section class="account-panel">
+        <div id="overviewSection">
+          <div class="account-section-head"><div><p class="account-eyebrow">Xush kelibsiz</p><h2>Kabinetim</h2></div></div>
+          <div class="profile-action-list">
+            <button type="button" data-open-section="orders"><i class="fa fa-shopping-bag"></i><span><strong>Buyurtmalarim</strong><small id="overviewOrderCount">Buyurtmalarni ko‘rish</small></span><i class="fa fa-angle-right"></i></button>
+            <button type="button" data-open-section="addresses"><i class="fa fa-map-marker"></i><span><strong>Manzillarim</strong><small id="overviewAddressCount">Yetkazib berish manzillari</small></span><i class="fa fa-angle-right"></i></button>
+            <button type="button" data-open-section="payments"><i class="fa fa-credit-card"></i><span><strong>To‘lovlarim</strong><small>Buyurtmalar bo‘yicha holatlar</small></span><i class="fa fa-angle-right"></i></button>
+            <button type="button" data-open-section="settings"><i class="fa fa-cog"></i><span><strong>Profil sozlamalari</strong><small>Shaxsiy va xavfsizlik ma’lumotlari</small></span><i class="fa fa-angle-right"></i></button>
+          </div>
+          <div class="profile-secondary-actions" aria-label="Qo‘shimcha amallar">
+            <a href="contact.html"><i class="fa fa-question-circle-o"></i><span>Yordam</span></a>
+            <button type="button" id="overviewLogoutBtn" data-account-logout><i class="fa fa-sign-out"></i><span>Chiqish</span></button>
+          </div>
+        </div>
+
+        <div id="ordersSection" class="hidden">
+          <div class="account-section-head"><div><p class="account-eyebrow">Xaridlar tarixi</p><h2>Buyurtmalarim</h2></div><a href="shop.html">Katalogga o‘tish</a></div>
+          <div class="account-tabs" role="tablist" aria-label="Buyurtmalar filtri">
+            <button type="button" data-order-filter="active" class="active" role="tab">Faol</button>
+            <button type="button" data-order-filter="all" role="tab">Barchasi</button>
+          </div>
+          <div id="ordersList" class="account-list" aria-live="polite"></div>
+        </div>
+
+        <div id="paymentsSection" class="hidden">
+          <div class="account-section-head"><div><p class="account-eyebrow">Haqiqiy buyurtma ma’lumotlari</p><h2>To‘lovlarim</h2></div></div>
+          <p class="account-note">Bu yerda faqat buyurtmalaringizdagi mavjud to‘lov holatlari ko‘rsatiladi.</p>
+          <div id="paymentsList" class="account-list" aria-live="polite"></div>
+        </div>
+
+        <div id="addressesSection" class="hidden">
+          <div class="account-section-head"><div><p class="account-eyebrow">Yetkazib berish</p><h2>Manzillarim</h2></div></div>
+          <form id="addressForm" class="auth-form account-form-card"><input name="id" type="hidden"><div class="auth-field"><label>Nomi</label><input name="label" placeholder="Masalan, Uy" required maxlength="60"></div><div class="auth-field"><label>Manzil</label><textarea name="address" placeholder="To‘liq yetkazib berish manzili" required maxlength="500"></textarea></div><button class="auth-btn">Manzilni saqlash</button></form>
+          <div id="addressesList" class="account-list"></div>
+        </div>
+
+        <div id="settingsSection" class="hidden">
+          <div class="account-section-head"><div><p class="account-eyebrow">Hisob ma’lumotlari</p><h2>Profil sozlamalari</h2></div></div>
+          <div class="account-settings-grid">
+            <form id="profileForm" class="auth-form account-form-card"><h3>Shaxsiy ma’lumotlar</h3><div class="auth-field"><label>Ism</label><input name="firstName" required maxlength="80"></div><div class="auth-field"><label>Familiya</label><input name="lastName" required maxlength="80"></div><div class="auth-field"><label>Telefon</label><input id="profilePhone" disabled></div><div class="auth-field"><label>Email</label><input id="profileEmail" disabled></div><p id="verificationState"></p><button class="auth-btn">Saqlash</button></form>
+            <form id="passwordForm" class="auth-form account-form-card"><h3>Xavfsizlik</h3><div class="auth-field"><label>Joriy parol</label><input name="currentPassword" type="password" autocomplete="current-password" required></div><div class="auth-field"><label>Yangi parol</label><input name="newPassword" type="password" autocomplete="new-password" minlength="10" required></div><p class="account-note">Kamida 10 belgi, harf va raqam ishlating.</p><button class="auth-btn">Parolni almashtirish</button></form>
+          </div>
+        </div>
+        <div id="accountMessage" class="auth-message" role="status"></div>
+      </section>
+    </div>
+  </main>
+  <script src="js/order-labels.js"></script>
+  <script src="js/product-rules.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/marketplace-upgrade.js"></script>
+  <script src="js/header-account.js"></script>
+  <script src="js/account-page.js"></script>
+</body>
+</html>

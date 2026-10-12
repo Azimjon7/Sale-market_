@@ -25,7 +25,7 @@ Created: Colorib
             $('.filter__controls li').removeClass('active');
             $(this).addClass('active');
         });
-        if ($('.property__gallery').length > 0) {
+        if ($('.property__gallery').length > 0 && typeof mixitup === 'function') {
             var containerEl = document.querySelector('.property__gallery');
             var mixer = mixitup(containerEl);
         }
@@ -64,10 +64,12 @@ Created: Colorib
     /*------------------
 		Navigation
 	--------------------*/
-    $(".header__menu").slicknav({
-        prependTo: '#mobile-menu-wrap',
-        allowParentLinks: true
-    });
+    if ($.fn.slicknav) {
+        $(".header__menu").slicknav({
+            prependTo: '#mobile-menu-wrap',
+            allowParentLinks: true
+        });
+    }
 
     /*------------------
         Accordin Active
@@ -83,6 +85,7 @@ Created: Colorib
     /*--------------------------
         Banner Slider
     ----------------------------*/
+    if ($.fn.owlCarousel && $(".banner__slider").length) {
     $(".banner__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -92,10 +95,12 @@ Created: Colorib
         autoHeight: false,
         autoplay: true
     });
+    }
 
     /*--------------------------
         Product Details Slider
     ----------------------------*/
+    if ($.fn.owlCarousel && $(".product__details__pic__slider").length) {
     $(".product__details__pic__slider").owlCarousel({
         loop: false,
         margin: 0,
@@ -112,6 +117,7 @@ Created: Colorib
         var indexNum = event.item.index + 1;
         product_thumbs(indexNum);
     });
+    }
 
     function product_thumbs (num) {
         var thumbs = document.querySelectorAll('.product__thumb a');
@@ -127,11 +133,14 @@ Created: Colorib
     /*------------------
 		Magnific
     --------------------*/
-    $('.image-popup').magnificPopup({
-        type: 'image'
-    });
+    if ($.fn.magnificPopup && $('.image-popup').length) {
+        $('.image-popup').magnificPopup({
+            type: 'image'
+        });
+    }
 
 
+    if ($.fn.niceScroll && $(".nice-scroll").length) {
     $(".nice-scroll").niceScroll({
         cursorborder:"",
         cursorcolor:"#dddddd",
@@ -141,6 +150,7 @@ Created: Colorib
         cursorborderradius:50,
         horizrailenabled: false
     });
+    }
 
     /*------------------
         CountDown
@@ -166,9 +176,11 @@ Created: Colorib
 
     /* var timerdate = "2020/12/30" */
 
-	$("#countdown-time").countdown(timerdate, function(event) {
-        $(this).html(event.strftime("<div class='countdown__item'><span>%D</span> <p>Day</p> </div>" + "<div class='countdown__item'><span>%H</span> <p>Hour</p> </div>" + "<div class='countdown__item'><span>%M</span> <p>Min</p> </div>" + "<div class='countdown__item'><span>%S</span> <p>Sec</p> </div>"));
-    });
+	if ($.fn.countdown && $("#countdown-time").length) {
+		$("#countdown-time").countdown(timerdate, function(event) {
+			$(this).html(event.strftime("<div class='countdown__item'><span>%D</span> <p>Day</p> </div>" + "<div class='countdown__item'><span>%H</span> <p>Hour</p> </div>" + "<div class='countdown__item'><span>%M</span> <p>Min</p> </div>" + "<div class='countdown__item'><span>%S</span> <p>Sec</p> </div>"));
+		});
+	}
 
     /*-------------------
 		Range Slider
@@ -178,6 +190,7 @@ Created: Colorib
     maxamount = $("#maxamount"),
     minPrice = rangeSlider.data('min'),
     maxPrice = rangeSlider.data('max');
+    if ($.fn.slider && rangeSlider.length) {
     rangeSlider.slider({
     range: true,
     min: minPrice,
@@ -190,6 +203,7 @@ Created: Colorib
     });
     minamount.val('$' + rangeSlider.slider("values", 0));
     maxamount.val('$' + rangeSlider.slider("values", 1));
+    }
 
     /*------------------
 		Single Product

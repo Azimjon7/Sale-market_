@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/shared-header.css" type="text/css" />
   <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css" />
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+  <link rel="stylesheet" href="css/customer-navigation.css" type="text/css">
 </head>
 <body class="market-body checkout-clean">
   <header class="market-header" id="main-header">
@@ -37,12 +38,12 @@
         <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
           <i class="fa fa-truck"></i><span>Kuzatish</span>
         </a>
-        <a class="market-action" href="shop-cart.html" aria-label="Savat">
-          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+        <a class="market-action" href="shop-cart.html" aria-label="Korzina">
+          <i class="fa fa-shopping-bag"></i><span>Korzina</span>
           <em class="market-cart-tip js-cart-count">0</em>
         </a>
-        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
-          <i class="fa fa-user-o"></i><span>Admin</span>
+        <a class="market-action market-action--admin js-profile-entry" href="auth.html" aria-label="Kirish yoki shaxsiy kabinet">
+          <i class="fa fa-user-o"></i><span data-profile-label>Kirish</span>
         </a>
       </div>
       <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
@@ -51,7 +52,7 @@
     </div></div></div>
     <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
       <li><a href="index.html">Bosh sahifa</a></li>
-      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="shop-cart.html">Korzina</a></li>
       <li><a href="contact.html">Bog'lanish</a></li>
     </ul></div></nav>
   </header>
@@ -61,10 +62,10 @@
       <div class="mh-mobile-nav__title">Sale Market</div>
       <ul>
         <li><a href="index.html">Bosh sahifa</a></li>
-        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="shop-cart.html">Korzina</a></li>
         <li><a href="checkout.html">Buyurtma</a></li>
         <li><a href="contact.html">Bog'lanish</a></li>
-        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+        <li class="nav-admin"><a class="js-profile-entry" href="auth.html"><i class="fa fa-user-o"></i> <span data-profile-label>Kirish</span></a></li>
       </ul>
     </div>
   </div>
@@ -109,6 +110,7 @@
               <textarea id="note" class="form-input" placeholder="Masalan: qo'ng'iroq qilmasdan yetkazib bering"></textarea>
             </div>
 
+            <p id="mtoPaymentNotice" hidden>Buyurtma admin tasdiqlagandan keyin to'lov qilinadi.</p>
             <div class="checkout-payment">
               <h6>To'lov turi</h6>
               <div class="checkout-radio-group">
@@ -140,7 +142,7 @@
 
             <div class="checkout-actions">
               <button class="site-btn" type="button" onclick="submitOrder()">Buyurtma berish</button>
-              <a class="site-btn site-btn--ghost" href="shop-cart.html">Savatga qaytish</a>
+              <a class="site-btn site-btn--ghost" href="shop-cart.html">Korzinaga qaytish</a>
             </div>
             <div id="checkoutMessage" class="form-message"></div>
           </div>
@@ -165,12 +167,12 @@
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
           <span>Sale Market</span>
         </a>
-        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, korzina, checkout va buyurtma kuzatuvi bir joyda.</p>
       </div>
       <div>
         <h6>Bo'limlar</h6>
         <a href="shop.html">Katalog</a>
-        <a href="shop-cart.html">Savat</a>
+        <a href="shop-cart.html">Korzina</a>
         <a href="checkout.html">Buyurtma</a>
       </div>
       <div>
@@ -191,10 +193,13 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/product-rules.js"></script>
   <script src="js/helpers.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/order-submit.js"></script>
   <script src="js/marketplace-upgrade.js"></script>
   <script src="js/shared-header-init.js"></script>
+  <script src="js/order-labels.js"></script>
   <script>
     let checkoutItems = [];
     let checkoutSubtotal = 0;
@@ -207,7 +212,10 @@
 
     function setCheckoutMessage(text, type) {
       const msg = document.getElementById("checkoutMessage");
-      msg.innerHTML = '<span class="checkout-msg checkout-msg--' + type + '">' + text + "</span>";
+      const span = document.createElement('span');
+      span.className = 'checkout-msg checkout-msg--' + type;
+      span.textContent = text;
+      msg.replaceChildren(span);
     }
 
     function setFieldError(id, text) {
@@ -232,9 +240,12 @@
       return picked ? picked.value : "naqd";
     }
 
+    function hasMadeToOrderItems() { return checkoutItems.some(item => item.inventoryMode === 'made-to-order'); }
+
     function syncPaymentUI() {
       const wrap = document.getElementById("paymentScreenshotWrap");
-      if (getSelectedPaymentType() === "karta") {
+      document.getElementById("mtoPaymentNotice").hidden = !hasMadeToOrderItems();
+      if (getSelectedPaymentType() === "karta" && !hasMadeToOrderItems()) {
         wrap.style.display = "block";
       } else {
         wrap.style.display = "none";
@@ -300,14 +311,14 @@
       const cart = MBStore.getCart();
 
       if (!cart.length) {
-        summary.innerHTML = '<p class="checkout-empty">Savatingiz bo\'sh. <a class="checkout-empty__link" href="shop.html">Do\'konga o\'tish</a></p>';
+        summary.innerHTML = '<p class="checkout-empty">Korzinangiz bo\'sh. <a class="checkout-empty__link" href="shop.html">Do\'konga o\'tish</a></p>';
         return;
       }
 
       const products =
         window.MBHelpers && typeof window.MBHelpers.loadProducts === "function"
           ? await window.MBHelpers.loadProducts({ forceRefresh: true })
-          : await fetch("data/products.json", { cache: "no-store" }).then((r) => r.json());
+          : await fetch("/api/products", { cache: "no-store" }).then((r) => r.json());
       checkoutItems = cart.map((item) => {
         const product = products.find((p) => String(p.id) === String(item.productId)) || item.product || {};
         const price = Number(product.price || 0);
@@ -321,47 +332,28 @@
           qty: safeQty,
           price,
           lineTotal: price * safeQty,
+          inventoryMode: product._inventoryMode || "standard",
         };
       }).filter((item) => item.qty > 0);
 
       if (!checkoutItems.length) {
-        summary.innerHTML = '<p class="checkout-empty">Savatingiz bo\'sh. <a class="checkout-empty__link" href="shop.html">Do\'konga o\'tish</a></p>';
+        summary.innerHTML = '<p class="checkout-empty">Korzinangiz bo\'sh. <a class="checkout-empty__link" href="shop.html">Do\'konga o\'tish</a></p>';
         return;
       }
 
       checkoutSubtotal = checkoutItems.reduce((sum, item) => sum + item.lineTotal, 0);
       checkoutTotal = checkoutSubtotal;
+      syncPaymentUI();
       renderCheckoutSummary();
     }
 
-    function createLocalOrder(payload) {
-      const order = {
-        ...payload,
-        id: "ord_" + Date.now(),
-        status: "new",
-        items: checkoutItems,
-        discountAmount: appliedPromo ? appliedPromo.discountAmount : 0,
-        createdAt: new Date().toISOString(),
-      };
-
-      if (window.MBStore && typeof window.MBStore.saveLocalOrder === "function") {
-        return window.MBStore.saveLocalOrder(order);
-      }
-
-      const key = "mujskoy_orders";
-      const orders = JSON.parse(localStorage.getItem(key) || "[]");
-      orders.unshift(order);
-      localStorage.setItem(key, JSON.stringify(orders));
-      return order;
-    }
-
-    function completeOrder(order, phone) {
+    function completeOrder(order) {
+      MBOrderSubmit.forgetSubmissionToken();
       MBStore.clearCart();
       setCheckoutMessage("Buyurtmangiz qabul qilindi.", "success");
-      const oid = order.orderId || order.id || "";
+      const orderNumber = order.orderNumber || "";
       window.location.href =
-        "success.html?orderId=" + encodeURIComponent(oid) +
-        "&phone=" + encodeURIComponent(phone || order.phone || "") +
+        "success.html?orderNumber=" + encodeURIComponent(orderNumber) +
         "&date=" + encodeURIComponent(order.createdAt || new Date().toISOString()) +
         "&total=" + encodeURIComponent(order.total || checkoutTotal);
     }
@@ -389,25 +381,9 @@
         message.innerHTML = '<span class="checkout-msg checkout-msg--success">Promokod qo\'llandi.</span>';
         renderCheckoutSummary();
       } catch (error) {
-        try {
-          const list = await fetch("data/promocodes.json", { cache: "no-store" }).then((res) => res.json());
-          const promo = (Array.isArray(list) ? list : []).find((item) => String(item.code || "").toUpperCase() === code.toUpperCase());
-          if (!promo) throw new Error("Promokod topilmadi");
-          const discountPercent = Math.max(1, Math.min(90, Number(promo.discountPercent || 0)));
-          const discountAmount = Math.floor((checkoutSubtotal * discountPercent) / 100);
-          appliedPromo = {
-            code: String(promo.code || code).toUpperCase(),
-            discountPercent,
-            discountAmount,
-            total: Math.max(0, checkoutSubtotal - discountAmount),
-          };
-          checkoutTotal = appliedPromo.total;
-          message.innerHTML = '<span class="checkout-msg checkout-msg--success">Promokod qo\'llandi.</span>';
-        } catch {
-          appliedPromo = null;
-          checkoutTotal = checkoutSubtotal;
-          message.innerHTML = '<span class="checkout-msg checkout-msg--error">' + (error.message || "Promokod ishlamadi") + "</span>";
-        }
+        appliedPromo = null;
+        checkoutTotal = checkoutSubtotal;
+        message.textContent = error.message || 'Promokod ishlamadi';
         renderCheckoutSummary();
       } finally {
         applyBtn.disabled = false; applyBtn.classList.remove('is-loading'); applyBtn.textContent = 'Qo\'llash';
@@ -415,8 +391,9 @@
     }
 
     async function submitOrder() {
+      if (document.querySelector('.checkout-actions .site-btn').disabled) return;
       if (!checkoutItems.length) {
-        setCheckoutMessage("Savatingiz bo'sh.", "error");
+        setCheckoutMessage("Korzinangiz bo'sh.", "error");
         return;
       }
 
@@ -457,15 +434,17 @@
         return;
       }
 
-      if (paymentType === "karta" && !screenshotFile) {
+      if (paymentType === "karta" && !screenshotFile && !hasMadeToOrderItems()) {
         setCheckoutMessage("Karta to'lovi uchun skrinshot yuklang.", "error");
         return;
       }
 
+      payload.submissionToken = MBOrderSubmit.submissionToken(payload);
       const requestOptions = { method: "POST" };
 
       if (paymentType === "karta") {
         const formData = new FormData();
+        formData.append("submissionToken", payload.submissionToken);
         formData.append("name", payload.name);
         formData.append("phone", payload.phone);
         formData.append("address", payload.address);
@@ -496,26 +475,13 @@
 
       const submitBtn = document.querySelector('.checkout-actions .site-btn');
       submitBtn.disabled = true; submitBtn.classList.add('is-loading'); const prevText = submitBtn.textContent; submitBtn.textContent = 'Yuborilmoqda...';
-      fetch("/api/orders", requestOptions)
-        .then(async (res) => {
-          const data = await res.json().catch(() => ({}));
-          return { ok: res.ok, status: res.status, data };
-        })
-        .then(({ ok, status, data }) => {
-          if (ok && (data.success || data.orderId || data.order)) {
-            completeOrder(data.order || { orderId: data.orderId }, payload.phone);
-          } else {
-            if (status === 404 || status === 405 || !data.message) {
-              completeOrder(createLocalOrder(payload), payload.phone);
-              return;
-            }
-            const msg = data.message || "Buyurtma yuborilmadi.";
-            setCheckoutMessage(msg, "error");
-            submitBtn.disabled = false; submitBtn.classList.remove('is-loading'); submitBtn.textContent = prevText;
-          }
-        })
-        .catch(() => {
-          completeOrder(createLocalOrder(payload), payload.phone);
+      return MBOrderSubmit.submitOrder(requestOptions)
+        .then(order => completeOrder(order, payload.phone))
+        .catch(error => setCheckoutMessage(error.message, 'error'))
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+          submitBtn.textContent = prevText;
         });
     }
 
@@ -531,5 +497,9 @@
       if (el) el.addEventListener("input", function(){ var e=document.getElementById("err-"+id); if(e) e.hidden=true; });
     });
   </script>
+  <script src="js/header-account.js"></script>
 </body>
 </html>
+
+
+

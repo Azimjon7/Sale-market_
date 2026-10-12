@@ -101,18 +101,7 @@ window.MBHelpers = {
     if (!forceRefresh && this._productsPromise) return this._productsPromise;
 
     const loadTask = (async () => {
-      const sources = [];
-      const apiProductsUrl = this.apiUrl("/api/products");
-
-      if (window.MB_API_BASE || !this.isGithubPages()) {
-        sources.push(apiProductsUrl);
-      } else {
-        sources.push(apiProductsUrl, "data/products.json");
-      }
-
-      if (!sources.includes("data/products.json")) {
-        sources.push("data/products.json");
-      }
+      const sources = [this.apiUrl("/api/products")];
 
       for (const url of sources) {
         try {
@@ -156,9 +145,9 @@ window.MBHelpers = {
       image: uniqueImages[0] || "img/placeholders/product.svg",
       images: uniqueImages.length ? uniqueImages : ["img/placeholders/product.svg"],
       description: product.description || product.desc || "",
-      sizes: this.toList(product.sizes),
-      colors: this.toList(product.colors),
-      stock: Math.max(1, Number(product.stock ?? 999) || 999),
+      sizes: window.MBProductRules.options(product.sizes, 'size'),
+      colors: window.MBProductRules.options(product.colors, 'color'),
+      stock: Math.max(0, Number(product.stock ?? 999) || 0),
       label: product.label || product.badge || "",
     };
   },
@@ -170,8 +159,8 @@ window.MBHelpers = {
     const normalized = this.normalizeProduct(product);
     const showDescription = options.showDescription !== false;
     const image = normalized.images[0];
-    const stock = Math.max(1, Number(normalized.stock ?? 999) || 999);
-    const inStock = true;
+    const stock = normalized.stock;
+    const inStock = normalized._inventoryMode === 'made-to-order' || stock > 0;
     const oldValue = Number(normalized.oldPrice || 0);
     const priceValue = Number(normalized.price || 0);
     const discount = oldValue > priceValue && priceValue > 0
@@ -190,7 +179,7 @@ window.MBHelpers = {
     const oldPrice =
       oldValue > priceValue && priceValue > 0 ? `<span class="product__oldprice">${this.currency(oldValue)}</span>` : "";
     const descriptionHtml = showDescription ? `<p>${normalized.description}</p>` : "";
-    const action = `<a class="link-btn js-add-card" href="#" data-id="${normalized.id}">Savatga</a>`;
+    const action = inStock ? `<a class="link-btn js-add-card" href="#" data-id="${normalized.id}">Korzinaga</a>` : `<span>Stokda yo'q</span>`;
 
     return `
       <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -199,6 +188,7 @@ window.MBHelpers = {
             ${labelHtml}
           </a>
           <div class="product__item__text">
+            ${normalized.sku ? `<span class="sm-product-sku">${normalized.sku}</span>` : ""}
             <h6><a href="product-details.html?id=${normalized.id}">${normalized.name || "Mahsulot"}</a></h6>
             ${descriptionHtml}
             <div class="product__price">${this.currency(normalized.price)} ${oldPrice}</div>
@@ -213,3 +203,4 @@ window.MBHelpers = {
     return `<div class="col-12"><div class="empty-state"><img src="img/placeholders/product.svg" alt="placeholder"><h5>Hozircha mahsulot yo'q</h5><p>${message}</p></div></div>`;
   },
 };
+

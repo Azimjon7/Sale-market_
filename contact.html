@@ -33,6 +33,25 @@
       box-shadow: 0 14px 30px rgba(20, 22, 34, 0.12);
     }
 
+    .contact-card--address {
+      position: relative;
+      overflow: hidden;
+      border-color: rgba(124, 58, 237, 0.16);
+      background: linear-gradient(145deg, #ffffff 0%, #faf8ff 100%);
+    }
+
+    .contact-card--address::after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      top: -38px;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: rgba(124, 58, 237, 0.06);
+      pointer-events: none;
+    }
+
     .contact-card__icon {
       width: 44px;
       height: 44px;
@@ -64,6 +83,24 @@
       text-decoration: underline;
     }
 
+    .contact-address-cta {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-top: 8px;
+      margin-bottom: 0 !important;
+      padding: 10px 14px;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+      border-radius: 11px;
+      background: #fff;
+      color: #6d28d9 !important;
+      font-size: 13px !important;
+      font-weight: 800;
+      text-decoration: none !important;
+      box-shadow: 0 5px 14px rgba(109, 40, 217, 0.08);
+    }
+
     .contact-map-box {
       margin-top: 10px;
       background: #fff;
@@ -74,12 +111,38 @@
     }
 
     .contact-map-top {
-      padding: 18px 22px;
+      padding: 20px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    }
+
+    .contact-map-copy {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .contact-map-copy__icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.11);
+      color: #facc15;
+      font-size: 18px;
+    }
+
+    .contact-map-copy p {
+      margin: 4px 0 0;
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.4;
     }
 
     .contact-map-top h5 {
@@ -90,9 +153,10 @@
     }
 
     .contact-map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       font-size: 13px;
-      letter-spacing: .03em;
-      text-transform: uppercase;
       color: #ffd400;
       font-weight: 700;
       white-space: nowrap;
@@ -116,16 +180,61 @@
     }
 
     @media (max-width: 767px) {
+      .contact-page {
+        padding-top: 34px !important;
+        padding-bottom: 34px !important;
+      }
+
+      .contact-card {
+        border-radius: 18px;
+        padding: 22px 19px;
+        box-shadow: 0 10px 26px rgba(30, 41, 59, 0.07);
+      }
+
+      .contact-card__icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      }
+
+      .contact-map-top {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+      }
+
+      .contact-map-link {
+        width: 100%;
+        min-height: 44px;
+        justify-content: center;
+        background: rgba(255, 212, 0, 0.14);
+      }
+
       .contact-map-frame {
         height: 300px;
       }
 
       .contact-map-box {
-        border-radius: 16px;
+        margin-top: 0;
+        border-radius: 19px;
+        box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
       }
+
+      .sm-footer {
+        margin-top: 0 !important;
+        background: linear-gradient(145deg, #111827, #1e1b4b) !important;
+      }
+
+      .sm-footer p,
+      .sm-footer a,
+      .sm-footer__bottom { color: #cbd5e1 !important; }
+
+      .sm-footer h6 { color: #fff !important; }
     }
   </style>
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+  <link rel="stylesheet" href="css/customer-navigation.css" type="text/css">
 </head>
 <body class="market-body">
 
@@ -148,12 +257,12 @@
         <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
           <i class="fa fa-truck"></i><span>Kuzatish</span>
         </a>
-        <a class="market-action" href="shop-cart.html" aria-label="Savat">
-          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+        <a class="market-action" href="shop-cart.html" aria-label="Korzina">
+          <i class="fa fa-shopping-bag"></i><span>Korzina</span>
           <em class="market-cart-tip js-cart-count">0</em>
         </a>
-        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
-          <i class="fa fa-user-o"></i><span>Admin</span>
+        <a class="market-action market-action--admin js-profile-entry" href="auth.html" aria-label="Kirish yoki shaxsiy kabinet">
+          <i class="fa fa-user-o"></i><span data-profile-label>Kirish</span>
         </a>
       </div>
       <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
@@ -162,7 +271,7 @@
     </div></div></div>
     <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
       <li><a href="index.html">Bosh sahifa</a></li>
-      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="shop-cart.html">Korzina</a></li>
       <li><a href="contact.html">Bog'lanish</a></li>
     </ul></div></nav>
   </header>
@@ -172,10 +281,10 @@
       <div class="mh-mobile-nav__title">Sale Market</div>
       <ul>
         <li><a href="index.html">Bosh sahifa</a></li>
-        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="shop-cart.html">Korzina</a></li>
         <li><a href="checkout.html">Buyurtma</a></li>
         <li><a href="contact.html">Bog'lanish</a></li>
-        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+        <li class="nav-admin"><a class="js-profile-entry" href="auth.html"><i class="fa fa-user-o"></i> <span data-profile-label>Kirish</span></a></li>
       </ul>
     </div>
   </div>
@@ -194,8 +303,8 @@
           <div class="contact-card">
             <div class="contact-card__icon"><i class="fa fa-phone"></i></div>
             <h5>Telefon</h5>
-            <a href="tel:+998905383733">+998 90 222 22 22</a>
-            <a href="tel:+998901111111">+998 90 111 11 11</a>
+            <a href="tel:+998990020015">+998 99 002 00 15</a>
+            
           </div>
         </div>
 
@@ -209,23 +318,26 @@
         </div>
 
         <div class="col-lg-4 col-md-12 mb-4">
-          <div class="contact-card">
+          <div class="contact-card contact-card--address">
             <div class="contact-card__icon"><i class="fa fa-map-marker"></i></div>
             <h5>Manzil</h5>
-            <p>Tashkent, O'zbekiston</p>
-            <a href="https://www.google.com/maps/place/Tashkent+City+Mall/@41.3162063,69.2484909,15.65z/data=!4m6!3m5!1s0x38ae8b48a35ed52f:0x6d868958ae00961!8m2!3d41.315757!4d69.2523388!16s%2Fg%2F11t7x_68wk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Google Maps orqali ochish</a>
+            <p>Toshkent, O'zbekiston</p>
+            <a class="contact-address-cta" href="https://www.google.com/maps/place/Tashkent+City+Mall/@41.3162063,69.2484909,15.65z/data=!4m6!3m5!1s0x38ae8b48a35ed52f:0x6d868958ae00961!8m2!3d41.315757!4d69.2523388!16s%2Fg%2F11t7x_68wk?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer"><i class="fa fa-location-arrow"></i> Google Maps orqali ochish</a>
           </div>
         </div>
       </div>
 
       <div class="contact-map-box">
         <div class="contact-map-top">
-          <h5>Lokatsiya xaritada</h5>
-          <a class="contact-map-link" href="https://www.google.com/maps/search/?api=1&query=Tashkent+City+Mall+Tashkent+Uzbekistan" target="_blank" rel="noopener noreferrer">Google Maps'da ochish</a>
+          <div class="contact-map-copy">
+            <span class="contact-map-copy__icon"><i class="fa fa-map-o"></i></span>
+            <div><h5>Lokatsiya xaritada</h5><p>Yo‘nalishni ko‘rish uchun xaritani oching.</p></div>
+          </div>
+          <a class="contact-map-link" href="https://www.google.com/maps/search/?api=1&query=Tashkent+City+Mall+Tashkent+Uzbekistan" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link"></i> Google Maps'da ochish</a>
         </div>
         <iframe
           class="contact-map-frame"
-          src="https://www.google.com/maps?q=Tashkent%20City%20Mall%20Tashkent%20Uzbekistan&output=embed"
+          src="https://www.google.com/maps?q=Tashkent%20City%20Mall%20Tashkent%20Uzbekistan&output=embed&hl=uz"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen
@@ -241,12 +353,12 @@
           <span class="market-logo__mark">SM</span>
           <span style="color:#fff">Sale Market</span>
         </a>
-        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, korzina, checkout va buyurtma kuzatuvi bir joyda.</p>
       </div>
       <div>
         <h6>Bo'limlar</h6>
         <a href="shop.html">Katalog</a>
-        <a href="shop-cart.html">Savat</a>
+        <a href="shop-cart.html">Korzina</a>
         <a href="checkout.html">Buyurtma</a>
       </div>
       <div>
@@ -267,9 +379,14 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/product-rules.js"></script>
   <script src="js/store.js"></script>
   <script src="js/panel-manager.js"></script>
   <script src="js/marketplace-upgrade.js"></script>
   <script src="js/shared-header-init.js"></script>
+  <script src="js/header-account.js"></script>
 </body>
 </html>
+
+
+

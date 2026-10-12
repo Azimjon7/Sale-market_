@@ -278,6 +278,7 @@
     var parts = [
       p.name,
       p.title,
+      p.sku,
       p.category,
       p.subcategory,
       p.brand,

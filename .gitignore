@@ -1,6 +1,23 @@
 node_modules/
 .env
+.env.*
+!.env.example
 *.log
 .DS_Store
-.env
-node_modules/
+
+# Local production data and credentials must never enter a deployment commit.
+data/
+uploads/
+.local-backups/
+.local-tests/
+.local-storage-migrations/
+.kiro/
+
+# Local reports, snapshots and temporary backup copies.
+*.backup
+*.backup-*
+test-checkpoint-report.json
+PHASE*-REPORT.md
+PHASE*-REVIEW.md
+PHASE*-GUIDE.md
+TASK-*-IMPLEMENTATION.md

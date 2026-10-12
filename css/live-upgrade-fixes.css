@@ -916,7 +916,8 @@ body.shop-page .link-btn:hover {
   .pd-sticky-bar {
     display: none;
     position: fixed;
-    bottom: 0;
+    /* Leave the global mobile navigation tappable below this action bar. */
+    bottom: calc(58px + env(safe-area-inset-bottom, 0px));
     left: 0;
     right: 0;
     z-index: 500;
@@ -978,6 +979,12 @@ body.shop-page .link-btn:hover {
   .pd-sticky-btn { font-size: 12px !important; height: 42px !important; }
 }
 
+@media (max-width: 390px) {
+  .pd-sticky-bar {
+    bottom: calc(54px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* Desktop: hide mobile-only elements */
 @media (min-width: 769px) {
   .pd-sticky-bar    { display: none !important; }
@@ -990,3 +997,256 @@ body.shop-page .link-btn:hover {
   .pd-about-header  { display: block !important; }
   .pd-about-header .pd-about-toggle { display: none !important; }
 }
+
+
+/* ==========================================================
+   CATALOG TOOLBAR — CENTERED LAYOUT IMPROVEMENT (2026-10)
+   ========================================================== */
+
+/* Desktop & tablet: center the action buttons, hide count */
+.sct-bar {
+  justify-content: center !important;
+  padding: 10px 0 8px !important;
+  border-bottom: 1px solid #e3ebe6 !important;
+}
+
+.sct-count {
+  display: none !important;
+}
+
+.sct-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+}
+
+.sct-btn {
+  flex: 0 0 auto !important;
+  min-width: 120px !important;
+  justify-content: center !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  gap: 6px !important;
+}
+
+.sct-btn i {
+  font-size: 13px !important;
+}
+
+/* Mobile: centered, compact, equal-width buttons */
+@media (max-width: 768px) {
+  .sct-bar {
+    padding: 8px 0 6px !important;
+    border-bottom: 1px solid #e8eeea !important;
+  }
+
+  .sct-actions {
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    gap: 8px !important;
+    padding: 0 12px !important;
+  }
+
+  .sct-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 42px !important;
+    font-size: 13px !important;
+    padding: 0 10px !important;
+    border-radius: 11px !important;
+  }
+
+  .sct-btn span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sct-btn__caret {
+    display: inline-block !important;
+    margin-left: 2px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sct-bar {
+    padding: 7px 0 5px !important;
+  }
+
+  .sct-actions {
+    padding: 0 10px !important;
+    gap: 7px !important;
+  }
+
+  .sct-btn {
+    height: 38px !important;
+    font-size: 12px !important;
+    padding: 0 8px !important;
+    border-radius: 10px !important;
+    gap: 4px !important;
+  }
+
+  .sct-btn i {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .sct-actions {
+    gap: 6px !important;
+    padding: 0 8px !important;
+  }
+
+  .sct-btn {
+    height: 36px !important;
+    font-size: 11px !important;
+    padding: 0 6px !important;
+    gap: 3px !important;
+  }
+
+  .sct-btn i {
+    font-size: 11px !important;
+  }
+}
+
+
+/* Inventory Mode Badges (MTO vs Standard) */
+.inventory-badge {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-top: 0.35rem;
+}
+
+.inventory-badge.mto {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.inventory-badge.in-stock {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.inventory-badge.out-of-stock {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Payment notice banner in checkout */
+.payment-notice {
+  background: #e3f2fd;
+  border-left: 4px solid #2196f3;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #0c5460;
+}
+
+.payment-notice i {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: #2196f3;
+}
+
+/* Cart item inventory badge positioning */
+.market-cart-title-row p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.market-cart-title-row .inventory-badge {
+  margin-top: 0;
+  margin-left: 0.25rem;
+}
+
+/* Checkout summary item styling */
+.order-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  gap: 1rem;
+}
+
+.order-summary-item > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-summary-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  word-break: break-word;
+}
+
+.order-summary-item p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.25rem 0;
+  word-break: break-word;
+}
+
+.order-summary-item .inventory-badge {
+  display: inline-block;
+}
+
+.order-summary-item span {
+  font-weight: 600;
+  text-align: right;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+/* Compact public identifiers */
+.sm-product-sku,
+.pd-sku-code {
+  display: inline-flex;
+  align-items: center;
+  color: #777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  line-height: 1.4;
+}
+
+.sm-product-sku { margin-bottom: 4px; }
+
+.pd-sku-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0 10px;
+}
+
+.pd-copy-sku {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+.pd-copy-sku:hover,
+.pd-copy-sku:focus-visible { border-color: #ca1515; color: #ca1515; }
+

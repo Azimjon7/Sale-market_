@@ -54,7 +54,7 @@
           <div class="qty-wrap"><span>Soni</span><input type="number" id="detail-qty" min="1" value="1"></div>
           <div class="option-group"><h6>Kargo</h6><p>${p.shipping || "Butun O'zbekiston bo'ylab"}</p></div>
           <div class="product__links">
-            <a href="#" id="add-detail-cart" class="site-btn">Savatga qo'shish</a>
+            <a href="#" id="add-detail-cart" class="site-btn">Korzinaga qo'shish</a>
             <a href="shop.html" class="site-btn site-btn--ghost">Do'konga qaytish</a>
           </div>
           <div class="option-group"><h6>To'liq tavsif</h6><p>${p.fullDescription || p.description || ""}</p></div>
@@ -109,7 +109,9 @@
     const size = (document.querySelector('input[name="size"]:checked') || {}).value || "";
     const color = (document.querySelector('input[name="color"]:checked') || {}).value || "";
     const qty = Number(document.getElementById("detail-qty").value || 1);
-    MBStore.addToCart({ productId: p.id, size, color, qty });
-    alert("Savatga qo'shildi");
+    const result = MBStore.addToCart({ productId: p.id, size, color, qty, product: p });
+    if (!result.ok) { alert(result.error); return; }
+    alert("Korzinaga qo'shildi");
   });
 })();
+

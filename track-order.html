@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/shared-header.css" type="text/css" />
   <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css" />
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+  <link rel="stylesheet" href="css/customer-navigation.css" type="text/css">
 </head>
 <body class="market-body track-page">
 
@@ -36,12 +37,12 @@
         <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
           <i class="fa fa-truck"></i><span>Kuzatish</span>
         </a>
-        <a class="market-action" href="shop-cart.html" aria-label="Savat">
-          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+        <a class="market-action" href="shop-cart.html" aria-label="Korzina">
+          <i class="fa fa-shopping-bag"></i><span>Korzina</span>
           <em class="market-cart-tip js-cart-count">0</em>
         </a>
-        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
-          <i class="fa fa-user-o"></i><span>Admin</span>
+        <a class="market-action market-action--admin js-profile-entry" href="auth.html" aria-label="Kirish yoki shaxsiy kabinet">
+          <i class="fa fa-user-o"></i><span data-profile-label>Kirish</span>
         </a>
       </div>
       <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
@@ -50,7 +51,7 @@
     </div></div></div>
     <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
       <li><a href="index.html">Bosh sahifa</a></li>
-      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="shop-cart.html">Korzina</a></li>
       <li><a href="contact.html">Bog'lanish</a></li>
     </ul></div></nav>
   </header>
@@ -60,10 +61,10 @@
       <div class="mh-mobile-nav__title">Sale Market</div>
       <ul>
         <li><a href="index.html">Bosh sahifa</a></li>
-        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="shop-cart.html">Korzina</a></li>
         <li><a href="checkout.html">Buyurtma</a></li>
         <li><a href="contact.html">Bog'lanish</a></li>
-        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+        <li class="nav-admin"><a class="js-profile-entry" href="auth.html"><i class="fa fa-user-o"></i> <span data-profile-label>Kirish</span></a></li>
       </ul>
     </div>
   </div>
@@ -71,7 +72,7 @@
   <section class="breadcrumb-custom market-page-hero">
     <div class="container">
       <h2>Buyurtmani kuzatish</h2>
-      <p>Buyurtma ID va telefon orqali holatni real market formatida ko'ring.</p>
+      <p>Buyurtma raqami orqali yetkazib berish holatini xavfsiz tekshiring.</p>
     </div>
   </section>
 
@@ -80,12 +81,12 @@
       <div class="track-card">
         <div class="track-form">
           <div>
-            <label for="orderId">Buyurtma ID</label>
-            <input id="orderId" type="text" placeholder="ord_..." />
+            <label for="orderNumber">Buyurtma raqami</label>
+            <input id="orderNumber" type="text" placeholder="DOD-ORD-1001" autocomplete="off" />
           </div>
           <div>
-            <label for="phone">Telefon raqami</label>
-            <input id="phone" type="text" placeholder="+998 90 123 45 67" />
+            <label for="trackingToken">Maxfiy kuzatuv kaliti</label>
+            <input id="trackingToken" type="password" placeholder="Buyurtmadan keyin berilgan kalit" autocomplete="off" />
           </div>
           <button class="site-btn" type="button" onclick="trackOrder()">Buyurtmani tekshirish</button>
         </div>
@@ -102,12 +103,12 @@
           <span class="market-logo__mark">SM</span>
           <span style="color:#fff">Sale Market</span>
         </a>
-        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, korzina, checkout va buyurtma kuzatuvi bir joyda.</p>
       </div>
       <div>
         <h6>Bo'limlar</h6>
         <a href="shop.html">Katalog</a>
-        <a href="shop-cart.html">Savat</a>
+        <a href="shop-cart.html">Korzina</a>
         <a href="checkout.html">Buyurtma</a>
       </div>
       <div>
@@ -128,26 +129,28 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/product-rules.js"></script>
   <script src="js/store.js"></script>
   <script src="js/panel-manager.js"></script>
   <script src="js/marketplace-upgrade.js"></script>
   <script src="js/shared-header-init.js"></script>
+  <script src="js/order-labels.js"></script>
   <script>
-    const STATUS_LABELS = {
-      new: "Qabul qilindi",
-      confirmed: "Tayyorlanmoqda",
-      shipped: "Yetkazilmoqda",
-      delivered: "Yetkazildi",
-      cancelled: "Bekor qilindi",
-    };
+    const ORDER_LABELS = window.DodolaOrderLabels;
+    const STATUS_LABELS = ORDER_LABELS.statusLabels;
 
     const STATUS_ALIASES = {
       yangi: "new",
       "qabul qilindi": "new",
       new: "new",
       tasdiqlandi: "confirmed",
-      tayyorlanmoqda: "confirmed",
+      tayyorlanmoqda: "production",
       confirmed: "confirmed",
+      "tasdiqlashni kutmoqda": "pending_confirmation",
+      pending_confirmation: "pending_confirmation",
+      "to'lov kutilmoqda": "payment_pending",
+      payment_pending: "payment_pending",
+      production: "production",
       "yo'lda": "shipped",
       "yo`lda": "shipped",
       "yo‘lda": "shipped",
@@ -160,13 +163,15 @@
       delivered: "delivered",
       "bekor qilindi": "cancelled",
       cancelled: "cancelled",
+      "rad etildi": "rejected",
+      rejected: "rejected",
     };
 
     const STATUS_STEPS = [
-      { status: "new", label: "Qabul qilindi" },
-      { status: "confirmed", label: "Tayyorlanmoqda" },
-      { status: "shipped", label: "Yetkazilmoqda" },
-      { status: "delivered", label: "Yetkazildi" },
+      { status: 'payment_confirmed', label: ORDER_LABELS.payment('collected') },
+      { status: 'production', label: ORDER_LABELS.status('production') },
+      { status: "shipped", label: ORDER_LABELS.status('shipped') },
+      { status: "delivered", label: ORDER_LABELS.status('delivered') },
     ];
 
     function formatMoney(value) {
@@ -194,25 +199,31 @@
         .replace(/'/g, "&#039;");
     }
 
+    Object.keys(STATUS_LABELS).forEach(key => { STATUS_ALIASES[key] = key; });
+
     function normalizeStatus(status) {
       const value = String(status || "").trim();
       return STATUS_ALIASES[value.toLowerCase()] || "new";
     }
 
     function statusLabel(status) {
-      return STATUS_LABELS[normalizeStatus(status)] || STATUS_LABELS.new;
+      return ORDER_LABELS.status(normalizeStatus(status));
     }
 
     function statusClass(status) {
       return "track-badge--" + normalizeStatus(status);
     }
 
-    function renderTimeline(status) {
+    function renderTimeline(status, paymentStatus) {
       const normalized = normalizeStatus(status);
-      const activeIndex = normalized === "cancelled" ? -1 : STATUS_STEPS.findIndex((step) => step.status === normalized);
-      if (normalized === "cancelled") {
-        return '<div class="track-cancelled">Buyurtma bekor qilingan</div>';
+      if (normalized === "cancelled" || normalized === "rejected" || paymentStatus === 'failed') {
+        const label = paymentStatus === 'failed' ? ORDER_LABELS.payment('failed') : statusLabel(normalized);
+        return '<div class="track-cancelled">' + escapeHtml(label) + '</div>';
       }
+      let activeIndex = paymentStatus === 'collected' ? 0 : -1;
+      if (normalized === 'production') activeIndex = Math.max(activeIndex, 1);
+      if (normalized === 'shipped') activeIndex = Math.max(activeIndex, 2);
+      if (normalized === 'delivered') activeIndex = 3;
       return '<div class="track-timeline">' + STATUS_STEPS.map((step, index) => `
         <div class="track-step ${index <= activeIndex ? "is-done" : ""}">
           <span>&#10003;</span>
@@ -222,61 +233,56 @@
     }
 
     function renderOrder(order) {
-      const items = (Array.isArray(order.items) ? order.items : []).map((item) => `
-        <li>
-          <strong>${escapeHtml(item.name || "Mahsulot")}</strong>
-          <span>${Number(item.qty || 1)} ta &middot; ${formatMoney(item.lineTotal || Number(item.price || 0) * Number(item.qty || 1))}</span>
-        </li>
-      `).join("");
-
       document.getElementById("trackResult").innerHTML = `
         <div class="track-result">
+          <div class="track-field"><span>Buyurtma raqami</span><strong>${escapeHtml(order.orderNumber || '-')}</strong></div>
           <div class="track-status"><span>Holati</span><strong class="track-badge ${statusClass(order.status)}">${escapeHtml(statusLabel(order.status))}</strong></div>
-          ${renderTimeline(order.status || "new")}
+          ${order.paymentStatus === 'pending' ? `<p>To'lov tasdiqlanishi kutilmoqda.</p>` : ''}
+          ${order.paymentStatus === 'pending' && order.paymentDeadline ? `<p>To'lov muddati: ${escapeHtml(formatDate(order.paymentDeadline))}</p>` : ''}
+          ${renderTimeline(order.status || "new", order.paymentStatus)}
           <div class="track-grid">
             <div class="track-field"><span>Buyurtma vaqti</span><strong>${formatDate(order.createdAt)}</strong></div>
-            <div class="track-field"><span>Summa</span><strong>${formatMoney(order.total)}</strong></div>
-            <div class="track-field"><span>To'lov turi</span><strong>${order.paymentType === "karta" ? "Karta" : "Naqd"}</strong></div>
+            <div class="track-field"><span>Oxirgi yangilanish</span><strong>${formatDate(order.updatedAt)}</strong></div>
           </div>
-          <h4>Mahsulotlar</h4>
-          <ul class="track-items">${items || "<li>Mahsulotlar ko'rsatilmagan</li>"}</ul>
+          <p class="track-privacy-note">Shaxsiy ma'lumotlar faqat tasdiqlangan administratorga ko'rsatiladi.</p>
         </div>
       `;
     }
 
     async function trackOrder() {
-      const orderId = document.getElementById("orderId").value.trim();
-      const phone = document.getElementById("phone").value.trim();
+      const orderNumber = document.getElementById("orderNumber").value.trim().toUpperCase();
+      const trackingToken = document.getElementById('trackingToken').value.trim();
       const msg = document.getElementById("trackMessage");
       msg.innerHTML = "";
       document.getElementById("trackResult").innerHTML = "";
 
-      if (!orderId || !phone) {
-        msg.innerHTML = '<span class="checkout-msg checkout-msg--error">Buyurtma ID va telefon raqamini kiriting.</span>';
+      if (!/^DOD-ORD-\d{4,}$/.test(orderNumber)) {
+        msg.innerHTML = '<span class="checkout-msg checkout-msg--error">DOD-ORD-1001 formatidagi buyurtma raqamini kiriting.</span>';
         return;
       }
 
       try {
-        const params = new URLSearchParams({ orderId, phone });
-        const res = await fetch("/api/orders/track?" + params.toString(), { cache: "no-store" });
+        const res = trackingToken
+          ? await fetch('/api/orders/track/secure', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderNumber, trackingToken }) })
+          : await fetch("/api/orders/track?" + new URLSearchParams({ orderNumber }).toString(), { cache: "no-store" });
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.message || "Buyurtma topilmadi");
         renderOrder(data.order || data);
       } catch (error) {
-        const localOrder = window.MBStore && typeof window.MBStore.findLocalOrder === "function"
-          ? window.MBStore.findLocalOrder(orderId, phone)
-          : null;
-        if (localOrder) {
-          renderOrder(localOrder);
-          return;
-        }
-        msg.innerHTML = '<span class="checkout-msg checkout-msg--error">' + (error.message || "Buyurtma topilmadi") + "</span>";
+        const message = /Buyurtma topilmadi/i.test(error.message || '')
+          ? 'Buyurtma topilmadi'
+          : "Buyurtmani tekshirib bo'lmadi. Qayta urinib ko'ring.";
+        msg.innerHTML = '<span class="checkout-msg checkout-msg--error">' + message + "</span>";
       }
     }
 
     const params = new URLSearchParams(window.location.search);
-    if (params.get("orderId")) document.getElementById("orderId").value = params.get("orderId");
-    if (params.get("phone")) document.getElementById("phone").value = params.get("phone");
+    if (params.get("orderNumber")) document.getElementById("orderNumber").value = params.get("orderNumber");
+    if (params.get('token')) document.getElementById('trackingToken').value = params.get('token');
   </script>
+  <script src="js/header-account.js"></script>
 </body>
 </html>
+
+
+

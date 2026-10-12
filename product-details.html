@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8" />
@@ -155,6 +155,7 @@
     }
   </style>
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+  <link rel="stylesheet" href="css/customer-navigation.css" type="text/css">
 </head>
 <body class="market-body">
   <header class="market-header" id="main-header">
@@ -176,12 +177,12 @@
         <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
           <i class="fa fa-truck"></i><span>Kuzatish</span>
         </a>
-        <a class="market-action" href="shop-cart.html" aria-label="Savat">
-          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+        <a class="market-action" href="shop-cart.html" aria-label="Korzina">
+          <i class="fa fa-shopping-bag"></i><span>Korzina</span>
           <em class="market-cart-tip js-cart-count">0</em>
         </a>
-        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
-          <i class="fa fa-user-o"></i><span>Admin</span>
+        <a class="market-action market-action--admin js-profile-entry" href="auth.html" aria-label="Kirish yoki shaxsiy kabinet">
+          <i class="fa fa-user-o"></i><span data-profile-label>Kirish</span>
         </a>
       </div>
       <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
@@ -190,7 +191,7 @@
     </div></div></div>
     <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
       <li><a href="index.html">Bosh sahifa</a></li>
-      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="shop-cart.html">Korzina</a></li>
       <li><a href="contact.html">Bog'lanish</a></li>
     </ul></div></nav>
   </header>
@@ -200,10 +201,10 @@
       <div class="mh-mobile-nav__title">Sale Market</div>
       <ul>
         <li><a href="index.html">Bosh sahifa</a></li>
-        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="shop-cart.html">Korzina</a></li>
         <li><a href="checkout.html">Buyurtma</a></li>
         <li><a href="contact.html">Bog'lanish</a></li>
-        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+        <li class="nav-admin"><a class="js-profile-entry" href="auth.html"><i class="fa fa-user-o"></i> <span data-profile-label>Kirish</span></a></li>
       </ul>
     </div>
   </div>
@@ -231,12 +232,12 @@
           <span class="market-logo__mark">SM</span>
           <span style="color:#fff">Sale Market</span>
         </a>
-        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, korzina, checkout va buyurtma kuzatuvi bir joyda.</p>
       </div>
       <div>
         <h6>Bo'limlar</h6>
         <a href="shop.html">Katalog</a>
-        <a href="shop-cart.html">Savat</a>
+        <a href="shop-cart.html">Korzina</a>
         <a href="checkout.html">Buyurtma</a>
       </div>
       <div>
@@ -252,6 +253,7 @@
     <div class="sm-footer__bottom">© 2026 Sale Market</div>
   </footer>
 
+  <script src="js/product-rules.js"></script>
   <script src="js/helpers.js"></script>
   <script src="js/store.js"></script>
   <script src="js/marketplace-upgrade.js"></script>
@@ -291,62 +293,9 @@
 
     initBackButton();
 
-    function parseOptions(value, type = "default") {
-  const text = String(value || "").trim();
-  if (!text) return [];
-
-  const sizeOrder = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
-
-  // Ranglar uchun: vergul ham, tire ham bo‘lsa bo‘lib tashlaydi
-  if (type === "color") {
-    return text
-      .split(/[,-]/)
-      .map(v => v.trim())
-      .filter(Boolean);
-  }
-
-  // Oddiy ro‘yxat: S, M, L yoki Qora, Oq
-  if (text.includes(",")) {
-    return text
-      .split(",")
-      .map(v => v.trim())
-      .filter(Boolean);
-  }
-
-  // Size range: 40-44, 30-35, S-3XL
-  if (text.includes("-")) {
-    const parts = text.split("-").map(v => v.trim()).filter(Boolean);
-
-    if (parts.length === 2) {
-      const start = parts[0];
-      
-      const end = parts[1];
-
-      // Raqamli range
-      if (!isNaN(start) && !isNaN(end)) {
-        const a = Number(start);
-        const b = Number(end);
-        const result = [];
-        for (let i = a; i <= b; i++) {
-          result.push(String(i));
-        }
-        return result;
-      }
-
-      // Harfli size range
-      const startIndex = sizeOrder.indexOf(start.toUpperCase());
-      const endIndex = sizeOrder.indexOf(end.toUpperCase());
-
-      if (startIndex !== -1 && endIndex !== -1 && startIndex <= endIndex) {
-        return sizeOrder.slice(startIndex, endIndex + 1);
-      }
+    function parseOptions(value, type) {
+      return MBProductRules.options(value, type);
     }
-  }
-
-  return [text];
-}
-
-  // Bitta qiymat boвЂlsa
 
     function formatPrice(value) {
       if (value === null || value === undefined || value === "") return "0 so'm";
@@ -470,15 +419,11 @@ function createChipList(items, group) {
     }
 
     function addToCart(product) {
-      const qty = parseInt(document.getElementById("qtyInput").value) || 1;
-      if (Number(product.stock ?? 999) < qty) {
-        document.getElementById("pdMessage").textContent = "Omborda buncha mahsulot yo'q.";
-        return false;
-      }
+      const qty = Number(document.getElementById("qtyInput").value);
       const selectedSize = getActiveChipText("size");
       const selectedColor = getActiveChipText("color");
 
-      const safeQty = Math.max(1, Number(qty) || 1);
+      const safeQty = qty;
       const cartItem = {
         productId: product.id,
         qty: safeQty,
@@ -487,26 +432,14 @@ function createChipList(items, group) {
         product
       };
 
-      if (window.MBStore && typeof window.MBStore.addToCart === "function") {
-        window.MBStore.addToCart(cartItem);
-      } else {
-        const key = "mujskoy_cart";
-        const cart = JSON.parse(localStorage.getItem(key) || "[]");
-        const existingIndex = cart.findIndex((item) =>
-          String(item.productId) === String(cartItem.productId) &&
-          String(item.size || "") === String(cartItem.size || "") &&
-          String(item.color || "") === String(cartItem.color || "")
-        );
-
-        if (existingIndex !== -1) {
-          cart[existingIndex].qty = Math.max(1, Number(cart[existingIndex].qty || 1) + safeQty);
-        } else {
-          cart.push(cartItem);
-        }
-        localStorage.setItem(key, JSON.stringify(cart));
+      const result = MBStore.addToCart(cartItem);
+      if (!result.ok) {
+        document.getElementById("pdMessage").textContent = result.error;
+        return false;
       }
+      document.dispatchEvent(new CustomEvent('mb:cart-updated'));
 
-      document.getElementById("pdMessage").textContent = "Mahsulot savatga qo'shildi.";
+      document.getElementById("pdMessage").textContent = "Mahsulot korzinaga qo'shildi.";
       return true;
     }
 
@@ -519,8 +452,10 @@ function createChipList(items, group) {
     function renderProduct(product) {
       const sizes = parseOptions(product.sizes, "size");
       const colors = parseOptions(product.colors, "color");
-      const stock = Math.max(1, Number(product.stock ?? 999) || 999);
-      const inStock = true;
+      const stock = MBProductRules.stock(product);
+      const isMTO = product._inventoryMode === 'made-to-order';
+      const inStock = isMTO || stock > 0;
+      const availability = isMTO ? 'Buyurtma asosida' : (inStock ? 'Sotuvda bor' : "Omborda yo'q");
       const label = product.label || product.badge || product.category || "Mahsulot";
       const description = product.desc || product.description || "";
       const productImages = Array.isArray(product.images) && product.images.length
@@ -540,7 +475,7 @@ function createChipList(items, group) {
               <button type="button" class="pd-image-nav next" id="pdNextImage" aria-label="Keyingi rasm">&gt;</button>
               <div class="pd-img-badges">
                 ${discountPct > 0 ? `<span class="pd-img-badge pd-img-badge--discount">-${discountPct}%</span>` : ''}
-                <span class="pd-img-badge pd-img-badge--stock"><i class="fa fa-check-circle"></i> Sotuvda bor</span>
+                <span class="pd-img-badge pd-img-badge--stock"><i class="fa fa-check-circle"></i> ${availability}</span>
               </div>
             </div>
             <div class="pd-thumbs">
@@ -554,6 +489,7 @@ function createChipList(items, group) {
               <div class="pd-title-section">
                 <div class="pd-cat-chip">${escapeHtml(product.category || label)}</div>
                 <h1 class="pd-title">${escapeHtml(product.name || '')}</h1>
+                ${product.sku ? `<div class="pd-sku-row"><span class="pd-sku-code">SKU: ${escapeHtml(product.sku)}</span><button type="button" class="pd-copy-sku" id="copySkuBtn" data-sku="${escapeHtml(product.sku)}" aria-label="SKU nusxalash"><i class="fa fa-copy"></i> Nusxalash</button></div>` : ''}
                 <div class="pd-price-wrap">
                   <div class="pd-price">${formatPrice(product.price)}</div>
                   ${product.oldPrice ? `<div class="pd-old-price">${formatPrice(product.oldPrice)}</div>` : ''}
@@ -573,7 +509,7 @@ function createChipList(items, group) {
                 </div>
                 <div class="pd-qty-wrap">
                   <div class="pd-label" style="margin:0;">Soni</div>
-                  <input id="qtyInput" class="pd-qty-input" type="number" min="1" ${inStock ? `max="${stock}"` : ''} value="1">
+                  <input id="qtyInput" class="pd-qty-input" type="number" min="1" max="${isMTO ? 999 : Math.min(stock, 999)}" value="1">
                 </div>
               </div>
 
@@ -584,7 +520,7 @@ function createChipList(items, group) {
                 </div>
                 <div class="pd-info-card">
                   <span>Omborda</span>
-                  <strong>Mavjud</strong>
+                  <strong>${availability}</strong>
                 </div>
                 <div class="pd-info-card">
                   <span>Yetkazish</span>
@@ -602,8 +538,8 @@ function createChipList(items, group) {
               </div>
 
               <div class="pd-actions pd-actions--desktop">
-                <button class="pd-btn pd-btn-primary" id="addToCartBtn">Savatga qo'shish</button>
-                <button class="pd-btn pd-btn-dark" id="buyNowBtn">Hozir olish</button>
+                <button class="pd-btn pd-btn-primary" id="addToCartBtn" ${inStock ? '' : 'disabled'}>Korzinaga qo'shish</button>
+                <button class="pd-btn pd-btn-dark" id="buyNowBtn" ${inStock ? '' : 'disabled'}>Hozir olish</button>
               </div>
               <div id="pdMessage" class="pd-message"></div>
 
@@ -627,10 +563,10 @@ function createChipList(items, group) {
           <div class="pd-sticky-inner">
             <div class="pd-sticky-price">${formatPrice(product.price)}</div>
             <div class="pd-sticky-btns">
-              <button class="pd-sticky-btn pd-sticky-btn--cart" id="stickyAddToCartBtn">
-                <i class="fa fa-shopping-bag"></i> Savatga
+              <button class="pd-sticky-btn pd-sticky-btn--cart" id="stickyAddToCartBtn" ${inStock ? '' : 'disabled'}>
+                <i class="fa fa-shopping-bag"></i> Korzinaga
               </button>
-              <button class="pd-sticky-btn pd-sticky-btn--buy" id="stickyBuyNowBtn">
+              <button class="pd-sticky-btn pd-sticky-btn--buy" id="stickyBuyNowBtn" ${inStock ? '' : 'disabled'}>
                 Hozir olish
               </button>
             </div>
@@ -646,6 +582,26 @@ function createChipList(items, group) {
       const stickyBuy  = document.getElementById('stickyBuyNowBtn');
       if (stickyCart) stickyCart.addEventListener('click', function() { addToCart(product); });
       if (stickyBuy)  stickyBuy.addEventListener('click',  function() { buyNow(product); });
+
+      const copySkuBtn = document.getElementById('copySkuBtn');
+      if (copySkuBtn) copySkuBtn.addEventListener('click', async function() {
+        const sku = this.dataset.sku || '';
+        try {
+          await navigator.clipboard.writeText(sku);
+        } catch (error) {
+          const input = document.createElement('textarea');
+          input.value = sku;
+          input.setAttribute('readonly', '');
+          input.style.position = 'fixed';
+          input.style.opacity = '0';
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand('copy');
+          input.remove();
+        }
+        this.textContent = 'Nusxalandi';
+        setTimeout(() => { this.innerHTML = '<i class="fa fa-copy"></i> Nusxalash'; }, 1400);
+      });
 
       // "Batafsil" expand/collapse for description on mobile
       const aboutToggle = document.getElementById('pdAboutToggle');
@@ -751,20 +707,16 @@ function createChipList(items, group) {
       }
 
       try {
-        const res = await fetch('data/products.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('data');
-        const products = await res.json();
-        const same = (products || []).filter(p => String(p.category || '') === String(product.category || '') && String(p.id) !== String(product.id));
-        let list = same.slice(0, 8);
-        if (list.length < 4) {
-          const others = (products || []).filter(p => String(p.id) !== String(product.id) && !list.find(x=>x.id===p.id));
-          list = list.concat(others.slice(0, Math.max(4 - list.length, 0)));
-        }
+        const products = await MBHelpers.loadProducts();
+        const candidates = products.filter(p => String(p.id) !== String(product.id));
+        const same = candidates.filter(p => p.category === product.category);
+        const others = candidates.filter(p => p.category !== product.category);
+        const list = [...new Map([...same, ...others].map(p => [String(p.id), p])).values()].slice(0, 6);
         if (!list.length) {
           container.querySelector('.related-grid').innerHTML = '<div class="pd-message">O\'xshash mahsulotlar topilmadi.</div>';
           return;
         }
-        renderRelatedProducts(container.querySelector('.related-grid'), list.slice(0,8));
+        renderRelatedProducts(container.querySelector('.related-grid'), list);
       } catch (err) {
         const g = document.querySelector('#relatedProducts .related-grid');
         if (g) g.innerHTML = '<div class="pd-message">O\'xshash mahsulotlarni yuklab bo\'lmadi.</div>';
@@ -780,9 +732,10 @@ function createChipList(items, group) {
         card.className = 'product-card';
         card.style.cursor = 'pointer';
         card.innerHTML = `
-          <div style="border-radius:8px;overflow:hidden;"><img src="${p.image || (p.images && p.images[0]) || 'img/placeholders/placeholder.png'}" alt="${escapeHtml(p.name || '')}" loading="lazy" style="width:100%;height:140px;object-fit:cover"></div>
+          <div style="border-radius:8px;overflow:hidden;"><img src="${p.image || (p.images && p.images[0]) || 'img/placeholders/product.svg'}" alt="${escapeHtml(p.name || '')}" loading="lazy" style="width:100%;height:140px;object-fit:cover"></div>
           <div style="padding:8px">
             ${p.label ? `<div class="badge">${escapeHtml(p.label)}</div>` : ''}
+            ${p.sku ? `<div class="sm-product-sku">${escapeHtml(p.sku)}</div>` : ''}
             <div style="font-weight:700;color:var(--text);margin:6px 0;min-height:38px">${escapeHtml(p.name || '')}</div>
             <div style="color:var(--accent);font-weight:800">${formatPrice(p.price)}</div>
             ${p.oldPrice ? `<div style="text-decoration:line-through;color:var(--muted)">${formatPrice(p.oldPrice)}</div>` : ''}
@@ -803,20 +756,7 @@ function createChipList(items, group) {
     }
 
     async function loadProductById(productId) {
-      try {
-        if (window.MBHelpers && typeof window.MBHelpers.loadProductById === "function") {
-          return await window.MBHelpers.loadProductById(productId);
-        }
-      } catch (error) {}
-
-      try {
-        const listRes = await fetch("data/products.json", { cache: "no-store" });
-        if (!listRes.ok) return null;
-        const products = await listRes.json();
-        return (products || []).find((item) => String(item.id) === String(productId)) || null;
-      } catch (error) {
-        return null;
-      }
+      return MBHelpers.loadProductById(productId);
     }
 
 (async function initPage() {
@@ -843,8 +783,12 @@ function createChipList(items, group) {
   renderProduct(product);
 })();
 </script>
+  <script src="js/header-account.js"></script>
 </body>
 </html>
+
+
+
 
 
 

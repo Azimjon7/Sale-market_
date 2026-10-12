@@ -1546,6 +1546,35 @@
     </div>
   </div>
 
+  <div id="stockOverlay" class="odm-overlay hidden" onclick="closeStockModal()">
+    <div class="odm-drawer stock-drawer" onclick="event.stopPropagation()">
+      <div class="odm-header">
+        <h3 id="stockModalTitle">Ombor boshqaruvi</h3>
+        <button class="odm-close" onclick="closeStockModal()" aria-label="Yopish">&times;</button>
+      </div>
+      <div class="odm-body">
+        <div id="stockSummary" class="stock-summary"></div>
+        <form id="stockAdjustmentForm" class="stock-adjustment-form">
+          <div class="form-group">
+            <label for="stockChange">Qoldiq o'zgarishi</label>
+            <input id="stockChange" type="number" step="1" required placeholder="Masalan: 10 yoki -2" />
+          </div>
+          <div class="form-group stock-reason-field">
+            <label for="stockReason">Sabab</label>
+            <input id="stockReason" type="text" minlength="3" maxlength="500" required placeholder="O'zgarish sababini kiriting" />
+          </div>
+          <button class="btn btn-primary" type="submit">Saqlash</button>
+        </form>
+        <div class="stock-history-heading">
+          <h4>Qoldiq tarixi</h4>
+          <button class="btn btn-secondary" type="button" onclick="downloadStockHistory()">CSV yuklab olish</button>
+        </div>
+        <div id="stockHistoryState" class="small"></div>
+        <div id="stockHistoryList" class="stock-history-list"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Stat Detail Modal -->
   <div id="statDetailOverlay" class="odm-overlay hidden" onclick="closeStatDetail()">
     <div class="odm-drawer" onclick="event.stopPropagation()">
@@ -1798,11 +1827,14 @@
       </section>
 
       <section id="sectionProducts" class="panel hidden">
-        <h3>Mahsulotlar</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3>Mahsulotlar</h3>
+          <div id="productsCount" style="font-size: 1rem; color: #666; font-weight: 500;">Jami: 0 ta</div>
+        </div>
         <div class="toolbar">
           <div class="form-group">
-            <label for="productSearch">Mahsulot qidirish</label>
-            <input id="productSearch" type="search" placeholder="Mahsulot qidirish" />
+            <label for="productSearch">Mahsulot yoki SKU qidirish</label>
+            <input id="productSearch" type="search" placeholder="Nomi yoki DOD-0001" />
           </div>
         </div>
         <div id="productsList" class="product-list"></div>
@@ -1813,7 +1845,55 @@
           <h3>Buyurtmalar</h3>
           <button class="btn btn-primary" onclick="downloadOrdersExcel()">Excel yuklab olish</button>
         </div>
+        <div class="order-management-toolbar" aria-label="Buyurtmalarni boshqarish">
+          <div class="form-group order-search-field">
+            <label for="orderSearch">Buyurtma qidirish</label>
+            <input id="orderSearch" type="search" autocomplete="off" placeholder="Buyurtma raqami, ichki ID, mijoz yoki telefon" />
+          </div>
+          <div class="form-group">
+            <label for="orderStatusFilter">Holat bo'yicha</label>
+            <select id="orderStatusFilter">
+              <option value="all">Barcha buyurtmalar</option>
+              <option value="pending_confirmation">Yangi / tasdiqlashni kutmoqda</option>
+              <option value="payment_pending">To'lov kutilmoqda</option>
+              <option value="payment_confirmed">To'lov tasdiqlangan</option>
+              <option value="production">Tayyorlanmoqda</option>
+              <option value="shipped">Jo'natildi</option>
+              <option value="delivered">Yetkazildi</option>
+              <option value="rejected">Rad etildi</option>
+              <option value="cancelled">Bekor qilindi</option>
+              <option value="payment_failed">To'lov amalga oshmadi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="orderSort">Saralash</label>
+            <select id="orderSort">
+              <option value="newest">Avval eng yangilari</option>
+              <option value="oldest">Avval eng eskilari</option>
+              <option value="total-high">Avval summasi yuqorilari</option>
+              <option value="total-low">Avval summasi pastlari</option>
+              <option value="updated">Yaqinda yangilanganlar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="orderPageSize">Har sahifada</label>
+            <select id="orderPageSize">
+              <option value="10">10 ta</option>
+              <option value="25">25 ta</option>
+              <option value="50">50 ta</option>
+            </select>
+          </div>
+        </div>
+        <div id="ordersState" class="orders-state" aria-live="polite"></div>
         <div id="ordersList" class="orders-list"></div>
+        <div id="ordersPagination" class="order-pagination hidden">
+          <span id="ordersMatchCount">0 ta buyurtma</span>
+          <div class="order-page-controls">
+            <button id="ordersPrev" class="btn btn-secondary" type="button">Oldingi</button>
+            <span id="ordersPageInfo">1 / 1-sahifa</span>
+            <button id="ordersNext" class="btn btn-secondary" type="button">Keyingi</button>
+          </div>
+        </div>
       </section>
 
       <section id="sectionCategories" class="panel hidden">
@@ -1878,9 +1958,8 @@
     </main>
   </div>
 
+  <script src="js/order-labels.js"></script>
   <script>
-    const ADMIN_USERNAME = "admin";
-    const ADMIN_PASSWORD = "12345678";
     const DEFAULT_CATEGORIES = [
       "Futbolkalar",
       "Aksesuarlar",
@@ -1909,7 +1988,8 @@
       "Erkaklar poyabzali",
       "Avtomobil"
 ];
-    const ORDER_STATUSES = ["Qabul qilindi", "Tayyorlanmoqda", "Yetkazilmoqda", "Yetkazildi", "Bekor qilindi"];
+    const ORDER_LABELS = window.DodolaOrderLabels;
+    const ORDER_STATUS_LABELS = ORDER_LABELS.statusLabels;
 
     let editingProductId = null;
     let cachedProducts = [];
@@ -1920,6 +2000,10 @@
     let existingImageList = [];
     let newImageFiles = [];
     let noticeTimer = null;
+    const orderQueryState = { search: '', filter: 'all', sort: 'newest', page: 1, limit: 10, total: 0, pages: 1 };
+    let orderLoadController = null;
+    let orderLoadSequence = 0;
+    let orderSearchTimer = null;
 
     function formatPrice(value) {
       const number = Math.round(Number(value || 0));
@@ -1989,7 +2073,6 @@
 
       const res = await fetch(url, { ...options, headers });
       if (res.status === 401 || res.status === 403) {
-        if (token === "fallback-admin-token") return res;
         clearSession();
         showLoginPage();
         throw new Error("Sessiya muddati tugadi. Qayta kiring.");
@@ -2001,7 +2084,7 @@
       const res = await apiFetch(url, options);
       const data = await readResponse(res);
       if (!res.ok) {
-        throw new Error(data.message || "Xatolik yuz berdi");
+        throw new Error(data.message || data.error || "Xatolik yuz berdi");
       }
       return data;
     }
@@ -2063,7 +2146,7 @@
       if (section === "orders") {
         document.getElementById("sectionOrders").classList.remove("hidden");
         document.getElementById("pageTitle").innerText = "Buyurtmalar";
-        document.getElementById("pageDesc").innerText = "Buyurtmalarni ko'ring va statuslarni boshqaring.";
+        document.getElementById("pageDesc").innerText = "Buyurtmalarni ko'ring va holatlarini boshqaring.";
         setActiveMenu("menuOrders");
         loadOrders();
       }
@@ -2102,26 +2185,14 @@
     }
 
     async function requestLogin(username, password) {
-      try {
-        const res = await fetch("/api/admin/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        });
-        const data = await readResponse(res);
-        if (res.ok && data.token) {
-          return data.token;
-        }
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-          return "fallback-admin-token";
-        }
-        throw new Error(data.message || "Login yoki parol noto'g'ri");
-      } catch (error) {
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-          return "fallback-admin-token";
-        }
-        throw error;
-      }
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await readResponse(res);
+      if (!res.ok || !data.token) throw new Error(data.message || data.error || "Login yoki parol noto'g'ri");
+      return data.token;
     }
 
     async function loginSubmit() {
@@ -2180,29 +2251,49 @@
 
     function normalizeStatus(status) {
       const value = String(status || "").trim();
+      if (ORDER_STATUS_LABELS[value]) return value;
       const aliases = {
-        "Yangi": "Qabul qilindi",
-        "Tasdiqlandi": "Tayyorlanmoqda",
-        "Yo'lda": "Yetkazilmoqda",
-        "Yuborildi": "Yetkazilmoqda",
-        new: "Qabul qilindi",
-        confirmed: "Tayyorlanmoqda",
-        shipped: "Yetkazilmoqda",
-        delivered: "Yetkazildi",
-        cancelled: "Bekor qilindi",
+        "Yangi": "new", "Qabul qilindi": "new", "Tasdiqlandi": "confirmed",
+        "Tayyorlanmoqda": "production", "Yo'lda": "shipped", "Yuborildi": "shipped",
+        "Yetkazilmoqda": "shipped", "Jo'natildi": "shipped", "Yetkazildi": "delivered",
+        "Rad etildi": "rejected", "Bekor qilindi": "cancelled",
       };
-      return ORDER_STATUSES.includes(value) ? value : (aliases[value] || "Qabul qilindi");
+      return aliases[value] || "";
+    }
+
+    function statusLabel(status) {
+      return ORDER_LABELS.status(normalizeStatus(status));
+    }
+
+    function orderStatusOptions(order) {
+      const current = normalizeStatus(order.status);
+      const next = Array.isArray(order.allowedNextStatuses) ? order.allowedNextStatuses : [];
+      let choices = [...new Set([current, ...next].filter(Boolean))];
+      const paymentType = String(order.paymentType || 'naqd').toLowerCase();
+      const paymentConfirmed = order.paymentStatus === 'collected';
+      if (paymentType === 'karta' && !paymentConfirmed) choices = choices.filter(key => key !== 'production');
+      if (paymentType === 'naqd' && ['confirmed', 'payment_pending'].includes(current) && !choices.includes('production')) choices.push('production');
+      return choices.map(key => '<option value="' + escapeAttr(key) + '"' + (key === current ? ' selected' : '') + '>' + escapeHtml(statusLabel(key)) + '</option>').join('');
+    }
+
+    async function openOrderReceipt(orderId) {
+      try {
+        const response = await apiFetch('/api/orders/' + encodeURIComponent(orderId) + '/receipt');
+        if (!response.ok) throw new Error("To'lov rasmi yuklanmadi");
+        const url = URL.createObjectURL(await response.blob());
+        window.open(url, '_blank', 'noopener');
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      } catch (error) { showNotice(error.message, 'error'); }
     }
 
     function statusClass(status) {
+      const key = normalizeStatus(status);
       const map = {
-        "Qabul qilindi": "status-yangi",
-        "Tayyorlanmoqda": "status-tasdiqlandi",
-        "Yetkazilmoqda": "status-yuborildi",
-        "Yetkazildi": "status-yetkazildi",
-        "Bekor qilindi": "status-bekor-qilindi",
+        new: "status-yangi", pending_confirmation: "status-yangi", confirmed: "status-tasdiqlandi",
+        payment_pending: "status-yangi", production: "status-tasdiqlandi", shipped: "status-yuborildi",
+        delivered: "status-yetkazildi", rejected: "status-bekor-qilindi", cancelled: "status-bekor-qilindi",
       };
-      return map[normalizeStatus(status)] || "status-yangi";
+      return map[key] || "status-yangi";
     }
 
     function formatDate(value) {
@@ -2282,7 +2373,7 @@
       });
 
       orders.forEach((order) => {
-        if (normalizeStatus(order.status) === "Bekor qilindi") return;
+        if (normalizeStatus(order.status) === "cancelled") return;
         const created = new Date(order.createdAt || order.date || Date.now());
         if (Number.isNaN(created.getTime())) return;
         created.setHours(0, 0, 0, 0);
@@ -2311,7 +2402,7 @@
 
       const productStats = new Map();
       orders.forEach((order) => {
-        if (normalizeStatus(order.status) === "Bekor qilindi") return;
+        if (normalizeStatus(order.status) === "cancelled") return;
         getOrderItems(order).forEach((item) => {
           const key = String(item.id || item.productId || item.name || "Mahsulot");
           const current = productStats.get(key) || { name: item.name || "Mahsulot", qty: 0 };
@@ -2346,19 +2437,19 @@
     }
 
     function renderDashboard(products = cachedProducts, orders = cachedOrders) {
-      const activeRevenueOrders = orders.filter((order) => normalizeStatus(order.status) !== "Bekor qilindi");
+      const activeRevenueOrders = orders.filter((order) => normalizeStatus(order.status) !== "cancelled");
       const todayOrders = orders.filter((order) => isToday(order.createdAt));
       const totalRevenue = activeRevenueOrders.reduce((sum, order) => sum + getOrderTotal(order), 0);
       const todayRevenue = todayOrders
-        .filter((order) => normalizeStatus(order.status) !== "Bekor qilindi")
+        .filter((order) => normalizeStatus(order.status) !== "cancelled")
         .reduce((sum, order) => sum + getOrderTotal(order), 0);
 
       document.getElementById("statProducts").innerText = products.length;
       document.getElementById("statOrders").innerText = orders.length;
       document.getElementById("statTodayOrders").innerText = todayOrders.length;
       document.getElementById("statRevenue").innerText = formatPrice(totalRevenue);
-      document.getElementById("statDeliveredOrders").innerText = orders.filter((order) => normalizeStatus(order.status) === "Yetkazildi").length;
-      document.getElementById("statCancelledOrders").innerText = orders.filter((order) => normalizeStatus(order.status) === "Bekor qilindi").length;
+      document.getElementById("statDeliveredOrders").innerText = orders.filter((order) => normalizeStatus(order.status) === "delivered").length;
+      document.getElementById("statCancelledOrders").innerText = orders.filter((order) => normalizeStatus(order.status) === "cancelled").length;
       const sidebarSales = document.getElementById("sidebarTodaySales");
       if (sidebarSales) sidebarSales.innerText = formatPrice(todayRevenue);
       renderWeeklySales(orders);
@@ -2372,12 +2463,12 @@
       }
 
       recent.innerHTML = latest.map((order) => {
-        const status = normalizeStatus(order.status);
+        const status = statusLabel(order.status);
         return `
           <div class="recent-row" data-order-id="${escapeAttr(order.id)}" style="cursor:pointer;">
             <div class="recent-row__info">
               <strong>${escapeHtml(order.name || "Mijoz")}</strong>
-              <div class="small">${escapeHtml(order.id || "-")} · ${escapeHtml(formatDate(order.createdAt))}</div>
+              <div class="small">${escapeHtml(order.orderNumber || order.id || "-")} · ${escapeHtml(formatDate(order.createdAt))}</div>
             </div>
             <div class="recent-row__right">
               <span class="status-badge ${statusClass(status)}">${escapeHtml(status)}</span>
@@ -2913,7 +3004,10 @@
       if (productDiscount) productDiscount.value = "";
       document.getElementById("productSizes").value = "";
       document.getElementById("productColors").value = "";
-      document.getElementById("productStock").value = "999";
+      const stockInput = document.getElementById("productStock");
+      stockInput.value = "15";
+      stockInput.disabled = false;
+      stockInput.title = "";
       document.getElementById("productLabel").value = "";
       document.getElementById("productDesc").value = "";
       renderCategoryOptions(cachedCategories[0] || "Futbolkalar");
@@ -2957,6 +3051,7 @@
       if (!query) return true;
       const text = [
         product.name,
+        product.sku,
         product.category,
         product.desc,
         product.description,
@@ -2968,8 +3063,16 @@
 
     function renderProducts() {
       const list = document.getElementById("productsList");
+      const countEl = document.getElementById("productsCount");
       const query = (document.getElementById("productSearch").value || "").trim().toLowerCase();
       const products = cachedProducts.filter((product) => productMatchesSearch(product, query));
+
+      // Mahsulotlar sonini yangilash
+      if (query) {
+        countEl.innerText = `Topilgan: ${products.length} ta (Jami: ${cachedProducts.length} ta)`;
+      } else {
+        countEl.innerText = `Jami: ${cachedProducts.length} ta`;
+      }
 
       if (!cachedProducts.length) {
         list.innerHTML = '<div class="empty">Hozircha mahsulot yo\'q.</div>';
@@ -2985,17 +3088,21 @@
         const images = (Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean);
         const coverImage = normalizeImage(images[0] || "");
         const desc = product.desc || product.description || "-";
+        const available = product.inventoryManaged ? Number(product.available || 0) : Number(product.stock ?? 999);
+        const lowStock = product.inventoryManaged && available <= Number(product.lowStockThreshold ?? 5);
         return `
           <div class="product-card">
             <img src="${escapeAttr(coverImage)}" alt="${escapeAttr(product.name || "Mahsulot")}" onclick="startEdit('${escapeAttr(product.id)}')">
             <div class="product-card-body">
               <div class="product-main">
                 <h4>${escapeHtml(product.name || "")}</h4>
+                <div class="meta">SKU: ${escapeHtml(product.sku || "-")}</div>
                 <div class="meta">Kategoriya: ${escapeHtml(product.category || "-")}</div>
-                <div class="compact-note">Ombor: ${escapeHtml(product.stock ?? 999)} ta</div>
+                <div class="compact-note ${lowStock ? "stock-low" : ""}">Ombor: ${escapeHtml(available)} ta${lowStock ? " · Kam qoldi" : ""}</div>
               </div>
               <div class="price">${formatPrice(product.price)} ${Number(product.oldPrice || 0) ? `<span class="old-price">${formatPrice(product.oldPrice)}</span>` : ""}</div>
               <div class="actions">
+                ${product.inventoryManaged ? `<button class="btn btn-secondary js-stock-product" data-id="${escapeAttr(product.id)}">Ombor</button>` : ""}
                 <button class="btn btn-secondary js-edit-product" data-id="${escapeAttr(product.id)}">Tahrirlash</button>
                 <button class="btn btn-danger js-delete-product" data-id="${escapeAttr(product.id)}">O'chirish</button>
               </div>
@@ -3006,6 +3113,10 @@
 
       document.querySelectorAll(".js-edit-product").forEach((btn) => {
         btn.addEventListener("click", () => startEdit(btn.dataset.id));
+      });
+
+      document.querySelectorAll(".js-stock-product").forEach((btn) => {
+        btn.addEventListener("click", () => openStockModal(btn.dataset.id));
       });
 
       document.querySelectorAll(".js-delete-product").forEach((btn) => {
@@ -3028,7 +3139,10 @@
       if (editDiscount) editDiscount.value = product.discountPercent || product.discount || "";
       document.getElementById("productSizes").value = product.sizes || "";
       document.getElementById("productColors").value = product.colors || "";
-      document.getElementById("productStock").value = product.stock ?? 999;
+      const stockInput = document.getElementById("productStock");
+      stockInput.value = product.inventoryManaged ? (product.available ?? 0) : (product.stock ?? 999);
+      stockInput.disabled = Boolean(product.inventoryManaged);
+      stockInput.title = product.inventoryManaged ? "Qoldiqni mahsulotlar bo'limidagi Ombor tugmasi orqali o'zgartiring" : "";
       document.getElementById("productLabel").value = product.label || product.badge || "";
       document.getElementById("productDesc").value = product.desc || product.description || "";
       existingImageList = [...new Set((Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean))];
@@ -3174,21 +3288,159 @@
       }
     }
 
+    let activeStockProductId = null;
+    const stockMovementLabels = {
+      initial_setup: "Boshlang'ich qoldiq",
+      order_reserved: "Buyurtma uchun bron",
+      order_committed: "Sotuv tasdiqlandi",
+      order_restored: "Qoldiq qaytarildi",
+      admin_adjustment: "Admin tomonidan o'zgartirildi",
+    };
+
+    function closeStockModal() {
+      document.getElementById("stockOverlay").classList.add("hidden");
+      activeStockProductId = null;
+    }
+
+    function renderStockSummary(inventory) {
+      document.getElementById("stockSummary").innerHTML = `
+        <div><span>Mavjud</span><strong class="${inventory.isLowStock ? "stock-low" : ""}">${inventory.available} ta</strong></div>
+        <div><span>Bronlangan</span><strong>${inventory.reserved} ta</strong></div>
+        <div><span>Sotilgan</span><strong>${inventory.sold} ta</strong></div>
+        <div><span>Qaytarilgan</span><strong>${inventory.returned} ta</strong></div>`;
+    }
+
+    async function loadStockHistory() {
+      const state = document.getElementById("stockHistoryState");
+      const list = document.getElementById("stockHistoryList");
+      state.textContent = "Qoldiq tarixi yuklanmoqda...";
+      list.innerHTML = "";
+      try {
+        const data = await requestJson(`/api/products/${encodeURIComponent(activeStockProductId)}/stock-history?limit=25&page=1`);
+        renderStockSummary(data.inventory);
+        const history = Array.isArray(data.history) ? data.history : [];
+        state.textContent = history.length ? `${data.meta.total} ta yozuv` : "Qoldiq tarixi mavjud emas.";
+        list.innerHTML = history.map(item => `
+          <div class="stock-history-item">
+            <div><strong>${escapeHtml(stockMovementLabels[item.type] || "Qoldiq o'zgarishi")}</strong><span>${formatDate(item.timestamp)}</span></div>
+            <b class="${Number(item.change) < 0 ? "stock-negative" : "stock-positive"}">${Number(item.change) > 0 ? "+" : ""}${item.change}</b>
+            <p>${escapeHtml(item.reason || "Sabab ko'rsatilmagan")}${item.orderId ? ` · Buyurtma: ${escapeHtml(item.orderId)}` : ""}</p>
+          </div>`).join("");
+      } catch (error) {
+        state.textContent = error.message;
+      }
+    }
+
+    async function openStockModal(productId) {
+      const product = cachedProducts.find(item => String(item.id) === String(productId));
+      if (!product || !product.inventoryManaged) return;
+      activeStockProductId = product.id;
+      document.getElementById("stockModalTitle").textContent = `Ombor: ${product.name || product.sku || "Mahsulot"}`;
+      document.getElementById("stockAdjustmentForm").reset();
+      document.getElementById("stockOverlay").classList.remove("hidden");
+      await loadStockHistory();
+    }
+
+    async function downloadStockHistory() {
+      if (!activeStockProductId) return;
+      try {
+        const res = await apiFetch(`/api/products/${encodeURIComponent(activeStockProductId)}/stock-history/export`);
+        if (!res.ok) throw new Error("Qoldiq tarixini yuklab bo'lmadi.");
+        const blob = await res.blob();
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "ombor-tarixi.csv";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      } catch (error) { showNotice(error.message, "error"); }
+    }
+
+    document.getElementById("stockAdjustmentForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!activeStockProductId) return;
+      const change = Number(document.getElementById("stockChange").value);
+      const reason = document.getElementById("stockReason").value.trim();
+      try {
+        await requestJson(`/api/products/${encodeURIComponent(activeStockProductId)}/stock`, {
+          method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ change, reason }),
+        });
+        showNotice("Ombor qoldig'i yangilandi");
+        document.getElementById("stockAdjustmentForm").reset();
+        await loadProducts({ render: false });
+        renderProducts();
+        await loadStockHistory();
+      } catch (error) { showNotice(error.message, "error"); }
+    });
+
     async function loadOrders(options = {}) {
       const shouldRender = options.render !== false;
+      if (!shouldRender) {
+        try {
+          const orders = await requestJson("/api/orders");
+          cachedOrders = Array.isArray(orders) ? orders : [];
+          writeLocalArray("mujskoy_orders", cachedOrders);
+          return cachedOrders;
+        } catch (err) {
+          throw new Error("Buyurtmalarni yuklab bo'lmadi. Qayta urinib ko'ring.");
+        }
+      }
+
+      if (orderLoadController) orderLoadController.abort();
+      orderLoadController = new AbortController();
+      const sequence = ++orderLoadSequence;
+      const list = document.getElementById('ordersList');
+      const state = document.getElementById('ordersState');
+      const pagination = document.getElementById('ordersPagination');
+      state.textContent = 'Buyurtmalar yuklanmoqda...';
+      list.innerHTML = '';
+      pagination.classList.add('hidden');
       try {
-        const orders = await requestJson("/api/orders");
-        cachedOrders = Array.isArray(orders) ? orders : [];
-        writeLocalArray("mujskoy_orders", cachedOrders);
-        if (shouldRender) renderOrders();
+        const params = new URLSearchParams({
+          search: orderQueryState.search,
+          filter: orderQueryState.filter,
+          sort: orderQueryState.sort,
+          page: String(orderQueryState.page),
+          limit: String(orderQueryState.limit),
+        });
+        const data = await requestJson('/api/orders?' + params.toString(), { signal: orderLoadController.signal });
+        if (sequence !== orderLoadSequence) return cachedOrders;
+        cachedOrders = Array.isArray(data.orders) ? data.orders : [];
+        const meta = data.meta || {};
+        orderQueryState.total = Number(meta.total || 0);
+        orderQueryState.page = Number(meta.page || 1);
+        orderQueryState.limit = Number(meta.limit || orderQueryState.limit);
+        orderQueryState.pages = Number(meta.pages || 1);
+        state.textContent = '';
+        renderOrders();
+        renderOrderPagination();
         return cachedOrders;
       } catch (err) {
-        cachedOrders = readLocalArray("mujskoy_orders");
-        if (shouldRender) {
-          renderOrders();
-        }
-        return cachedOrders;
+        if (err.name === 'AbortError' || sequence !== orderLoadSequence) return cachedOrders;
+        cachedOrders = [];
+        const message = "Buyurtmalarni yuklab bo'lmadi. Qayta urinib ko'ring.";
+        state.textContent = '';
+        list.innerHTML = '<div class="error-text">' + escapeHtml(message) + '</div>';
+        pagination.classList.add('hidden');
+        showNotice(message, 'error');
+        return [];
       }
+    }
+
+    function renderOrderPagination() {
+      const pagination = document.getElementById('ordersPagination');
+      document.getElementById('ordersMatchCount').textContent = 'Mos buyurtmalar: ' + orderQueryState.total + ' ta';
+      document.getElementById('ordersPageInfo').textContent = orderQueryState.page + ' / ' + orderQueryState.pages + '-sahifa';
+      const previous = document.getElementById('ordersPrev');
+      const next = document.getElementById('ordersNext');
+      previous.disabled = orderQueryState.page <= 1;
+      next.disabled = orderQueryState.page >= orderQueryState.pages;
+      pagination.classList.remove('hidden');
+    }
+
+    function findItemSku(item) {
+      if (item && item.sku) return item.sku;
+      const product = cachedProducts.find(row => String(row.id) === String(item && item.productId));
+      return product && product.sku ? product.sku : '';
     }
 
     function renderOrderItems(order) {
@@ -3201,6 +3453,7 @@
         const qty = Math.max(1, Number(item.qty || 1));
         const total = Number(item.lineTotal || 0) || Number(item.price || 0) * qty;
         const meta = [
+          findItemSku(item) ? "SKU: " + findItemSku(item) : "SKU ko'rsatilmagan",
           item.size ? "O'lcham: " + item.size : "",
           item.color ? "Rang: " + item.color : "",
         ].filter(Boolean).join(" · ");
@@ -3230,11 +3483,11 @@
       if (isMobile) {
         // ── MOBILE: compact tap-to-open rows ──
         list.innerHTML = cachedOrders.map((order) => {
-          const status = normalizeStatus(order.status);
+          const status = statusLabel(order.status);
           return `
-            <div class="order-compact-row" data-order-id="${escapeAttr(order.id)}" role="button" tabindex="0" aria-label="Buyurtma ${escapeHtml(order.id)}">
+            <div class="order-compact-row" data-order-id="${escapeAttr(order.id)}" role="button" tabindex="0" aria-label="Buyurtma ${escapeHtml(order.orderNumber || order.id)}">
               <div class="order-compact-left">
-                <span class="order-compact-id">${escapeHtml(order.id || "-")}</span>
+                <span class="order-compact-id">${escapeHtml(order.orderNumber || order.id || "-")}</span>
                 <span class="order-compact-name">Mijoz: ${escapeHtml(order.name || "-")}</span>
               </div>
               <div class="order-compact-right">
@@ -3258,15 +3511,14 @@
       } else {
         // ── DESKTOP: full detail cards ──
         list.innerHTML = cachedOrders.map((order, index) => {
-          const status = normalizeStatus(order.status);
+          const status = statusLabel(order.status);
           const selectId = "orderStatus" + index;
-          const paymentType = String(order.paymentType || "naqd").toLowerCase() === "karta" ? "Karta" : "Naqd";
+          const paymentType = ORDER_LABELS.paymentMethod(order.paymentType);
+          const paymentStatus = ORDER_LABELS.payment(order.paymentStatus);
           const screenshot = order.paymentScreenshot ? `
             <div class="payment-shot">
               <strong>To'lov skrinshoti</strong>
-              <a href="${escapeAttr(normalizeImage(order.paymentScreenshot))}" target="_blank">
-                <img src="${escapeAttr(normalizeImage(order.paymentScreenshot))}" alt="to'lov skrinshoti">
-              </a>
+              <button class="btn btn-secondary" onclick="openOrderReceipt('${escapeAttr(order.id)}')">To'lov rasmini ko'rish</button>
             </div>
           ` : "";
 
@@ -3274,8 +3526,9 @@
             <article class="order-item">
               <div class="order-head">
                 <div>
-                  <span class="eyebrow">Buyurtma ID</span>
-                  <strong>${escapeHtml(order.id || "-")}</strong>
+                  <span class="eyebrow">Buyurtma raqami</span>
+                  <strong>${escapeHtml(order.orderNumber || "-")}</strong>
+                  <small>Ichki ID: ${escapeHtml(order.id || "-")}</small>
                 </div>
                 <span class="status-badge ${statusClass(status)}">${escapeHtml(status)}</span>
               </div>
@@ -3286,6 +3539,7 @@
                 <div class="order-field"><span>Telefon</span><strong>${escapeHtml(order.phone || "-")}</strong></div>
                 <div class="order-field"><span>Manzil</span><strong>${escapeHtml(order.address || "-")}</strong></div>
                 <div class="order-field"><span>To'lov turi</span><strong>${escapeHtml(paymentType)}</strong></div>
+                <div class="order-field"><span>To'lov holati</span><strong>${escapeHtml(paymentStatus)}</strong></div>
                 <div class="order-field"><span>Jami</span><strong>${formatPrice(getOrderTotal(order))}</strong></div>
               </div>
 
@@ -3297,9 +3551,10 @@
                 <div class="form-group" style="margin-bottom:0;">
                   <label for="${selectId}">Holat</label>
                   <select id="${selectId}">
-                    ${ORDER_STATUSES.map((item) => `<option value="${escapeAttr(item)}"${item === status ? " selected" : ""}>${escapeHtml(item)}</option>`).join("")}
+                    ${orderStatusOptions(order)}
                   </select>
                 </div>
+                <button class="btn btn-secondary js-order-detail" data-id="${escapeAttr(order.id)}">Batafsil</button>
                 <button class="btn btn-primary js-save-order-status" data-id="${escapeAttr(order.id)}" data-select="${selectId}">Holatni saqlash</button>
                 <button class="btn btn-danger js-delete-order" data-id="${escapeAttr(order.id)}">O'chirish</button>
               </div>
@@ -3311,6 +3566,13 @@
           btn.addEventListener("click", () => saveOrderStatus(btn.dataset.id, btn.dataset.select));
         });
 
+        document.querySelectorAll(".js-order-detail").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const order = cachedOrders.find(row => String(row.id) === String(btn.dataset.id));
+            if (order) openOrderDetailModal(order);
+          });
+        });
+
         document.querySelectorAll(".js-delete-order").forEach((btn) => {
           btn.addEventListener("click", () => deleteOrder(btn.dataset.id));
         });
@@ -3319,72 +3581,92 @@
 
     async function saveOrderStatus(orderId, selectId) {
       const select = document.getElementById(selectId);
-      if (!select) return;
-
-      // Update in-memory array
-      cachedOrders = cachedOrders.map((order) => (
-        String(order.id) === String(orderId) ? { ...order, status: select.value } : order
-      ));
-      // Persist to localStorage
-      writeLocalArray("mujskoy_orders", cachedOrders);
-      // Update UI immediately
-      renderOrders();
-      renderDashboard(cachedProducts, cachedOrders);
-      showNotice("Buyurtma statusi yangilandi");
-
-      // Try to update backend too (fire and forget)
-      try {
-        await requestJson("/api/orders/" + encodeURIComponent(orderId) + "/status", {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: select.value }),
-        });
-      } catch (err) {
-        // Backend unavailable — localStorage is already updated
+      if (!select || select.disabled) return false;
+      const current = cachedOrders.find(order => String(order.id) === String(orderId));
+      const target = select.value;
+      if (current && target === String(current.status || '')) return true;
+      let reason = '';
+      if (target === 'rejected') {
+        reason = prompt('Rad etish sababini kiriting (1-500 belgi):') || '';
+        if (!reason.trim()) return false;
       }
+      const payment = target === 'production' && current && ['confirmed', 'payment_pending'].includes(String(current.status || '')) && current.paymentStatus !== 'collected';
+      if (payment && String(current.paymentType || 'naqd').toLowerCase() === 'karta') {
+        showNotice("Onlayn to'lovni faqat to'lov provayderi tasdiqlashi mumkin.", 'error');
+        return false;
+      }
+      if (payment && !confirm("Naqd to'lov haqiqatan qabul qilindimi? Bu amal audit tarixiga yoziladi va buyurtma tayyorlashga o'tkaziladi.")) return false;
+      select.disabled = true;
+      try {
+        const endpoint = payment ? 'payment' : target === 'confirmed' ? 'confirm' : target === 'rejected' ? 'reject' : 'status';
+        const result = await requestJson('/api/orders/' + encodeURIComponent(orderId) + '/' + endpoint, {
+          method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: target, reason })
+        });
+        if (!result.success || !result.order) throw new Error('Server buyurtmani tasdiqlamadi');
+        await loadOrders();
+        showNotice('Buyurtma holati yangilandi');
+        return true;
+      } catch (error) {
+        const message = typeof ORDER_LABELS !== 'undefined' ? ORDER_LABELS.actionError(error.message) : error.message;
+        showNotice(message, 'error');
+        return false;
+      } finally { select.disabled = false; }
     }
 
     // ========== ORDER DETAIL MODAL ==========
     function openOrderDetailModal(order) {
       const overlay = document.getElementById("orderDetailOverlay");
       const content = document.getElementById("orderDetailContent");
-      const status = normalizeStatus(order.status);
-      const paymentType = String(order.paymentType || "naqd").toLowerCase() === "karta" ? "Karta" : "Naqd";
+      const status = statusLabel(order.status);
+      const paymentType = ORDER_LABELS.paymentMethod(order.paymentType);
+      const paymentStatus = ORDER_LABELS.payment(order.paymentStatus);
 
       const items = Array.isArray(order.items) ? order.items : [];
       const itemsHtml = items.length ? items.map((item) => {
         const qty = Math.max(1, Number(item.qty || 1));
-        const total = Number(item.lineTotal || 0) || Number(item.price || 0) * qty;
+        const unitPrice = Number(item.price || 0);
+        const total = Number(item.lineTotal || 0) || unitPrice * qty;
+        const sku = findItemSku(item);
         const meta = [
+          sku ? "SKU: " + sku : "SKU ko'rsatilmagan",
           item.size ? "O'lcham: " + item.size : "",
           item.color ? "Rang: " + item.color : "",
         ].filter(Boolean).join(" · ");
         return `
           <div class="odm-item">
             <strong>${escapeHtml(item.name || "Mahsulot")}</strong>
-            <div class="odm-item-meta">${qty} ta · ${formatPrice(total)}</div>
+            <div class="odm-item-meta">${qty} ta · har biri ${formatPrice(unitPrice)} · jami ${formatPrice(total)}</div>
             ${meta ? `<div class="odm-item-meta">${escapeHtml(meta)}</div>` : ""}
           </div>
         `;
       }).join("") : '<div class="empty">Mahsulotlar ko\'rsatilmagan.</div>';
 
+      const history = Array.isArray(order.statusHistory) ? order.statusHistory : [];
+      const historyHtml = history.length ? history.map((entry) => `
+        <div class="odm-history-item">
+          <strong>${escapeHtml(statusLabel(entry.status))}</strong>
+          <span>${escapeHtml(formatDate(entry.changedAt))} · ${escapeHtml(ORDER_LABELS.actor(entry.changedBy))}</span>
+          <span>Sabab: ${escapeHtml(ORDER_LABELS.reason(entry.reason))}</span>
+        </div>
+      `).join("") : '<div class="empty">Holat tarixi mavjud emas.</div>';
+
       const screenshot = order.paymentScreenshot ? `
         <div class="odm-section">
           <span class="odm-label">To'lov skrinshoti</span>
-          <a href="${escapeAttr(normalizeImage(order.paymentScreenshot))}" target="_blank">
-            <img class="odm-screenshot" src="${escapeAttr(normalizeImage(order.paymentScreenshot))}" alt="to'lov skrinshoti">
-          </a>
+          <button class="btn btn-secondary" onclick="openOrderReceipt('${escapeAttr(order.id)}')">To'lov rasmini ko'rish</button>
         </div>
       ` : "";
 
       content.innerHTML = `
         <div class="odm-grid">
-          <div class="odm-field"><span class="odm-label">Buyurtma ID</span><strong>${escapeHtml(order.id || "-")}</strong></div>
-          <div class="odm-field"><span class="odm-label">Holat</span><span class="status-badge ${statusClass(status)}">${escapeHtml(status)}</span></div>
-          <div class="odm-field"><span class="odm-label">Mijoz</span><strong>${escapeHtml(order.name || "-")}</strong></div>
-          <div class="odm-field"><span class="odm-label">Telefon</span><strong>${escapeHtml(order.phone || "-")}</strong></div>
-          <div class="odm-field"><span class="odm-label">Manzil</span><strong>${escapeHtml(order.address || "-")}</strong></div>
+          <div class="odm-field"><span class="odm-label">Buyurtma raqami</span><strong>${escapeHtml(order.orderNumber || "Ko'rsatilmagan")}</strong></div>
+          <div class="odm-field"><span class="odm-label">Ichki ID</span><strong>${escapeHtml(order.id || "Ko'rsatilmagan")}</strong></div>
+          <div class="odm-field"><span class="odm-label">Joriy yetkazish holati</span><span class="status-badge ${statusClass(order.status)}">${escapeHtml(status)}</span></div>
+          <div class="odm-field"><span class="odm-label">Mijoz</span><strong>${escapeHtml(order.name || "Ko'rsatilmagan")}</strong></div>
+          <div class="odm-field"><span class="odm-label">Telefon</span><strong>${escapeHtml(order.phone || "Ko'rsatilmagan")}</strong></div>
+          <div class="odm-field"><span class="odm-label">Manzil</span><strong>${escapeHtml(order.address || "Ko'rsatilmagan")}</strong></div>
           <div class="odm-field"><span class="odm-label">To'lov turi</span><strong>${escapeHtml(paymentType)}</strong></div>
+          <div class="odm-field"><span class="odm-label">Tasdiqlangan to'lov holati</span><strong>${escapeHtml(paymentStatus)}</strong></div>
           <div class="odm-field"><span class="odm-label">Yaratilgan sana</span><strong>${escapeHtml(formatDate(order.createdAt))}</strong></div>
           <div class="odm-field"><span class="odm-label">Jami</span><strong>${formatPrice(getOrderTotal(order))}</strong></div>
         </div>
@@ -3393,16 +3675,20 @@
           <span class="odm-label">Mahsulotlar</span>
           <div class="odm-items-list">${itemsHtml}</div>
         </div>
+        <div class="odm-section">
+          <span class="odm-label">Holat tarixi</span>
+          <div class="odm-timeline">${historyHtml}</div>
+        </div>
         ${screenshot}
         <div class="odm-actions">
           <div class="odm-status-row">
             <select id="odmStatusSelect">
-              ${ORDER_STATUSES.map((item) => `<option value="${escapeAttr(item)}"${item === status ? " selected" : ""}>${escapeHtml(item)}</option>`).join("")}
+              ${orderStatusOptions(order)}
             </select>
             <button class="btn btn-primary" onclick="saveOrderStatusFromModal('${escapeAttr(order.id)}')">Holatni saqlash</button>
           </div>
           <div class="odm-btn-row">
-            <button class="btn btn-danger" onclick="deleteOrderFromModal('${escapeAttr(order.id)}')">🗑 O'chirish</button>
+            <button class="btn btn-danger" onclick="deleteOrderFromModal('${escapeAttr(order.id)}')">O'chirish</button>
             <button class="btn btn-secondary" onclick="closeOrderDetailModal()">Yopish</button>
           </div>
         </div>
@@ -3418,25 +3704,7 @@
     }
 
     async function saveOrderStatusFromModal(orderId) {
-      const select = document.getElementById("odmStatusSelect");
-      if (!select) return;
-
-      cachedOrders = cachedOrders.map((order) => (
-        String(order.id) === String(orderId) ? { ...order, status: select.value } : order
-      ));
-      writeLocalArray("mujskoy_orders", cachedOrders);
-      renderOrders();
-      renderDashboard(cachedProducts, cachedOrders);
-      closeOrderDetailModal();
-      showNotice("Buyurtma statusi yangilandi");
-
-      try {
-        await requestJson("/api/orders/" + encodeURIComponent(orderId) + "/status", {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: select.value }),
-        });
-      } catch (err) {}
+      if (await saveOrderStatus(orderId, 'odmStatusSelect')) closeOrderDetailModal();
     }
 
     function deleteOrderFromModal(orderId) {
@@ -3446,46 +3714,27 @@
 
     async function deleteOrder(orderId) {
       if (!confirm("Bu buyurtmani o'chirishni xohlaysizmi?")) return;
-
-      // Remove from in-memory array first
-      cachedOrders = cachedOrders.filter((order) => String(order.id) !== String(orderId));
-      // Persist to localStorage immediately
-      writeLocalArray("mujskoy_orders", cachedOrders);
-      // Update UI immediately
-      renderOrders();
-      renderDashboard(cachedProducts, cachedOrders);
-      showNotice("Buyurtma o'chirildi");
-
-      // Try to delete from backend too (fire and forget)
       try {
         await requestJson("/api/orders/" + encodeURIComponent(orderId), {
           method: "DELETE",
         });
+        await loadOrders();
+        showNotice("Buyurtma o'chirildi");
       } catch (err) {
-        // Backend unavailable or no endpoint — localStorage is already updated
+        showNotice("Buyurtmani o'chirib bo'lmadi. Qayta urinib ko'ring.", "error");
       }
     }
 
     async function bootstrapAdminSession() {
       showLoginPage();
-      const loggedIn = localStorage.getItem("mb_admin_logged_in");
-      const token = getToken();
-
-      if (loggedIn === "true" && token) {
+      if (!getToken() || getToken() === 'fallback-admin-token') { clearSession(); return; }
+      try {
+        // Verify the saved session against an authenticated endpoint before showing the app.
+        await requestJson('/api/orders');
         showAdminApp();
-        return;
-      }
-
-      if (loggedIn === "true" && !token) {
-        try {
-          const freshToken = await requestLogin(ADMIN_USERNAME, ADMIN_PASSWORD);
-          localStorage.setItem("mb_admin_token", freshToken);
-          showAdminApp();
-          return;
-        } catch {
-          clearSession();
-          showLoginPage();
-        }
+      } catch (err) {
+        clearSession();
+        document.getElementById('loginMessage').textContent = err.message || 'Qayta kiring.';
       }
     }
 
@@ -3495,6 +3744,10 @@
       const uploadBox = document.getElementById("uploadBox");
       const productSearch = document.getElementById("productSearch");
       const categoryInput = document.getElementById("categoryName");
+      const orderSearch = document.getElementById("orderSearch");
+      const orderStatusFilter = document.getElementById("orderStatusFilter");
+      const orderSort = document.getElementById("orderSort");
+      const orderPageSize = document.getElementById("orderPageSize");
 
       if (imageInput) {
         imageInput.addEventListener("change", function () {
@@ -3534,6 +3787,47 @@
           }
         });
       }
+
+      if (orderSearch) {
+        orderSearch.addEventListener("input", function () {
+          clearTimeout(orderSearchTimer);
+          orderSearchTimer = setTimeout(() => {
+            orderQueryState.search = orderSearch.value.trim();
+            orderQueryState.page = 1;
+            loadOrders();
+          }, 300);
+        });
+      }
+
+      if (orderStatusFilter) orderStatusFilter.addEventListener("change", function () {
+        orderQueryState.filter = this.value;
+        orderQueryState.page = 1;
+        loadOrders();
+      });
+
+      if (orderSort) orderSort.addEventListener("change", function () {
+        orderQueryState.sort = this.value;
+        orderQueryState.page = 1;
+        loadOrders();
+      });
+
+      if (orderPageSize) orderPageSize.addEventListener("change", function () {
+        orderQueryState.limit = Number(this.value);
+        orderQueryState.page = 1;
+        loadOrders();
+      });
+
+      document.getElementById("ordersPrev").addEventListener("click", function () {
+        if (orderQueryState.page <= 1) return;
+        orderQueryState.page -= 1;
+        loadOrders();
+      });
+
+      document.getElementById("ordersNext").addEventListener("click", function () {
+        if (orderQueryState.page >= orderQueryState.pages) return;
+        orderQueryState.page += 1;
+        loadOrders();
+      });
 
       renderCategoryOptions("Futbolkalar");
       renderImagePreviews();

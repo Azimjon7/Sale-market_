@@ -3,21 +3,42 @@
   "version": "1.0.0",
   "description": "Sale Market — online savdo do'koni",
   "main": "server.js",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
     "cache:images": "node scripts/cache-buyo-gallery-images.js",
-    "postinstall": "node scripts/cache-buyo-gallery-images.js"
+    "db:dry-run": "node scripts/postgres/migrate-json-to-postgres.js",
+    "db:reconcile": "node scripts/postgres/reconcile-postgres.js",
+    "db:verify": "node scripts/postgres/verify-postgres.js",
+    "storage:inventory": "node scripts/storage/inventory-images.js",
+    "storage:r2:dry-run": "node scripts/storage/migrate-images-to-r2.js",
+    "test:postgres": "node --test test/postgres-migration.test.cjs",
+    "test:postgres:integration": "node --test test/postgres-migration.test.cjs test/postgres-express-integration.test.cjs",
+    "test:email": "node --test test/resend-email.test.cjs test/customer-auth.test.cjs",
+    "test:storage": "node --test test/object-storage.test.cjs",
+    "test": "jest --testMatch='**/test/**/*.test.js' --detectOpenHandles --forceExit"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1149.0",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "express": "^4.21.2",
+    "express": "^4.22.3",
     "express-rate-limit": "^8.5.2",
     "express-session": "^1.18.1",
     "helmet": "^8.2.0",
     "jsonwebtoken": "^9.0.3",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.23.1",
+    "resend": "^6.32.1"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "pg-mem": "^3.0.14",
+    "playwright": "^1.64.0",
+    "supertest": "^7.3.1"
   }
 }

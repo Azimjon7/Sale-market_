@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sale Market | Savat</title>
+  <title>Sale Market | Korzina</title>
   <link rel="stylesheet" href="css/design-system.css" type="text/css">
   <link rel="stylesheet" href="css/components.css" type="text/css">
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/shared-header.css" type="text/css">
   <link rel="stylesheet" href="css/mobile-320-480-fix.css" type="text/css">
   <link rel="stylesheet" href="css/live-upgrade-fixes.css" type="text/css">
+  <link rel="stylesheet" href="css/customer-navigation.css" type="text/css">
 </head>
 <body class="market-body">
   <header class="market-header" id="main-header">
@@ -37,12 +38,12 @@
         <a class="market-action" href="track-order.html" aria-label="Buyurtmani kuzatish">
           <i class="fa fa-truck"></i><span>Kuzatish</span>
         </a>
-        <a class="market-action" href="shop-cart.html" aria-label="Savat">
-          <i class="fa fa-shopping-bag"></i><span>Savat</span>
+        <a class="market-action" href="shop-cart.html" aria-label="Korzina">
+          <i class="fa fa-shopping-bag"></i><span>Korzina</span>
           <em class="market-cart-tip js-cart-count">0</em>
         </a>
-        <a class="market-action market-action--admin" href="admin.html" aria-label="Boshqaruv paneli">
-          <i class="fa fa-user-o"></i><span>Admin</span>
+        <a class="market-action market-action--admin js-profile-entry" href="auth.html" aria-label="Kirish yoki shaxsiy kabinet">
+          <i class="fa fa-user-o"></i><span data-profile-label>Kirish</span>
         </a>
       </div>
       <button class="mh-hamburger" id="mh-hamburger" aria-label="Menyuni ochish" aria-expanded="false" aria-haspopup="true">
@@ -51,7 +52,7 @@
     </div></div></div>
     <nav class="market-nav" aria-label="Asosiy menyu"><div class="container-fluid"><ul>
       <li><a href="index.html">Bosh sahifa</a></li>
-      <li><a href="shop-cart.html">Savat</a></li>
+      <li><a href="shop-cart.html">Korzina</a></li>
       <li><a href="contact.html">Bog'lanish</a></li>
     </ul></div></nav>
   </header>
@@ -61,17 +62,17 @@
       <div class="mh-mobile-nav__title">Sale Market</div>
       <ul>
         <li><a href="index.html">Bosh sahifa</a></li>
-        <li><a href="shop-cart.html">Savat</a></li>
+        <li><a href="shop-cart.html">Korzina</a></li>
         <li><a href="checkout.html">Buyurtma</a></li>
         <li><a href="contact.html">Bog'lanish</a></li>
-        <li class="nav-admin"><a href="admin.html"><i class="fa fa-user-o"></i> Boshqaruv</a></li>
+        <li class="nav-admin"><a class="js-profile-entry" href="auth.html"><i class="fa fa-user-o"></i> <span data-profile-label>Kirish</span></a></li>
       </ul>
     </div>
   </div>
 
   <main>
 
-  <section class="breadcrumb-custom market-page-hero"><div class="container"><h2>Savat</h2>
+  <section class="breadcrumb-custom market-page-hero"><div class="container"><h2>Korzina</h2>
       <p>Tanlangan mahsulotlaringiz, miqdor va umumiy summa marketplace formatida.</p></div></section>
   <section class="shop-cart spad"><div class="container"><div id="cart-root"></div></div></section>
 
@@ -84,12 +85,12 @@
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
           <span>Sale Market</span>
         </a>
-        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, savat, checkout va buyurtma kuzatuvi bir joyda.</p>
+        <p>O'zbekistonda qulay va ishonchli online xarid. Katalog, korzina, checkout va buyurtma kuzatuvi bir joyda.</p>
       </div>
       <div>
         <h6>Bo'limlar</h6>
         <a href="shop.html">Katalog</a>
-        <a href="shop-cart.html">Savat</a>
+        <a href="shop-cart.html">Korzina</a>
         <a href="checkout.html">Buyurtma</a>
       </div>
       <div>
@@ -110,10 +111,15 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.slicknav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/product-rules.js"></script>
   <script src="js/store.js"></script>
   <script src="js/panel-manager.js"></script>
   <script src="js/marketplace-upgrade.js"></script>
   <script src="js/shared-header-init.js"></script>
   <script src="js/cart-page.js"></script>
+  <script src="js/header-account.js"></script>
 </body>
 </html>
+
+
+
